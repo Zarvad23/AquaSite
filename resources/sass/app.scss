@@ -4,7 +4,113 @@
 // Variables
 @import 'variables';
 
+body{
+    font-family: $font-family-sans-serif;
+    background: $body-bg;
+    font-size: $font-size-base;
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
 }
+
+
+.menu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    .navigation-container{
+        display: flex;
+        .navigation {
+            ul{
+                display: flex;
+                text-decoration: none;
+                list-style: none;
+                li{
+                    margin-right: 50px;
+                    &:last-child{
+                        margin-right: 0;
+                    }
+                }
+            }
+        }
+        .logo{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 200px;
+                height: 63px;
+            }
+        }
+    }
+    .AuthContainer{
+        display: flex;
+        align-items: center;
+        list-style: none;
+        a{
+            margin-right: 25px;
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+}
+
+.promo{
+    background-image: url("../images/promo-bg.png");
+    background-size: cover;
+    width: 100%;
+    height: 800px;
+    position: relative;
+    text-transform: uppercase;
+    & > * {
+        position: absolute;
+    }
+    .promo-center {
+        left: 50%;
+        top: 50%;
+        text-align: center;
+        color: #3deedb;
+        font-size: 25px;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        p{
+            text-align: left;
+            text-transform: none;
+            span{
+                line-height: 200px;
+                font-style: italic;
+            }
+        }
+    }
+    .promo-btn{
+        border: 2px solid #3deedb;
+        border-radius: 15px;
+        padding: 20px 15px;
+        background: none;
+        transition: all 0.4s ease-in;
+        &:hover{
+            background-color: #3deedb;
+            color: #f522cb;
+        }
+    }
+}
+
+.fade-leave-active,
+.fade-enter-active{
+    transition: all 0.5s ease-out;;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+

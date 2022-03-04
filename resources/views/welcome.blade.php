@@ -17,13 +17,43 @@
     </head>
     <body>
          <div id="app">
-                <nav>
-                    <ul>
-                        <li><router-link to="/">Home</router-link></li> |
-                        <li><router-link to="/about">About</router-link></li>
-                    </ul>
-                </nav>
-                <router-view />
+                <div class="header">
+                    <div class="menu">
+                        <div class="navigation-container">
+                            <div class="logo">
+                                <router-link to="/"><img src="./images/logo.svg" alt="Логотип"></router-link>
+                            </div>
+                            <nav class="navigation">
+                                <ul>
+                                    <li><router-link to="/">Главная</router-link></li>
+                                    <li><router-link to="/fish">Рыбы</router-link></li>
+                                    <li><router-link to="/plants">Растения</router-link></li>
+                                    <li><router-link to="/another">Прочие виды</router-link></li>
+                                    <li><router-link to="/aquariums">Аквариумы</router-link></li>
+                                    <li><router-link to="/helpful">Полезное</router-link></li>
+                                    <li><router-link to="/about">О сайте</router-link></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="AuthContainer">
+                            <a><router-link to="/auth">Вход</router-link></a>
+                        </div>
+                    </div>
+                    <transition mode="out-in" name="fade">
+                        <div class="promo" v-show="$route.name == 'Home'">
+                            <div class="promo-center">
+                                <h1>Справочник аквариумиста</h1>
+                                <p>Аквариумистика – это целая наука, которая посвящена не только разведению аквариумных рыбок, но и моделированию единой экологической системы в пределах водоема, созданного руками людей. Как правило, такой водоем имеет замкнутое пространство, вода доставляется туда человеком, а не естественным путем.<br><span>-Мир, в котором живут рыбки</span></p>
+                                <a class="promo-btn"><router-link to="/about">Узнать больше</router-link></a>
+                            </div>
+                        </div>
+                    </transition>
+                </div>
+                <router-view v-slot="{ Component }">
+                    <transition mode="out-in" name="fade">
+                        <component :is="Component" />
+                    </transition>
+                </router-view>
          </div>
          <script src="{{ mix('js/app.js') }}"></script>
     </body>

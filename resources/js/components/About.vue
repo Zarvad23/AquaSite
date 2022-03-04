@@ -1,7 +1,6 @@
 <template>
     <div class="container">
-        <img class="w-100 h-auto" src="https://kitsunestudy.ru/wp-content/uploads/2019/09/dobryj-den-500x278.png" alt="Hello">
-        <p>Привет привет на другой странице</p>
+        <h1>Страница с описанием сайта</h1>
     </div>
 </template>
 <script>
