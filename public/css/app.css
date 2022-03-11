@@ -73,7 +73,7 @@ body {
   left: 50%;
   top: 50%;
   text-align: center;
-  color: #3deedb;
+  color: #00FFFF;
   font-size: 25px;
   transform: translate(-50%, -50%);
 }
@@ -86,14 +86,14 @@ body {
   font-style: italic;
 }
 .promo .promo-btn {
-  border: 2px solid #3deedb;
+  border: 2px solid #00FFFF;
   border-radius: 15px;
   padding: 20px 15px;
   background: none;
   transition: all 0.4s ease-in;
 }
 .promo .promo-btn:hover {
-  background-color: #3deedb;
+  background-color: #00FFFF;
   color: #f522cb;
 }
 
@@ -111,6 +111,7 @@ body {
 }
 .main-left-content hr {
   border: 1px solid #b0aeae;
+  margin-bottom: 40px;
 }
 .main-right {
   text-align: center;
@@ -120,17 +121,26 @@ body {
 .news-card {
   display: flex;
   flex-direction: column;
+  margin-bottom: 60px;
+}
+.news-card-title {
+  font-size: 25px;
+  margin: 0;
 }
 .news-card .news-card-center {
   display: flex;
   margin-bottom: 10px;
+  flex-direction: column;
 }
 .news-card .news-card-center h4 {
   text-align: center;
   font-size: 20px;
 }
-.news-card .news-card-center img {
-  width: 45%;
+.news-card .news-card-center .news-card-bg {
+  text-align: center;
+}
+.news-card .news-card-center .news-card-bg img {
+  height: 250px;
   height: auto;
 }
 .news-card .news-card-center div {
@@ -143,7 +153,7 @@ body {
   align-items: center;
 }
 .news-card .news-card-bottom .news-card-button {
-  border: 1px solid #f522cb;
+  border: 1px solid #F08080;
   padding: 10px;
   border-radius: 20px;
 }
