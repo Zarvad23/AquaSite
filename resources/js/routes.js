@@ -1,12 +1,11 @@
 import Home from './components/Home';
+import News from './components/News';
 import Fish from './components/Fish';
 import Plants from './components/Plants';
 import Another from './components/Another';
 import Aquariums from './components/Aquariums';
 import Helpful from './components/Helpful';
 import About from './components/About';
-import Registration from './components/Registration';
-import Authorization from './components/Authorization';
 
 
 const routes = [
@@ -14,6 +13,11 @@ const routes = [
         path: "/",
         name: "Home",
         component: Home,
+    },
+    {
+        path: "/news",
+        name: "News",
+        component: News,
     },
     {
         path: "/fish",

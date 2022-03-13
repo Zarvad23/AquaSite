@@ -2,6 +2,8 @@ require('./bootstrap');
 import {createRouter, createWebHistory} from 'vue-router';
 import { createApp } from "vue";
 import routes from "./routes";
+import store from "./Vuex";
+import Auth from "./components/Auth"
 
 const router = createRouter({
     history: createWebHistory(),
@@ -9,5 +11,12 @@ const router = createRouter({
 })
 
 createApp({
-
-}).use(router).mount('#app')
+    methods: {
+        showAuth() {
+            this.$store.dispatch('CHANGE_AUTH', true)
+        },
+    },
+    components: {
+        Auth
+    }
+}).use(router).use(store).mount('#app')

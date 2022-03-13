@@ -23,9 +23,10 @@
                             <div class="logo">
                                 <router-link to="/"><img src="./images/logo.svg" alt="Логотип"></router-link>
                             </div>
-                            <nav class="navigation">
+                            <nav class="navigation-header">
                                 <ul>
                                     <li><router-link to="/">Главная</router-link></li>
+                                    <li><router-link to="/news">Новости</router-link></li>
                                     <li><router-link to="/fish">Рыбы</router-link></li>
                                     <li><router-link to="/plants">Растения</router-link></li>
                                     <li><router-link to="/another">Прочие виды</router-link></li>
@@ -36,7 +37,7 @@
                             </nav>
                         </div>
                         <div class="AuthContainer">
-                            <a><router-link to="/auth">Вход</router-link></a>
+                            <a v-on:click="showAuth()">Вход</a>
                         </div>
                     </div>
                     <transition mode="out-in" name="fade">
@@ -54,6 +55,41 @@
                         <component :is="Component" />
                     </transition>
                 </router-view>
+                <div class="footer">
+                    <div class="footer-top">
+                        <div class="follow-us">
+                            <span>Связаться с нами</span>
+                            <div class="follow-links">
+                                <ul>
+                                    <li class="follow-link vk"><a href="#"></a></li>
+                                    <li class="follow-link facebook"><a href="#"></a></li>
+                                    <li class="follow-link twitter"><a href="#"></a></li>
+                                    <li class="follow-link youtube"><a href="#"></a></li>
+                                </ul>
+                            </div>
+                            <hr>
+                            <a href="mailto:zarifullin.vadim@mail.ru">zarifullin.vadim@mail.ru</a>
+                        </div>
+                        <nav class="navigation-footer">
+                            <ul>
+                                <li><router-link to="/">Главная</router-link></li>
+                                <li><router-link to="/news">Новости</router-link></li>
+                                <li><router-link to="/fish">Рыбы</router-link></li>
+                                <li><router-link to="/plants">Растения</router-link></li>
+                                <li><router-link to="/another">Прочие виды</router-link></li>
+                                <li><router-link to="/aquariums">Аквариумы</router-link></li>
+                                <li><router-link to="/helpful">Полезное</router-link></li>
+                                <li><router-link to="/about">О сайте</router-link></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <Auth  />
+                    <div class="footer-bottom">
+                        <div class="copy">
+                            <span>© AquaBook 2022</span>
+                        </div>
+                    </div>
+                </div>
          </div>
          <script src="{{ mix('js/app.js') }}"></script>
     </body>
