@@ -3,6 +3,7 @@
 
 // Variables
 @import 'variables';
+@import 'about';
 
 body{
     font-family: $font-family-sans-serif;
@@ -104,9 +105,13 @@ body{
     .promo-btn{
         border: 2px solid $aqua;
         border-radius: 15px;
-        padding: 20px 15px;
         background: none;
         transition: all 0.4s ease-in;
+        display: inline-block;
+        a{
+            display: inline-block;
+            padding: 20px 15px;
+        }
         &:hover{
             background-color: $aqua;
             color: #f522cb;
@@ -303,9 +308,19 @@ body{
         background: #ffffff;
         color: black;
         width: 600px;
-        height: 600px;
+        height: auto;
         border-radius: 10px;
         position: relative;
+        .auth-btn{
+            font-size: 20px;
+            background-color: $море-2-hex;
+            width: auto;
+            padding: 20px 20px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            color: white;
+            grid-column: 1 / span 2;
+        }
         .auth-switchers{
             display: flex;
             justify-content: space-between;
@@ -363,9 +378,49 @@ body{
         .authorization{
             height: 100%;
             width: 100%;
+            padding: 30px 0;
         }
         .registration{
-
+            .register-form{
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                text-align: center;
+                align-items: center;
+                justify-items: center;
+                gap: 20px 0;
+                height: 100%;
+                font-size: 25px;
+                width: 100%;
+                .form-input {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    height: 100%;
+                    width: 80%;
+                    .radio-gender{
+                        display: flex;
+                        input{
+                            height: 20px;
+                            width: 20px;
+                        }
+                    }
+                    input{
+                        border-radius: 10px;
+                        text-align: center;
+                        border: 2px solid $море-3-hex;
+                        width: 100%;
+                        height: 40px;
+                    }
+                    &:first-of-type,
+                    &:last-of-type{
+                        width: 90%;
+                        grid-column: 1 / span 2;
+                    }
+                    &:last-of-type{
+                        margin-bottom: 0;
+                    }
+                }
+            }
         }
         .authorization {
            .login-form{
@@ -375,45 +430,36 @@ body{
                justify-content: center;
                height: 100%;
                width: 100%;
+               .form-input {
+                   display: flex;
+                   flex-direction: column;
+                   align-items: center;
+                   margin-bottom: 30px;
+                   width: 100%;
+                   padding: 0 60px;
+                   input{
+                       border-radius: 10px;
+                       text-align: center;
+                       border: 2px solid $море-3-hex;
+                       width: 100%;
+                       height: 60px;
+                       font-size: 45px;
+                   }
+                   label{
+                       font-size: 35px;
+                   }
+                   &:last-of-type{
+                       margin-bottom: 30px;
+                   }
+               }
            }
-            .login-btn{
-                font-size: 20px;
-                background-color: $море-2-hex;
-                width: 150px;
-                padding: 20px 0;
-                border-radius: 10px;
-                text-transform: uppercase;
-                color: white;
-            }
-        }
-        .form-input {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 30px;
-            width: 100%;
-            padding: 0 60px;
-            input{
-                border-radius: 10px;
-                text-align: center;
-                border: 2px solid $море-3-hex;
-                width: 100%;
-                height: 60px;
-                font-size: 45px;
-            }
-            label{
-                font-size: 45px;
-            }
-            &:last-of-type{
-                margin-bottom: 70px;
-            }
         }
     }
 }
 
 .footer {
     padding: 20px;
-    background: $сoral;
+    background: $море-4-hex;
     font-size: 25px;
     color: #fbfbfb;
     font-weight: bold;
@@ -517,8 +563,7 @@ body{
 
 .auth-enter-from{
     font-size: 0;
-    width: 0;
-    height: 0;
+    transform: scale(0);
 }
 
 .auth-leave-to{

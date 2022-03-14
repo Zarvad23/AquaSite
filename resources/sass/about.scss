@@ -1,0 +1,41 @@
+@import 'variables';
+
+.about{
+    h2{
+        font-size: 35px;
+    }
+    padding: 60px 0;
+}
+
+.about-site{
+    font-size: 25px;
+}
+
+.aboutHistory{
+    font-size: 23px;
+    .aboutHistory-images{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-bottom: 30px;
+        .aboutHistory-image{
+            img{
+                width: 350px;
+                height: auto;
+            }
+            figcaption{
+                font-size: 25px;
+                background-color: $море-2-hex;
+                color: white;
+                border-radius: 0 0 10px 10px;
+            }
+            text-align: center;
+            padding: 10px;
+            border: 1px solid $море-5-hex;
+            border-radius: 10px;
+        }
+    }
+    cite a{
+        color: $море-2-hex;
+    }
+}

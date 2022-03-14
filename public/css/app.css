@@ -1,6 +1,47 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
 /* Color Theme Swatches in Hex */
+/* Color Theme Swatches in Hex */
+.about {
+  padding: 60px 0;
+}
+.about h2 {
+  font-size: 35px;
+}
+
+.about-site {
+  font-size: 25px;
+}
+
+.aboutHistory {
+  font-size: 23px;
+}
+.aboutHistory .aboutHistory-images {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+.aboutHistory .aboutHistory-images .aboutHistory-image {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #0378A6;
+  border-radius: 10px;
+}
+.aboutHistory .aboutHistory-images .aboutHistory-image img {
+  width: 350px;
+  height: auto;
+}
+.aboutHistory .aboutHistory-images .aboutHistory-image figcaption {
+  font-size: 25px;
+  background-color: #0597F2;
+  color: white;
+  border-radius: 0 0 10px 10px;
+}
+.aboutHistory cite a {
+  color: #0597F2;
+}
+
 body {
   font-family: "Nunito", sans-serif;
   background: #f8fafc;
@@ -96,9 +137,13 @@ body {
 .promo .promo-btn {
   border: 2px solid #00FFFF;
   border-radius: 15px;
-  padding: 20px 15px;
   background: none;
   transition: all 0.4s ease-in;
+  display: inline-block;
+}
+.promo .promo-btn a {
+  display: inline-block;
+  padding: 20px 15px;
 }
 .promo .promo-btn:hover {
   background-color: #00FFFF;
@@ -288,9 +333,19 @@ body {
   background: #ffffff;
   color: black;
   width: 600px;
-  height: 600px;
+  height: auto;
   border-radius: 10px;
   position: relative;
+}
+.auth-container .auth-btn {
+  font-size: 20px;
+  background-color: #0597F2;
+  width: auto;
+  padding: 20px 20px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: white;
+  grid-column: 1/span 2;
 }
 .auth-container .auth-switchers {
   display: flex;
@@ -348,6 +403,46 @@ body {
 .auth-container .authorization {
   height: 100%;
   width: 100%;
+  padding: 30px 0;
+}
+.auth-container .registration .register-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+  gap: 20px 0;
+  height: 100%;
+  font-size: 25px;
+  width: 100%;
+}
+.auth-container .registration .register-form .form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+}
+.auth-container .registration .register-form .form-input .radio-gender {
+  display: flex;
+}
+.auth-container .registration .register-form .form-input .radio-gender input {
+  height: 20px;
+  width: 20px;
+}
+.auth-container .registration .register-form .form-input input {
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid #BBDDF2;
+  width: 100%;
+  height: 40px;
+}
+.auth-container .registration .register-form .form-input:first-of-type, .auth-container .registration .register-form .form-input:last-of-type {
+  width: 90%;
+  grid-column: 1/span 2;
+}
+.auth-container .registration .register-form .form-input:last-of-type {
+  margin-bottom: 0;
 }
 .auth-container .authorization .login-form {
   display: flex;
@@ -357,16 +452,7 @@ body {
   height: 100%;
   width: 100%;
 }
-.auth-container .authorization .login-btn {
-  font-size: 20px;
-  background-color: #0597F2;
-  width: 150px;
-  padding: 20px 0;
-  border-radius: 10px;
-  text-transform: uppercase;
-  color: white;
-}
-.auth-container .form-input {
+.auth-container .authorization .login-form .form-input {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -374,7 +460,7 @@ body {
   width: 100%;
   padding: 0 60px;
 }
-.auth-container .form-input input {
+.auth-container .authorization .login-form .form-input input {
   border-radius: 10px;
   text-align: center;
   border: 2px solid #BBDDF2;
@@ -382,16 +468,16 @@ body {
   height: 60px;
   font-size: 45px;
 }
-.auth-container .form-input label {
-  font-size: 45px;
+.auth-container .authorization .login-form .form-input label {
+  font-size: 35px;
 }
-.auth-container .form-input:last-of-type {
-  margin-bottom: 70px;
+.auth-container .authorization .login-form .form-input:last-of-type {
+  margin-bottom: 30px;
 }
 
 .footer {
   padding: 20px;
-  background: #F08080;
+  background: #05AFF2;
   font-size: 25px;
   color: #fbfbfb;
   font-weight: bold;
@@ -425,26 +511,26 @@ body {
   height: 40px;
 }
 .footer .footer-top .follow-us .follow-links ul .vk {
-  background-image: url(/images/vk.svg?f4a730ebabb63bdc58ade6a9d74e13dd);
+  background-image: url(/images/vk.svg?6ea9076e5d3402938e73d5278392c9c8);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   filter: grayscale(1);
 }
 .footer .footer-top .follow-us .follow-links ul .facebook {
-  background-image: url(/images/facebook.svg?13c398024f7e23d29307abc06933f5ba);
+  background-image: url(/images/facebook.svg?fc3c00b456a40750f70f8ffff6017f39);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 .footer .footer-top .follow-us .follow-links ul .twitter {
-  background-image: url(/images/twitter.svg?5569779635b6b1f3af2a7a58063481a2);
+  background-image: url(/images/twitter.svg?eb5a7441d22ea674e85d0b1041280f65);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 .footer .footer-top .follow-us .follow-links ul .youtube {
-  background-image: url(/images/youtube-play.svg?80b68ecbe2c2f55491fb218c586686ac);
+  background-image: url(/images/youtube-play.svg?0b55ece76aace217f81f9a6a3fa57fbb);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -485,8 +571,7 @@ body {
 
 .auth-enter-from {
   font-size: 0;
-  width: 0;
-  height: 0;
+  transform: scale(0);
 }
 
 .auth-leave-to {

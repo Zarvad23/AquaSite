@@ -19650,9 +19650,7 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Страница с описанием сайта", -1
-/* HOISTED */
-);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"about\"><h2>О сайте</h2><div class=\"about-site\"><p>Сайт AquaBook - создан как сайт справочной информации из мира аквариумистики.</p><p> Данный сайт посвящен, предеоставлению самой актуальной информации из мира аквариумного хобби. Мы собрали на сайте наиболее обширную энциклопедию содержащую информацию обо всех известных видах аквариумных рыб, растений а также других видов живых существ, которых содержат в аквариумах или террариумах. На нашем сайте также публикуются новости о последних исследованиях в данной области, как из зарубежных источников, так и личные исследования пользователей этого рессурса. </p></div><h2>Немного истории:</h2><div class=\"aboutHistory\"><blockquote><p><b>Аквариумистика</b> — весьма древнее, распространённое и разностороннее хобби. В ряде стран это хобби называют «фишкипинг» (англ. <i>fishkeeping</i>) и это весьма обширное поле деятельности.</p><p>Аквариумистика имеет множество направлений: одни аквариумисты больше увлечены рыбами, другие оказываются поклонниками разведения рептилий или беспозвоночных, в том числе кораллов, третьи аквариумным садоводством, в таком аквариуме находятся одни растения или кораллы и нет рыб. Иногда, одновременно с аквариумом, аквариумисты заводят террариум, в котором содержатся, например, земноводные. Одним из важных компонентов в аквариуме с растениями являются аквариумный грунт, а также добавки для рыб, растений и грунта. Необходимо отметить и пресноводных улиток, пользующихся большой популярностью среди аквариумистов, улитки не только способны очищать стенки аквариума от разросшихся водорослей, но и являются его украшением.</p><p>Аквариумисты пытаются создать особый мир в своем аквариуме, используя свои знания и возможности. Наиболее ответственным моментом для начинающего акариумиста-любителя является «запуск» аквариума. Все в аквариумистике настолько тесно взаимосвязано, что, продвигаясь в каком-либо одном направлении, изучая какую-то одну проблему, всегда приходится учитывать множество разнообразной и усваивать множество сопутствующей информации. Помимо основных правил: регулярной подмены воды при сохранении её параметров, использованию аквариумных фильтров, поддержания чистоты в аквариуме и кормления его обитателей, аквариумисты сталкиваются с разными проблемами: болезнями рыб и растений, адаптацией организмов к аквариумным условиям и многим другим. Это и подталкивает любителей аквариумистов к глубокому изучению проблем и к переходу от простого любительского рыбоводства и аквариумного растениеводства, к профессиональному научному подходу, подкрепленному научными знаниями. Таким образом, через несколько лет занятий аквариумистикой человек приобретает навыки и знания, казалось бы, далекие от тех целей, которые он перед собой ставил изначально. Но сохраняется главное — увлеченность аквариумом.</p><div class=\"aboutHistory-images\"><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/20000_squid_Nautilus_viewbay.jpg/220px-20000_squid_Nautilus_viewbay.jpg\" alt=\"20 тысяч лье под водой\"><figcaption> «20 тысяч лье под водой» </figcaption></figure><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Giant_squid_melb_aquarium03.jpg/220px-Giant_squid_melb_aquarium03.jpg\" alt=\"20 тысяч лье под водой\"><figcaption> Кальмар в формалине </figcaption></figure><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Frai_de_poissons_rouges_anim.gif/220px-Frai_de_poissons_rouges_anim.gif\" alt=\"20 тысяч лье под водой\"><figcaption> Золотые рыбки </figcaption></figure></div><cite>© Аквариумистика - материал из <a href=\"https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%B2%D0%B0%D1%80%D0%B8%D1%83%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0\" target=\"_blank\">Википедии</a>, свободной энциклопедии</cite></blockquote></div></div>", 1);
 
 var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19754,11 +19752,79 @@ var _hoisted_7 = [_hoisted_6];
 var _hoisted_8 = {
   "class": "registration"
 };
-var _hoisted_9 = {
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+  action: "",
+  "class": "register-form"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-input"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-login"
+}, "Логин:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "register-login",
+  id: "register-login"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-input"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-name"
+}, "Имя:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "register-name",
+  id: "register-name"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-input"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-surname"
+}, "Фамилия:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "register-surname",
+  id: "register-surname"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-input"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-BirthDate"
+}, "Дата рождения:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "date",
+  name: "register-BirthDate",
+  id: "register-BirthDate"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-input"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Пол:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "radio-gender"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-gender-male"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Муж. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "radio",
+  name: "register-gender",
+  id: "register-gender-male",
+  checked: ""
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-gender-male"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Жен. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "radio",
+  name: "register-gender",
+  id: "register-gender-female"
+})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "form-input"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-password"
+}, "Пароль"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "password",
+  name: "register-password",
+  id: "register-password"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "auth-btn"
+}, "Зарегистрироваться")], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = [_hoisted_9];
+var _hoisted_11 = {
   "class": "authorization"
 };
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
   action: "",
   "class": "login-form"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -19778,21 +19844,21 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   name: "password",
   id: "password"
 })]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "login-btn"
+  "class": "auth-btn"
 }, "Войти")], -1
 /* HOISTED */
 );
 
-var _hoisted_11 = [_hoisted_10];
+var _hoisted_13 = [_hoisted_12];
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "closeAuthBtn"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_13 = [_hoisted_12];
-var _hoisted_14 = {
+var _hoisted_15 = [_hoisted_14];
+var _hoisted_16 = {
   "class": "auth-wrapper"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19818,16 +19884,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, _hoisted_7, 2
       /* CLASS */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, null, 512
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, _hoisted_10, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.authBlock == 'registration']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, _hoisted_11, 512
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.authBlock == 'registration']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, _hoisted_13, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.authBlock == 'authorization']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": "closeAuth",
         onClick: _cache[2] || (_cache[2] = function ($event) {
           return $options.closeAuth();
         })
-      }, _hoisted_13)], 512
+      }, _hoisted_15)], 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.getIsAuth]])];
     }),
@@ -19840,7 +19906,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "fade"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, null, 512
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.getIsAuth]])];
     }),
@@ -37615,13 +37681,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _About_vue_vue_type_template_id_fb05e49c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./About.vue?vue&type=template&id=fb05e49c */ "./resources/js/components/About.vue?vue&type=template&id=fb05e49c");
 /* harmony import */ var _About_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./About.vue?vue&type=script&lang=js */ "./resources/js/components/About.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_About_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_About_vue_vue_type_template_id_fb05e49c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/About.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_About_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_About_vue_vue_type_template_id_fb05e49c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/About.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37643,13 +37709,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Another_vue_vue_type_template_id_74901230__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Another.vue?vue&type=template&id=74901230 */ "./resources/js/components/Another.vue?vue&type=template&id=74901230");
 /* harmony import */ var _Another_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Another.vue?vue&type=script&lang=js */ "./resources/js/components/Another.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Another_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Another_vue_vue_type_template_id_74901230__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Another.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Another_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Another_vue_vue_type_template_id_74901230__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Another.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37671,13 +37737,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Aquariums_vue_vue_type_template_id_1eae642d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Aquariums.vue?vue&type=template&id=1eae642d */ "./resources/js/components/Aquariums.vue?vue&type=template&id=1eae642d");
 /* harmony import */ var _Aquariums_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Aquariums.vue?vue&type=script&lang=js */ "./resources/js/components/Aquariums.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Aquariums_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Aquariums_vue_vue_type_template_id_1eae642d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Aquariums.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Aquariums_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Aquariums_vue_vue_type_template_id_1eae642d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Aquariums.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37699,13 +37765,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Auth_vue_vue_type_template_id_0e037eda__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Auth.vue?vue&type=template&id=0e037eda */ "./resources/js/components/Auth.vue?vue&type=template&id=0e037eda");
 /* harmony import */ var _Auth_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Auth.vue?vue&type=script&lang=js */ "./resources/js/components/Auth.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Auth_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Auth_vue_vue_type_template_id_0e037eda__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Auth.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Auth_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Auth_vue_vue_type_template_id_0e037eda__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Auth.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37727,13 +37793,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Fish_vue_vue_type_template_id_f836fd7a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fish.vue?vue&type=template&id=f836fd7a */ "./resources/js/components/Fish.vue?vue&type=template&id=f836fd7a");
 /* harmony import */ var _Fish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fish.vue?vue&type=script&lang=js */ "./resources/js/components/Fish.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Fish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Fish_vue_vue_type_template_id_f836fd7a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Fish.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Fish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Fish_vue_vue_type_template_id_f836fd7a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Fish.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37755,13 +37821,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Helpful_vue_vue_type_template_id_d38333fe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Helpful.vue?vue&type=template&id=d38333fe */ "./resources/js/components/Helpful.vue?vue&type=template&id=d38333fe");
 /* harmony import */ var _Helpful_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Helpful.vue?vue&type=script&lang=js */ "./resources/js/components/Helpful.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Helpful_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Helpful_vue_vue_type_template_id_d38333fe__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Helpful.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Helpful_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Helpful_vue_vue_type_template_id_d38333fe__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Helpful.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37783,13 +37849,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Home_vue_vue_type_template_id_f2b6376c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Home.vue?vue&type=template&id=f2b6376c */ "./resources/js/components/Home.vue?vue&type=template&id=f2b6376c");
 /* harmony import */ var _Home_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Home.vue?vue&type=script&lang=js */ "./resources/js/components/Home.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Home_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Home_vue_vue_type_template_id_f2b6376c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Home.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Home_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Home_vue_vue_type_template_id_f2b6376c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Home.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37811,13 +37877,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _News_vue_vue_type_template_id_12793f84__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./News.vue?vue&type=template&id=12793f84 */ "./resources/js/components/News.vue?vue&type=template&id=12793f84");
 /* harmony import */ var _News_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./News.vue?vue&type=script&lang=js */ "./resources/js/components/News.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_News_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_News_vue_vue_type_template_id_12793f84__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/News.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_News_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_News_vue_vue_type_template_id_12793f84__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/News.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37839,13 +37905,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Plants_vue_vue_type_template_id_69a3a4da__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Plants.vue?vue&type=template&id=69a3a4da */ "./resources/js/components/Plants.vue?vue&type=template&id=69a3a4da");
 /* harmony import */ var _Plants_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Plants.vue?vue&type=script&lang=js */ "./resources/js/components/Plants.vue?vue&type=script&lang=js");
-/* harmony import */ var C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_Users_Student_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Plants_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Plants_vue_vue_type_template_id_69a3a4da__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Plants.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Plants_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Plants_vue_vue_type_template_id_69a3a4da__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Plants.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -43356,7 +43422,7 @@ var index = {
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"C:\\\\Users\\\\Student\\\\Documents\\\\GitHub\\\\AquaSite","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
+module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBundle":false,"_integrity":"sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==","_location":"/axios","_phantomChildren":{},"_requested":{"type":"range","registry":true,"raw":"axios@^0.21","name":"axios","escapedName":"axios","rawSpec":"^0.21","saveSpec":null,"fetchSpec":"^0.21"},"_requiredBy":["#DEV:/"],"_resolved":"https://registry.npmjs.org/axios/-/axios-0.21.4.tgz","_shasum":"c67b90dc0568e5c1cf2b0b858c43ba28e2eda575","_spec":"axios@^0.21","_where":"D:\\\\Documents\\\\GitHub\\\\AquaSite","author":{"name":"Matt Zabriskie"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"bugs":{"url":"https://github.com/axios/axios/issues"},"bundleDependencies":false,"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}],"dependencies":{"follow-redirects":"^1.14.0"},"deprecated":false,"description":"Promise based HTTP client for the browser and node.js","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"homepage":"https://axios-http.com","jsdelivr":"dist/axios.min.js","keywords":["xhr","http","ajax","promise","node"],"license":"MIT","main":"index.js","name":"axios","repository":{"type":"git","url":"git+https://github.com/axios/axios.git"},"scripts":{"build":"NODE_ENV=production grunt build","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","examples":"node ./examples/server.js","fix":"eslint --fix lib/**/*.js","postversion":"git push && git push --tags","preversion":"npm test","start":"node ./sandbox/server.js","test":"grunt test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json"},"typings":"./index.d.ts","unpkg":"dist/axios.min.js","version":"0.21.4"}');
 
 /***/ })
 
