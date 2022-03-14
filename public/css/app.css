@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@charset "UTF-8";
 /* Color Theme Swatches in Hex */
 body {
   font-family: "Nunito", sans-serif;
@@ -14,6 +15,11 @@ body {
 .title-2 {
   margin: 0;
   padding: 0;
+}
+
+.auth-active {
+  background-color: #0597F2;
+  color: white;
 }
 
 .menu {
@@ -257,6 +263,17 @@ body {
   border-radius: 20px;
 }
 
+.auth {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9002;
+}
 .auth-wrapper {
   background: rgba(0, 0, 0, 0.7);
   width: 100%;
@@ -265,28 +282,53 @@ body {
   top: 0;
   left: 0;
 }
-
 .auth-container {
   display: flex;
+  flex-direction: column;
   background: #ffffff;
   color: black;
   width: 600px;
   height: 600px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 9001;
+  border-radius: 10px;
+  position: relative;
 }
-
-.closeAuth {
+.auth-container .auth-switchers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: auto;
+  text-align: center;
+  border-bottom: 2px solid #0597F2;
+}
+.auth-container .auth-switchers div {
   cursor: pointer;
+  flex-grow: 1;
+}
+.auth-container .auth-switchers div span {
+  display: block;
+  padding: 10px;
+}
+.auth-container .auth-switchers__register {
+  border-radius: 10px 0 0 0;
+}
+.auth-container .auth-switchers__login {
+  border-radius: 0 10px 0 0;
+}
+.auth-container .closeAuth {
+  position: absolute;
+  top: -35px;
+  right: -35px;
   width: 30px;
   height: 30px;
+  cursor: pointer;
+}
+.auth-container .closeAuth .closeAuthBtn {
+  width: 100%;
+  height: 100%;
   margin-left: auto;
   position: relative;
 }
-.closeAuth::before, .closeAuth::after {
+.auth-container .closeAuth .closeAuthBtn::before, .auth-container .closeAuth .closeAuthBtn::after {
   position: absolute;
   content: "";
   width: 3px;
@@ -294,13 +336,57 @@ body {
   top: 50%;
   left: 50%;
   transform-origin: center;
-  background-color: black;
+  background-color: white;
 }
-.closeAuth::before {
+.auth-container .closeAuth .closeAuthBtn::before {
   transform: translate(-50%, -50%) rotate(45deg);
 }
-.closeAuth::after {
+.auth-container .closeAuth .closeAuthBtn::after {
   transform: translate(-50%, -50%) rotate(-45deg);
+}
+.auth-container .registration,
+.auth-container .authorization {
+  height: 100%;
+  width: 100%;
+}
+.auth-container .authorization .login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.auth-container .authorization .login-btn {
+  font-size: 20px;
+  background-color: #0597F2;
+  width: 150px;
+  padding: 20px 0;
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: white;
+}
+.auth-container .form-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  width: 100%;
+  padding: 0 60px;
+}
+.auth-container .form-input input {
+  border-radius: 10px;
+  text-align: center;
+  border: 2px solid #BBDDF2;
+  width: 100%;
+  height: 60px;
+  font-size: 45px;
+}
+.auth-container .form-input label {
+  font-size: 45px;
+}
+.auth-container .form-input:last-of-type {
+  margin-bottom: 70px;
 }
 
 .footer {
@@ -339,26 +425,26 @@ body {
   height: 40px;
 }
 .footer .footer-top .follow-us .follow-links ul .vk {
-  background-image: url(/images/vk.svg?6ea9076e5d3402938e73d5278392c9c8);
+  background-image: url(/images/vk.svg?f4a730ebabb63bdc58ade6a9d74e13dd);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   filter: grayscale(1);
 }
 .footer .footer-top .follow-us .follow-links ul .facebook {
-  background-image: url(/images/facebook.svg?fc3c00b456a40750f70f8ffff6017f39);
+  background-image: url(/images/facebook.svg?13c398024f7e23d29307abc06933f5ba);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 .footer .footer-top .follow-us .follow-links ul .twitter {
-  background-image: url(/images/twitter.svg?eb5a7441d22ea674e85d0b1041280f65);
+  background-image: url(/images/twitter.svg?5569779635b6b1f3af2a7a58063481a2);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 }
 .footer .footer-top .follow-us .follow-links ul .youtube {
-  background-image: url(/images/youtube-play.svg?0b55ece76aace217f81f9a6a3fa57fbb);
+  background-image: url(/images/youtube-play.svg?80b68ecbe2c2f55491fb218c586686ac);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -381,9 +467,10 @@ body {
   font-size: 20px;
 }
 
+/*Ниже разные анимации*/
 .fade-leave-active,
 .fade-enter-active {
-  transition: all 1s ease-out;
+  transition: all 0.5s ease;
 }
 
 .fade-enter-from,
@@ -393,7 +480,7 @@ body {
 
 .auth-leave-active,
 .auth-enter-active {
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease;
 }
 
 .auth-enter-from {
