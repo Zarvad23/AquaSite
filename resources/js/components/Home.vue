@@ -7,13 +7,11 @@
                     <hr>
                     <div class="main-left-content__inner">
                         <div class="news-card">
-                            <h3 class="news-card-title">Пример новости</h3>
                             <div class="news-card-center">
                                 <div class="news-card-bg">
-                                    <img
-                                        src="https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg"
-                                        alt="Фон">
+                                    <span style="background-image:url('https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg')" />
                                 </div>
+                                <h3 class="news-card-title">Пример новости</h3>
                                 <div class="news-card-desc">
                                     <p>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -33,13 +31,11 @@
                             </div>
                         </div>
                         <div class="news-card">
-                            <h3 class="news-card-title">Пример новости</h3>
                             <div class="news-card-center">
                                 <div class="news-card-bg">
-                                    <img
-                                        src="https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg"
-                                        alt="Фон">
+                                    <span style="background-image:url('https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg')" />
                                 </div>
+                                <h3 class="news-card-title">Пример новости</h3>
                                 <div class="news-card-desc">
                                     <p>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -59,13 +55,11 @@
                             </div>
                         </div>
                         <div class="news-card">
-                            <h3 class="news-card-title">Пример новости</h3>
                             <div class="news-card-center">
                                 <div class="news-card-bg">
-                                    <img
-                                        src="https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg"
-                                        alt="Фон">
+                                    <span style="background-image:url('https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg')" />
                                 </div>
+                                <h3 class="news-card-title">Пример новости</h3>
                                 <div class="news-card-desc">
                                     <p>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -85,13 +79,11 @@
                             </div>
                         </div>
                         <div class="news-card">
-                            <h3 class="news-card-title">Пример новости</h3>
                             <div class="news-card-center">
                                 <div class="news-card-bg">
-                                    <img
-                                        src="https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg"
-                                        alt="Фон">
+                                    <span style="background-image:url('https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg')" />
                                 </div>
+                                <h3 class="news-card-title">Пример новости</h3>
                                 <div class="news-card-desc">
                                     <p>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
@@ -111,13 +103,11 @@
                             </div>
                         </div>
                         <div class="news-card">
-                            <h3 class="news-card-title">Пример новости</h3>
                             <div class="news-card-center">
                                 <div class="news-card-bg">
-                                    <img
-                                        src="https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg"
-                                        alt="Фон">
+                                    <span style="background-image:url('https://hvost.news/upload/resize_cache/iblock/f11/750_400_1/f114ff09d1b3e96e9a2e5ccd224757e4.jpg')" />
                                 </div>
+                                <h3 class="news-card-title">Пример новости</h3>
                                 <div class="news-card-desc">
                                     <p>
                                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem

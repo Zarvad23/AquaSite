@@ -1,5 +1,5 @@
 <template>
-    <h1>Страница с носоятми</h1>
+    <div class="container"></div>
 </template>
 
 <script>

@@ -83,13 +83,13 @@
                             </ul>
                         </nav>
                     </div>
-                    <Auth  />
                     <div class="footer-bottom">
                         <div class="copy">
                             <span>© AquaBook 2022</span>
                         </div>
                     </div>
                 </div>
+                <Auth  />
          </div>
          <script src="{{ mix('js/app.js') }}"></script>
     </body>
