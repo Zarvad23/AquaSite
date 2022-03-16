@@ -9,13 +9,12 @@
 
 .about-site{
     font-size: 25px;
+    text-align: justify;
 }
 
 .aboutHistory{
     font-size: 23px;
-    b{
-        color: $море-1-hex;
-    }
+    text-align: justify;
     .aboutHistory-images{
         display: flex;
         align-items: center;

@@ -5,11 +5,16 @@
 @import 'variables';
 @import 'about';
 @import 'fish';
+@import 'another';
+@import 'plants';
 
 body{
     font-family: $font-family-sans-serif;
     background: $body-bg;
     font-size: $font-size-base;
+}
+b{
+    color: $море-1-hex;
 }
 
 .container {
