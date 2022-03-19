@@ -2,7 +2,7 @@
     <div class="container">
         <h2>Аквариумная флора</h2>
         <div class="table-of-contents">
-            <ul>
+            <ol>
                 <li><a href="#plants-type-1">Почвопокровные растения переднего плана</a></li>
                 <li><a href="#plants-type-2">Розеточные и короткокорневищные растения среднего плана</a></li>
                 <li><a href="#plants-type-3">Длиннолистные розеточные растения заднего плана</a></li>
@@ -11,7 +11,7 @@
                 <li><a href="#plants-type-6">Растения, плавающие в толще воды</a></li>
                 <li><a href="#plants-type-7">Полуводные прибрежные растения</a></li>
                 <li><a href="#plants-type-8">Аквариумные мхи и печеночники</a></li>
-            </ul>
+            </ol>
         </div>
         <div class="plants">
             <div class="introduction">
@@ -32,59 +32,8 @@
                                 <span style="background-image: url('https://co2-aqua.ru/image/cache/78bb87b9d52829943537081a9af588cb.jpg')"></span>
                             </div>
                         </div>
-                        <div class="plants-type-slider">
-                            <form>
-                                <input type="radio" name="slider" id="slide-1" checked>
-                                <input type="radio" name="slider" id="slide-2">
-                                <input type="radio" name="slider" id="slide-3">
-                                <input type="radio" name="slider" id="slide-4">
-                                <input type="radio" name="slider" id="slide-5">
-                                <div class="slider-overflow">
-                                    <div class="slider-slides">
-                                        <div class="slide">
-                                            <div class="slide-item slide-item-1">
-                                                <span></span>
-                                            </div>
-                                            <div class="slide-item slide-item-2"></div>
-                                            <div class="slide-item slide-item-3"></div>
-                                        </div>
-                                        <div class="slide">
-                                            <div class="slide-item slide-item-1"></div>
-                                            <div class="slide-item slide-item-2"></div>
-                                            <div class="slide-item slide-item-3"></div>
-                                        </div>
-                                        <div class="slide">
-                                            <div class="slide-item slide-item-1"></div>
-                                            <div class="slide-item slide-item-2"></div>
-                                            <div class="slide-item slide-item-3"></div>
-                                        </div>
-                                        <div class="slide">
-                                            <div class="slide-item slide-item-1"></div>
-                                            <div class="slide-item slide-item-2"></div>
-                                            <div class="slide-item slide-item-3"></div>
-                                        </div>
-                                        <div class="slide">
-                                            <div class="slide-item slide-item-1"></div>
-                                            <div class="slide-item slide-item-2"></div>
-                                            <div class="slide-item slide-item-3"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="slider-btns-right">
-                                    <label for="slide-1" />
-                                    <label for="slide-2" />
-                                    <label for="slide-3" />
-                                    <label for="slide-4" />
-                                    <label for="slide-5" />
-                                </div>
-                                <div class="slider-btns-left">
-                                    <label for="slide-1" />
-                                    <label for="slide-2" />
-                                    <label for="slide-3" />
-                                    <label for="slide-4" />
-                                    <label for="slide-5" />
-                                </div>
-                            </form>
+                        <div class="plants-type-btn">
+                            <a href="">Все представители</a>
                         </div>
                     </li>
                     <li class="plants-type" id="plants-type-2">
@@ -99,7 +48,9 @@
                                 <span style="background-image: url('https://akvariumnyerybki.ru/wp-content/uploads/2016/01/anubias-vidy_1-650x385.jpg')"></span>
                             </div>
                         </div>
-                        <div class="plants-type-slider"></div>
+                        <div class="plants-type-btn">
+                            <a href="">Все представители</a>
+                        </div>
                     </li>
                     <li class="plants-type" id="plants-type-3">
                         <h4>Длиннолистные розеточные растения заднего плана</h4>
@@ -111,7 +62,9 @@
                                 <span style="background-image: url('https://www.aqualogo.ru/img/images/infoportal_images/dlinnostebelnye_1.jpg')"></span>
                             </div>
                         </div>
-                        <div class="plants-type-slider"></div>
+                        <div class="plants-type-btn">
+                            <a href="">Все представители</a>
+                        </div>
                     </li>
                     <li class="plants-type" id="plants-type-4">
                         <h4>Длинностебельные растения заднего плана</h4>
@@ -123,7 +76,9 @@
                                 <span style="background-image: url('https://akvariumnyerybki.ru/wp-content/uploads/2016/05/rasteniya-dlya-nachinayushhih_1-650x385.jpg')"></span>
                             </div>
                         </div>
-                        <div class="plants-type-slider"></div>
+                        <div class="plants-type-btn">
+                            <a href="">Все представители</a>
+                        </div>
                     </li>
                     <li class="plants-type" id="plants-type-5">
                         <h4>Прикрепляющиеся или ландшафтно-декорные растения</h4>
@@ -135,7 +90,9 @@
                                 <span style="background-image: url('https://sc04.alicdn.com/kf/Hf1c6d665a01c4f93985653d7e718686eb/251083068/Hf1c6d665a01c4f93985653d7e718686eb.jpg')"></span>
                             </div>
                         </div>
-                        <div class="plants-type-slider"></div>
+                        <div class="plants-type-btn">
+                            <a href="">Все представители</a>
+                        </div>
                     </li>
                     <li class="plants-type" id="plants-type-6">
                         <h4>Растения, плавающие в толще воды</h4>
@@ -147,7 +104,9 @@
                                 <span style="background-image: url('https://kapelka.com/upload/iblock/b8e/5b08477dd22d5252d88ca95368ad8fb1.jpg')"></span>
                             </div>
                         </div>
-                        <div class="plants-type-slider"></div>
+                        <div class="plants-type-btn">
+                            <a href="">Все представители</a>
+                        </div>
                     </li>
                     <li class="plants-type" id="plants-type-7">
                         <h4>Полуводные прибрежные растения</h4>
@@ -159,7 +118,9 @@
                                 <span style="background-image: url('https://houseaqua.ru/uploads/posts/2015-08/1439408319_lilaeopsis-novae-zelandiae.jpg')"></span>
                             </div>
                         </div>
-                        <div class="plants-type-slider"></div>
+                        <div class="plants-type-btn">
+                            <a href="">Все представители</a>
+                        </div>
                     </li>
                     <li class="plants-type" id="plants-type-8">
                         <h4>Аквариумные мхи и печеночники</h4>
@@ -171,9 +132,77 @@
                                 <span style="background-image: url('https://kwitri.ru/wp-content/uploads/2017/06/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B9.png')"></span>
                             </div>
                         </div>
-                        <div class="plants-type-slider"></div>
+                        <div class="plants-type-btn">
+                            <a href="">Все представители</a>
+                        </div>
                     </li>
                 </ul>
+                <div class="plants-type-slider">
+                    <form>
+                        <input type="radio" name="slider" id="slide-1" checked>
+                        <input type="radio" name="slider" id="slide-2">
+                        <input type="radio" name="slider" id="slide-3">
+                        <input type="radio" name="slider" id="slide-4">
+                        <input type="radio" name="slider" id="slide-5">
+                        <input type="radio" name="slider" id="slide-6">
+                        <input type="radio" name="slider" id="slide-7">
+                        <div class="slider-overflow">
+                            <div class="slider-slides">
+                                <div class="slide">
+                                    <div class="slide-item slide-item-1">
+                                        <span style="background-image: url('https://co2-aqua.ru/image/cache/5f75536b765f927ce591fb008c87802d.jpg')"></span>
+                                    </div>
+                                    <div class="slide-item slide-item-2">
+                                        <span style="background-image: url('https://aquass.ru/wp-content/uploads/Akvariumnye-rasteniya/Anubiasy/Anubias-Gabon/Anubias-sp-Gabon-1.jpg')"></span>
+                                    </div>
+                                    <div class="slide-item slide-item-3">
+                                        <span style="background-image: url('https://toplost.ru/images/images/goods/D2u05.jpg')"></span>
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-item slide-item-1">
+                                        <span style="background-image: url('https://www.aqualogo.ru/img/images/info_catalog/Hygrophila_corymbosa.jpg')"></span>
+                                    </div>
+                                    <div class="slide-item slide-item-2">
+                                        <span style="background-image: url('https://www.aqualogo.ru/img/images/infoportal_images/dlinnostebelnye_6.jpg')"></span>
+                                    </div>
+                                    <div class="slide-item slide-item-3">
+                                        <span style="background-image: url('https://www.aqualogo.ru/img/images/infoportal_fresh_aqua_articles/microsorum.jpg')"></span>
+                                    </div>
+                                </div>
+                                <div class="slide">
+                                    <div class="slide-item slide-item-1">
+                                        <span style="background-image: url('https://innvrn.ru/images/akva/rastenia/3/%D0%AF%D0%B2%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%BE%D1%85_Taxiphyllum_barbieri.jpg')"></span>
+                                    </div>
+                                    <div class="slide-item slide-item-2">
+                                        <span style="background-image: url('https://www.akvabluz.ru/media/catalog/2018/06/19/20061028214502.jpg')"></span>
+                                    </div>
+                                    <div class="slide-item slide-item-3">
+                                        <span style="background-image: url('https://ribnydom.ru/wp-content/uploads/2018/11/0c4c725bd005dd33d782f21abd8abcdb.jpg')"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slider-btns-right">
+                            <label for="slide-1" />
+                            <label for="slide-2" />
+                            <label for="slide-3" />
+                            <label for="slide-4" />
+                            <label for="slide-5" />
+                            <label for="slide-6" />
+                            <label for="slide-7" />
+                        </div>
+                        <div class="slider-btns-left">
+                            <label for="slide-1" />
+                            <label for="slide-2" />
+                            <label for="slide-3" />
+                            <label for="slide-4" />
+                            <label for="slide-5" />
+                            <label for="slide-6" />
+                            <label for="slide-7" />
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
