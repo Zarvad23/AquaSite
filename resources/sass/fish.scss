@@ -13,7 +13,7 @@
         height: 100%;
         flex-direction: column;
         text-align: center;
-        box-shadow: 0 3px 5px 5px #eeeeee;
+        box-shadow: $shadow;
         cursor: pointer;
         overflow: hidden;
         position: relative;
@@ -40,7 +40,13 @@
             justify-content: center;
             align-items: center;
             font-size: 30px;
-
+            a{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
         }
         &-desc{
             position: absolute;

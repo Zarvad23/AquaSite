@@ -21,7 +21,7 @@
         width: 100%;
         height: 100%;
         position: relative;
-        box-shadow: 0 3px 5px 5px #eeeeee;
+        box-shadow: $shadow;
         &::before{
             content: '';
             width: 100%;

@@ -1,0 +1,176 @@
+@import "variables";
+
+.plantMembers{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 800px;
+    margin-bottom: 60px;
+    .plantMembers-arrow{
+        display: flex;
+        width: 5%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        span{
+            display: flex;
+            width: 100%;
+            height: 5%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+    .plantMembers-left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 47.5%;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 20px;
+        &-content{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 30px;
+            .plantMember{
+                display: flex;
+                margin-bottom: 15px;
+                height: 100px;
+                width: 100%;
+                padding: 10px;
+                box-shadow: $shadow;
+                &-image{
+                    height: 100%;
+                    width: 20%;
+                    margin: 0 10px;
+                    text-align: center;
+                    span{
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        background-size: cover;
+                        background-repeat: no-repeat;
+                        background-position: center;
+                    }
+                }
+                &-title{
+                    width: 80%;
+                    text-align: center;
+                }
+            }
+        }
+        &::-webkit-scrollbar{
+            width: 8px;
+            box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: $море-2-hex;
+        }
+    }
+    .plantMembers-right{
+        width: 47.5%;
+        height: 100%;
+        overflow-y: scroll;
+        padding: 20px;
+        box-shadow: 0 0 5px 2px rgba(34, 60, 80, 0.2);
+        .plant-full{
+            padding: 20px;
+            &-title{
+                text-align: center;
+                margin-bottom: 40px;
+                h2,p{
+                    margin: 0;
+                    padding: 0;
+                };
+                h2{
+                    line-height: 30px;
+                }
+                p{
+                    text-align: center;
+                    font-style: italic;
+                }
+            }
+            &-main{
+                display: flex;
+                align-items: center;
+                height: inherit;
+            }
+            &-characteristics{
+                width: 50%;
+                text-align: center;
+                margin-right: 20px;
+                background-color: $море-2-hex;
+                p{
+                    margin: 0;
+                    color: white;
+                    text-align: center;
+                }
+                & > p {
+                    background-color: $море-5-hex;
+                    padding: 10px;
+                }
+                &-content{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+            &-characteristic{
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid $море-3-hex;
+                &:last-child{
+                    border-bottom: none;
+                }
+                &-content{
+                    margin: 0;
+                    padding: 10px;
+                    text-align: center;
+                }
+            }
+            &-banner{
+                display: flex;
+                width: 50%;
+                height: 300px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+        &::-webkit-scrollbar{
+            width: 8px;
+            box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: $море-2-hex;
+        }
+        .plantMembers-full{
+            display: flex;
+            min-height: 100%;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+}
+
+
+.plantMembers-items-load{
+    text-align: center;
+    span{
+        display: flex;
+        padding: 15px;
+        margin: 0;
+        color: white;
+        background-color: $море-2-hex;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+}

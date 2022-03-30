@@ -64,12 +64,12 @@
             height: 50px;
             margin-bottom: 20px;
             font-size: 20px;
-            box-shadow: 0 5px 5px 3px #eaeaea;
+            box-shadow: $shadow;
         }
         textarea{
             padding: 10px 15px;
             font-size: 20px;
-            box-shadow: 0 5px 5px 3px #eaeaea;
+            box-shadow: $shadow;
             margin-bottom: 35px;
             resize: none;
         }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateHelpfulCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('helpful_comments', function (Blueprint $table) {
             $table->id('id')->autoIncrement();
-            $table->string('login');
-            $table->string('name');
-            $table->string('surname');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('helpful_id')->constrained();
             $table->string('date');
-            $table->string('gender');
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('helpful_comments');
     }
 }

@@ -12,7 +12,7 @@
                 <h3>Хищники</h3>
                 <span class="fish-type-desc">
                     <p>Представители разных групп и семейств, которых объединяет хищнический образ жизни. Однако, не смотря на свою плотоядность, многих из них вполне возможно содержать вместе с другими относительно крупными рыбами.</p>
-                    <a class="fish-type-btn">Представители</a>
+                    <a class="fish-type-btn"><router-link to="/petMembers">Представители</router-link></a>
                 </span>
             </div>
             <div class="fish-type">
@@ -133,7 +133,7 @@
 
 <script>
 export default {
-    name: "Fish"
+    name: "FishSpecies"
 }
 </script>
 

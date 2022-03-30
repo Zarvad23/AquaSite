@@ -1,0 +1,136 @@
+@import 'variables';
+
+.aquarium-type-groups{
+    padding: 30px 0;
+    font-size: 25px;
+    ul{
+        list-style: none;
+        li{
+            position: relative;
+            margin-bottom: 20px;
+        }
+        li:before{
+            content: '';
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid black;
+            border-right: 2px solid black;
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
+        }
+    }
+}
+
+.typesOfAquariums{
+    padding:20px  40px;
+    background-color: $море-3-hex;
+    list-style: decimal;
+    ol{
+        font-size: 25px;
+        color: $море-5-hex;
+        line-height: 50px;
+    }
+}
+
+
+.aquariums{
+    div{
+        margin-bottom: 60px;
+    }
+}
+
+.aquarium-type-images__title{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0,0,0, 0.4);
+    font-size: 20px;
+    padding: 10px 20px;
+    color: white;
+}
+
+.aquarium-type-images{
+    & > span{
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+#aquarium-type-group-1{
+    .aquarium-type-images{
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas: 'aquarium fish_1'
+                         'aquarium fish_2'
+                         'aquarium fish_3';
+        grid-template-rows: 200px 200px 200px;
+        gap: 20px;
+        padding: 20px;
+
+        & > span:nth-child(1){
+            grid-area: aquarium;
+        }
+        & > span:nth-child(2){
+            grid-area: fish_1;
+        }
+        & > span:nth-child(3){
+            grid-area: fish_2;
+        }
+        & > span:nth-child(4){
+            grid-area: fish_3;
+        }
+    }
+}
+#aquarium-type-group-2{
+    .aquarium-type-images{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 500px 500px;
+        gap: 20px;
+        padding: 20px;
+    }
+}
+#aquarium-type-group-3{
+    .aquarium-type-images{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 500px;
+        gap: 20px;
+        padding: 20px;
+    }
+}
+#aquarium-type-group-4{
+    .aquarium-type-images{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: repeat(4, 400px);
+        padding: 20px;
+        gap: 20px;
+    }
+    & > div:last-child {
+        .aquarium-type-images{
+            grid-template-rows: repeat(2, 400px);
+        }
+    }
+}
+#aquarium-type-group-5{
+    .aquarium-type-images{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 500px;
+        padding: 20px;
+        gap: 20px;
+    }
+}
+
+
+

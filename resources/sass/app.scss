@@ -1,13 +1,16 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
 @import 'variables';
 @import 'about';
 @import 'fish';
 @import 'another';
 @import 'plants';
-
+@import 'aquariums';
+@import 'news';
+@import 'helpful';
+@import 'fishMembers';
+@import "PlantsMembers";
+@import 'forms';
 body{
     font-family: $font-family-sans-serif;
     background: $body-bg;
@@ -17,9 +20,21 @@ b{
     color: $море-1-hex;
 }
 
+p{
+    text-align: justify;
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+    box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $море-2-hex;
 }
 
 .title-2{
@@ -188,7 +203,7 @@ b{
                         margin-bottom: 40px;
                         padding-bottom: 20px;
                         background-color: #f5f5f5;
-                        box-shadow: 0 3px 5px 5px #eeeeee;
+                        box-shadow: $shadow;
                         &-banner{
                             padding: 0 25px;
                             img{
@@ -211,7 +226,7 @@ b{
                     flex-direction: column;
                     align-items: center;
                     background-color: #f5f5f5;
-                    box-shadow: 0 3px 5px 5px #eeeeee;
+                    box-shadow: $shadow;
                     img{
                         width: 100%;
                         height: auto;
@@ -257,7 +272,7 @@ b{
     flex-direction: column;
     margin-bottom: 60px;
     background-color: #f5f5f5;
-    box-shadow: 0 3px 5px 5px #eeeeee;
+    box-shadow: $shadow;
     &:last-child{
         margin-bottom: 0;
     }

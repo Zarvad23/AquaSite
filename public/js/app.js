@@ -1,6 +1,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./node_modules/@babel/runtime/regenerator/index.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+  \**********************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+/***/ }),
+
 /***/ "./node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/@vue/compiler-core/dist/compiler-core.esm-bundler.js ***!
@@ -19484,10 +19495,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Another.vue?vue&type=script&lang=js":
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Another.vue?vue&type=script&lang=js ***!
-  \*************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AnotherSpecies.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AnotherSpecies.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19496,7 +19507,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Another"
+  name: "AnotherSpecies"
 });
 
 /***/ }),
@@ -19533,7 +19544,19 @@ __webpack_require__.r(__webpack_exports__);
   name: "auth",
   data: function data() {
     return {
-      authBlock: 'registration'
+      authBlock: 'registration',
+      registerForm: {
+        login: 'test',
+        name: 'test',
+        surname: 'test',
+        date: 'test',
+        gender: 'male',
+        password: 'test'
+      },
+      loginForm: {
+        login: '',
+        password: ''
+      }
     };
   },
   computed: {
@@ -19543,17 +19566,39 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     closeAuth: function closeAuth() {
-      this.$store.dispatch('CHANGE_AUTH', false);
+      this.$store.dispatch('CHANGE_VISIBLE', [false, 'Auth']);
+    },
+    sendRegister: function sendRegister() {
+      fetch('http://127.0.0.1:8000/api/registration', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(this.registerForm)
+      });
+    },
+    auth: function auth() {
+      fetch('http://127.0.0.1:8000/api/authent', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(this.registerForm)
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        localStorage.setItem('token', data.token);
+      });
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Fish.vue?vue&type=script&lang=js":
-/*!**********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Fish.vue?vue&type=script&lang=js ***!
-  \**********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/FishSpecies.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/FishSpecies.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19562,7 +19607,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Fish"
+  name: "FishSpecies"
 });
 
 /***/ }),
@@ -19578,8 +19623,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _UserArticle_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserArticle.vue */ "./resources/js/components/UserArticle.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Helpful"
+  name: "Helpful",
+  components: {
+    UserArticle: _UserArticle_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    toogleVisible: function toogleVisible() {
+      this.$store.dispatch('CHANGE_VISIBLE', [true, 'Helpful']);
+    }
+  }
 });
 
 /***/ }),
@@ -19610,16 +19665,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _NewsItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewsItem */ "./resources/js/components/NewsItem.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "News"
+  name: "News",
+  components: {
+    NewsItem: _NewsItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  mounted: function mounted() {
+    return this.$store.dispatch('GET_NEWS', [true, 'Auth']);
+  },
+  methods: {
+    toogleVisible: function toogleVisible() {
+      this.$store.dispatch('CHANGE_VISIBLE', [true, 'News']);
+    }
+  }
 });
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plants.vue?vue&type=script&lang=js":
-/*!************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plants.vue?vue&type=script&lang=js ***!
-  \************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsForm.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsForm.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19628,7 +19696,240 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Plants"
+  name: "NewsForm",
+  computed: {
+    getIsNews: function getIsNews() {
+      return this.$store.getters.getIsNews;
+    }
+  },
+  methods: {
+    closeNewsAdd: function closeNewsAdd() {
+      this.$store.dispatch('CHANGE_VISIBLE', [false, 'News']);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsItem.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsItem.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "NewsItem"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Pet.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Pet.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "Pet"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PetMembers.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PetMembers.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Pet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pet */ "./resources/js/components/Pet.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "PetMember",
+  components: {
+    Pet: _Pet__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    toogleVisible: function toogleVisible() {
+      this.$store.dispatch('CHANGE_VISIBLE', [true, 'Pets']);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plant.vue?vue&type=script&lang=js":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plant.vue?vue&type=script&lang=js ***!
+  \***********************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "plant"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsMembers.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsMembers.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Plant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Plant */ "./resources/js/components/Plant.vue");
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "PlantsMembers",
+  components: {
+    plant: _Plant__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    toogleVisible: function toogleVisible() {
+      this.$store.dispatch('CHANGE_VISIBLE', [true, 'Plants']);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsSpecies.vue?vue&type=script&lang=js":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsSpecies.vue?vue&type=script&lang=js ***!
+  \*******************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "PlantsSpecies"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/UserArticle.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/UserArticle.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "UserArticle"
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/helpfulForm.vue?vue&type=script&lang=js":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/helpfulForm.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "helpfulForm",
+  computed: {
+    getIsHelpful: function getIsHelpful() {
+      return this.$store.getters.getIsHelpful;
+    }
+  },
+  methods: {
+    closeHelpfulAdd: function closeHelpfulAdd() {
+      this.$store.dispatch('CHANGE_VISIBLE', [false, 'Helpful']);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/petsForm.vue?vue&type=script&lang=js":
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/petsForm.vue?vue&type=script&lang=js ***!
+  \**************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "petsForm",
+  computed: {
+    getIsPets: function getIsPets() {
+      return this.$store.getters.getIsPets;
+    },
+    getPetSpecie: function getPetSpecie() {
+      return this.$store.getters.getPetSpecie;
+    }
+  },
+  methods: {
+    closePetsAdd: function closePetsAdd() {
+      this.$store.dispatch('CHANGE_VISIBLE', [false, 'Pets']);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/plantsForm.vue?vue&type=script&lang=js":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/plantsForm.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "plantsForm",
+  computed: {
+    getIsPlants: function getIsPlants() {
+      return this.$store.getters.getIsPlants;
+    }
+  },
+  methods: {
+    closePlantsAdd: function closePlantsAdd() {
+      this.$store.dispatch('CHANGE_VISIBLE', [false, 'Plants']);
+    }
+  }
 });
 
 /***/ }),
@@ -19650,7 +19951,7 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"about\"><h2>О сайте</h2><div class=\"about-site\"><p>Сайт AquaBook - создан как сайт справочной информации из мира аквариумистики.</p><p> Данный сайт посвящен, предеоставлению самой актуальной информации из мира аквариумного хобби. Мы собрали на сайте наиболее обширную энциклопедию содержащую информацию обо всех известных видах аквариумных рыб, растений а также других видов живых существ, которых содержат в аквариумах или террариумах. На нашем сайте также публикуются новости о последних исследованиях в данной области, как из зарубежных источников, так и личные исследования пользователей этого рессурса. </p></div><h2>Немного истории:</h2><div class=\"aboutHistory\"><blockquote><p><b>Аквариумистика</b> — весьма древнее, распространённое и разностороннее хобби. В ряде стран это хобби называют «фишкипинг» (англ. <i>fishkeeping</i>) и это весьма обширное поле деятельности.</p><p>Аквариумистика имеет множество направлений: одни аквариумисты больше увлечены рыбами, другие оказываются поклонниками разведения <b>рептилий</b> или <b>беспозвоночных</b>, в том числе кораллов, третьи аквариумным садоводством, в таком аквариуме находятся одни растения или кораллы и нет рыб. Иногда, одновременно с аквариумом, аквариумисты заводят <b>террариум</b>, в котором содержатся, например, <b>земноводные</b>. Одним из важных компонентов в аквариуме с растениями являются <b>аквариумный грунт</b>, а также добавки для рыб, растений и грунта. Необходимо отметить и пресноводных улиток, пользующихся большой популярностью среди аквариумистов, <b>улитки</b> не только способны очищать стенки аквариума от разросшихся <b>водорослей</b>, но и являются его украшением.</p><p>Аквариумисты пытаются создать особый мир в своем аквариуме, используя свои знания и возможности. Наиболее ответственным моментом для начинающего акариумиста-любителя является «запуск» аквариума. Все в аквариумистике настолько тесно взаимосвязано, что, продвигаясь в каком-либо одном направлении, изучая какую-то одну проблему, всегда приходится учитывать множество разнообразной и усваивать множество сопутствующей информации. Помимо основных правил: регулярной подмены воды при сохранении её параметров, использованию <b>аквариумных фильтров</b>, поддержания чистоты в аквариуме и <b>кормления</b> его обитателей, аквариумисты сталкиваются с разными проблемами: болезнями рыб и растений, адаптацией организмов к аквариумным условиям и многим другим. Это и подталкивает любителей аквариумистов к глубокому изучению проблем и к переходу от простого любительского рыбоводства и аквариумного растениеводства, к профессиональному научному подходу, подкрепленному научными знаниями. Таким образом, через несколько лет занятий аквариумистикой человек приобретает навыки и знания, казалось бы, далекие от тех целей, которые он перед собой ставил изначально. Но сохраняется главное — увлеченность аквариумом.</p><div class=\"aboutHistory-images\"><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/20000_squid_Nautilus_viewbay.jpg/220px-20000_squid_Nautilus_viewbay.jpg\" alt=\"20 тысяч лье под водой\"><figcaption> «20 тысяч лье под водой» </figcaption></figure><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Giant_squid_melb_aquarium03.jpg/220px-Giant_squid_melb_aquarium03.jpg\" alt=\"20 тысяч лье под водой\"><figcaption> Кальмар в формалине </figcaption></figure><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Frai_de_poissons_rouges_anim.gif/220px-Frai_de_poissons_rouges_anim.gif\" alt=\"20 тысяч лье под водой\"><figcaption> Золотые рыбки </figcaption></figure></div><cite>© Аквариумистика - материал из <a href=\"https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%B2%D0%B0%D1%80%D0%B8%D1%83%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0\" target=\"_blank\">Википедии</a>, свободной энциклопедии</cite></blockquote></div><h2>Обратная связь</h2><div class=\"contact-form\"><h3>Для связи с тех. поддержкой сайта вы можете воспользоваться сылками или электроннлй почтой указанной в подвале сайта, либо написать сообщение при помощи формы обратной связи</h3><form action=\"\"><input type=\"text\" name=\"contact-name\" id=\"contact-name\" placeholder=\"Ваше имя\"><input type=\"text\" name=\"contact-email\" id=\"contact-email\" placeholder=\"Ваш e-mail\"><input type=\"text\" name=\"contact-theme\" id=\"contact-theme\" placeholder=\"Тема\"><textarea name=\"\" id=\"contact-message\" rows=\"10\" placeholder=\"Сообщение\"></textarea><button class=\"contact-form-input\">Отправить</button></form></div></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"about\"><h2>О сайте</h2><div class=\"about-site\"><p>Сайт AquaBook - создан как сайт справочной информации из мира аквариумистики.</p><p> Данный сайт посвящен, предоставлению самой актуальной информации из мира аквариумного хобби. Мы собрали на сайте наиболее обширную энциклопедию содержащую информацию обо всех известных видах аквариумных рыб, растений а также других видов живых существ, которых содержат в аквариумах или террариумах. На нашем сайте также публикуются новости о последних исследованиях в данной области, как из зарубежных источников, так и личные исследования пользователей этого рессурса. </p></div><h2>Немного истории:</h2><div class=\"aboutHistory\"><blockquote><p><b>Аквариумистика</b> — весьма древнее, распространённое и разностороннее хобби. В ряде стран это хобби называют «фишкипинг» (англ. <i>fishkeeping</i>) и это весьма обширное поле деятельности.</p><p>Аквариумистика имеет множество направлений: одни аквариумисты больше увлечены рыбами, другие оказываются поклонниками разведения <b>рептилий</b> или <b>беспозвоночных</b>, в том числе кораллов, третьи аквариумным садоводством, в таком аквариуме находятся одни растения или кораллы и нет рыб. Иногда, одновременно с аквариумом, аквариумисты заводят <b>террариум</b>, в котором содержатся, например, <b>земноводные</b>. Одним из важных компонентов в аквариуме с растениями являются <b>аквариумный грунт</b>, а также добавки для рыб, растений и грунта. Необходимо отметить и пресноводных улиток, пользующихся большой популярностью среди аквариумистов, <b>улитки</b> не только способны очищать стенки аквариума от разросшихся <b>водорослей</b>, но и являются его украшением.</p><p>Аквариумисты пытаются создать особый мир в своем аквариуме, используя свои знания и возможности. Наиболее ответственным моментом для начинающего акариумиста-любителя является «запуск» аквариума. Все в аквариумистике настолько тесно взаимосвязано, что, продвигаясь в каком-либо одном направлении, изучая какую-то одну проблему, всегда приходится учитывать множество разнообразной и усваивать множество сопутствующей информации. Помимо основных правил: регулярной подмены воды при сохранении её параметров, использованию <b>аквариумных фильтров</b>, поддержания чистоты в аквариуме и <b>кормления</b> его обитателей, аквариумисты сталкиваются с разными проблемами: болезнями рыб и растений, адаптацией организмов к аквариумным условиям и многим другим. Это и подталкивает любителей аквариумистов к глубокому изучению проблем и к переходу от простого любительского рыбоводства и аквариумного растениеводства, к профессиональному научному подходу, подкрепленному научными знаниями. Таким образом, через несколько лет занятий аквариумистикой человек приобретает навыки и знания, казалось бы, далекие от тех целей, которые он перед собой ставил изначально. Но сохраняется главное — увлеченность аквариумом.</p><div class=\"aboutHistory-images\"><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/20000_squid_Nautilus_viewbay.jpg/220px-20000_squid_Nautilus_viewbay.jpg\" alt=\"20 тысяч лье под водой\"><figcaption> «20 тысяч лье под водой» </figcaption></figure><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Giant_squid_melb_aquarium03.jpg/220px-Giant_squid_melb_aquarium03.jpg\" alt=\"20 тысяч лье под водой\"><figcaption> Кальмар в формалине </figcaption></figure><figure class=\"aboutHistory-image\"><img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Frai_de_poissons_rouges_anim.gif/220px-Frai_de_poissons_rouges_anim.gif\" alt=\"20 тысяч лье под водой\"><figcaption> Золотые рыбки </figcaption></figure></div><cite>© Аквариумистика - материал из <a href=\"https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D0%B2%D0%B0%D1%80%D0%B8%D1%83%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D0%BA%D0%B0\" target=\"_blank\">Википедии</a>, свободной энциклопедии</cite></blockquote></div><h2>Обратная связь</h2><div class=\"contact-form\"><h3>Для связи с тех. поддержкой сайта вы можете воспользоваться сылками или электроннлй почтой указанной в подвале сайта, либо написать сообщение при помощи формы обратной связи</h3><form action=\"\"><input type=\"text\" name=\"contact-name\" id=\"contact-name\" placeholder=\"Ваше имя\"><input type=\"text\" name=\"contact-email\" id=\"contact-email\" placeholder=\"Ваш e-mail\"><input type=\"text\" name=\"contact-theme\" id=\"contact-theme\" placeholder=\"Тема\"><textarea name=\"\" id=\"contact-message\" rows=\"10\" placeholder=\"Сообщение\"></textarea><button class=\"contact-form-input\">Отправить</button></form></div></div>", 1);
 
 var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19659,10 +19960,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Another.vue?vue&type=template&id=74901230":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Another.vue?vue&type=template&id=74901230 ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AnotherSpecies.vue?vue&type=template&id=5016df64":
+/*!************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AnotherSpecies.vue?vue&type=template&id=5016df64 ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19702,13 +20003,11 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Страница с видами аквариумов", -1
-/* HOISTED */
-);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h1>Разнообразие подводных миров (аквариумы и террариумы)</h1><div class=\"aquarium-type-groups\"><div class=\"typesOfAquariums\"><ol><li><a href=\"#aquarium-type-group-1\">По составу воды</a></li><li><a href=\"#aquarium-type-group-2\">По типу конструкции</a></li><li><a href=\"#aquarium-type-group-3\">По месторасположению</a></li><li><a href=\"#aquarium-type-group-4\">По области применения</a></li><li><a href=\"#aquarium-type-group-5\">По форме</a></li></ol></div><p class=\"Foreword\"> Аквариумный мир восхищает своим видовым многообразием. Можно сказать, что каждый индивидуальный аквариум – это произведение искусства. Уникальность каждого водоема обусловлена многообразием аквариумных рыб, моллюсков, ракообразных, а также большим выбором аквариумных растений. Однако, важную роль в дизайне аквариумов играют не только вышеперечисленные гидробионты, но и творческая мысль аквариумиста. Ведь недаром существую различные стили и направления в оформлении аквариумов. При создании своего аквариумного царства важно четко понимать, какое настроение он будет нести, как будут расставлены все декоративные элементы, важно знать основы позиционирования и уметь создавать объем в аквариуме. </p><div class=\"aquariums\"><div id=\"aquarium-type-group-1\"><h2>По составу воды</h2><p> По характеристике воды и среде обитания аквариумы бывают морскими, пресноводными, псевдо-морскими или солоноватоводными. В набор необходимых инструментов таких аквариумов входят различные приспособления, обеспечивающие поддержание нужных параметров воды и правильного микроклимата. </p><div class=\"aquarium-types\"><div class=\"aquarium-type\"><h3>Пресноводный аквариум</h3><p class=\"aquarium-type-desc\"> Пресноводные — широко распространенные аквариумы, содержат пресноводные типы рыб и растений. Техническое обслуживание этих аквариумов гораздо легче обеспечения морских. Могут быть различных форм и размеров, прекрасно вписываются в интерьер. </p><p>Пример аквариума и рыбок которых можно в нем содержать</p><div class=\"aquarium-type-images\"><span style=\"background-image:url(&#39;https://i0.wp.com/worldaquarium.ru/wp-content/uploads/2016/06/freshwater-aquarium.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Пресноводный аквариум</span></span><span style=\"background-image:url(&#39;https://st44.stblizko.ru/images/product/330/652/300_big.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Меланотения Паркинсона</span></span><span style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2018/11/danio-rerio-1.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Данио рерио</span></span><span style=\"background-image:url(&#39;https://dreamaqua.ru/wp-content/uploads/2020/02/akantoftalmus-kyuli-3jpg.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Акантофтальмус</span></span></div></div><div class=\"aquarium-type\"><h3>Морской аквариум</h3><p class=\"aquarium-type-desc\"> Морские — предназначаются для обитания растений и рыбок, привыкших к условиям соленой воды. Аквариумы больших объемов, так как морские рыбы имеют крупные размеры. Довольно сложны в уходе и требуют наличия необходимых навыков создания правильного химического состава воды. </p><p>Пример аквариума и рыбок которых можно в нем содержать</p><div class=\"aquarium-type-images\"><span style=\"background-image:url(&#39;https://upload.wikimedia.org/wikipedia/commons/c/c2/2ftaquarium.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Морской аквариум</span></span><span style=\"background-image:url(&#39;https://akvaok.ru/wp-content/uploads/2018/04/1cd8576c0651ea291bcdc3695875ea00-e1522869528824.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Клоун оцеллярис</span></span><span style=\"background-image:url(&#39;https://www.aqua-shop.ru/images/goods/H8b50_3.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Хирург синий белогрудый</span></span><span style=\"background-image:url(&#39;https://www.akwarium.su/akwamagazin/3357/babochka-molochnaya.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Бабочка молочная (линейная)</span></span></div></div><div class=\"aquarium-type\"><h3>Солоноватоводный аквариум</h3><p class=\"aquarium-type-desc\"> Солоноватоводные — промежуточный тип аквариумов, служит обиталищем для рыб и растений опресненных зон лиманов и заливов, способных жить в солоноватых водах. Эти субтропические обитатели сумели хорошо приспособиться к изменениям температуры, и могут жить как в холодной, так и в теплой воде. </p><p>Пример аквариума и рыбок которых можно в нем содержать</p><div class=\"aquarium-type-images\"><span style=\"background-image:url(&#39;https://аквариумпермь.рф/wp-content/uploads/2017/05/%D1%81%D0%BE%D0%BB%D1%8C-1.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Солоноватоводный аквариум</span></span><span style=\"background-image:url(&#39;https://zoomix-opt.ru/images/detailed/31/Scatophagus-argus-rubrifrons_02.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Аргус красный</span></span><span style=\"background-image:url(&#39;https://fanfishka.ru/uploads/posts/2017-08/1503157284_4.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Этроплюс пятнистый</span></span><span style=\"background-image:url(&#39;https://aquahome.info/wp-content/uploads/2011/10/jordanella_floridae4.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Флоридская джорданелла</span></span></div></div></div></div><div id=\"aquarium-type-group-2\"><h2>По типу конструкции</h2><p> Если рассматривать классификацию аквариумов по конструкции и технологии изготовления, то существуют бескаркасные, каркасные и бесшовные виды. </p><div class=\"aquarium-types\"><ul><li>Бескаркасные — ограничены в размерах, изготавливаются из органического стекла. Обладают высокой надежностью, максимально прозрачны. Имеют более легкий вес и не требуют массивной подставки. Исключают воздействие вредных примесей и металла.</li><li>Каркасные — конструкция выполнена из специального металлического каркаса, могут быть любой величины. Условием подобных аквариумов является постоянное наличие в них воды, иначе могут стать непригодными.</li><li>Бесшовные – чаще всего эти аквариумы округлой формы из стекла, акрила, оргстекла и плексигласа. Могут иметь выгнутую форму. Применяются для содержания золотых рыб. К положительным качествам таких аквариумов относится непротекание, высокая прозрачность и тепловая изоляция воды.</li><li>Асбестоцементные — в своем составе имеют асбестовое волокно, цемент и воду. Могут быть встроены в шкафы, оштукатурены или выложены плиткой.</li></ul><div class=\"aquarium-type-images\"><span style=\"background-image:url(&#39;https://akvarium-moskva.ru/images/29a42e782f9abf1aaeb4ec050ee62724.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Бескаркасный аквариум</span></span><span style=\"background-image:url(&#39;https://zooshara.com.ua/files/text%20decoration/aquariums/vidi-akvarumv-za-tipom-vigotovlennya-karkasn-bezkarkasn_842.jpeg&#39;);\"><span class=\"aquarium-type-images__title\">Каркасный аквариум</span></span><span style=\"background-image:url(&#39;https://moj-akvarium.ru/wp-content/uploads/2019/02/akvarium-jebo-harakteristiki.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Бесшовный аквариум</span></span><span style=\"background-image:url(&#39;https://decorwind.ru/wp-content/uploads/2014/04/aqua03.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Асбестоцементный аквариум</span></span></div></div></div><div id=\"aquarium-type-group-3\"><h2>По месторасположению</h2><p> По месторасположению аквариумы также делятся на напольные, настенные, ширмы, диарамы. Конструкция таких аквариумов рассчитана на размеры и формы определенных помещений или дома. Такие виды служат для оформления интерьера. </p><div class=\"aquarium-types\"><ul><li>Аквариум-картина — тип настенного аквариума, обрамленный в рамку, что создает эффект картинности. Требует правильного размещения и продумывания ухода за ним.</li><li>Встроенные — планируются на этапе постройки помещения и применяются как в частных, так и общественных заведениях. Могут быть встроены в стену, арку, мебель и служить специфической перегородкой-ширмой для зонирования помещения.</li></ul><div class=\"aquarium-type-images\"><span style=\"background-image:url(&#39;https://aquarium-msk.ru/upload/medialibrary/fe4/fe40fb3c5f0915f8e884f7e9b41a0e91.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Аквариум-картина</span></span><span style=\"background-image:url(&#39;https://aqhome.ru/sites/default/files/kak-sdelat-vstroennyj-akvarium_2.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Встроенный аквариум</span></span></div></div></div><div id=\"aquarium-type-group-4\"><h2>По области применения</h2><p> По применению аквариумы разделяют на декоративные и специальные виды. </p><div><h3>Декоративные виды</h3><p>Декоративные аквариумы выполняют роль дизайнерского решения в интерьере дома, где тщательно продумывается оформление и население аквариума, рассчитывается обеспечение хорошего газообмена. Эти виды подходят для содержания взрослых рыб. К ним относятся:</p><div class=\"aquarium-types\"><ul><li>общий или стандартный — подходит начинающим любителям своей универсальностью. В нем могут соседствовать различные виды рыб и растений из разных географических зон;</li><li>коллекционный — состоит из представителей рыб одного семейства. Рассчитан на специалистов аквариумистики, наблюдающими за развитием и ростом популяции определенного вида рыб;</li><li>географический — тип таких аквариумов воссоздает географию водного мира, поддерживая этнический стиль оформления интерьера дома в общей концепции. Для максимальной реалистичности используются обои на заднюю стенку аквариума и украшение различного рода декорациями;</li><li>открытый декорированный — специализированный дизайн аквариума без крышки и покровного стекла, составленный из своеобразного коллажа из растений, фонтана и самого аквариума. Растения могут вырастать и цвести над водой;</li><li>видовой — содержит один или несколько родственных видов рыбок, подходит для наблюдения за поведением и взаимоотношениями рыб;</li><li>биотоп — отличие таких аквариумов достигается тем, что они воспроизводят копию определенного участка природной среды в мельчайших деталях. Это пресноводный аквариум обычно заселяется тропическими породами рыб;</li><li>голландский — подразумевает главенство растительности в аквариуме, где наличие рыб необязательно. Такой аквариум имеет вытянутую форму и имитирует подводный ландшафтный дизайн;</li><li>палюдариум — является своеобразной водной оранжереей, комбинирует подводные и надводные растения. Отличается высокой влажностью;</li><li>акватеррариум — служит для содержания как аквариумных, так и террариумных животных, ведущих полуводную жизнь;</li><li>нано-аквариум — современный миниатюрный резервуар преимущественно с декоративными растениями и рыбками;</li><li>японский «Амано» — аквариум в минималистическом стиле, передающий элементы декора дикой Амазонки и точно воспроизводящий экосистему этого ареала;</li><li>смешанный — подвид любительского аквариума, содержащий несколько видов растений, рыб и предметов декора, сочетающихся по условиям содержания.</li></ul><div class=\"aquarium-type-images\"><span style=\"background-image:url(&#39;https://magizoo.ru/upload/medialibrary/369/content_img.png&#39;);\"><span class=\"aquarium-type-images__title\">Стандартный аквариум</span></span><span style=\"background-image:url(&#39;https://vodyanoy86.ru/thumb/2/ScxMfqVW7YXx50_KJPn_wA/r/d/54345008_3.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Коллекционный аквариум</span></span><span style=\"background-image:url(&#39;https://i.ytimg.com/vi/RWT0oLhtsEw/maxresdefault.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Географический аквариум</span></span><span style=\"background-image:url(&#39;https://oformi-akvarium.ru/wp-content/uploads/2022/03/dekor-otkrytogo-akvariuma-na-120-litrov-800x400.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Открытый декорированный аквариум</span></span><span style=\"background-image:url(&#39;https://web-zoopark.ru/wp-content/uploads/2018/09/1-30.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Видовой аквариум</span></span><span style=\"background-image:url(&#39;https://kwitri.ru/wp-content/uploads/2017/06/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82-06-06-2017-150217.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Аквариум биотоп</span></span><span style=\"background-image:url(&#39;https://www.akvabluz.ru/media/uploads/12345.jpeg&#39;);\"><span class=\"aquarium-type-images__title\">Голландский аквариум</span></span><span style=\"background-image:url(&#39;https://vikings-warofclans.ru/wp-content/uploads/palyudarium7.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Палюдариум</span></span><span style=\"background-image:url(&#39;https://www.belanta.vet/vet-blog/wp-content/uploads/2020/02/3-3.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Акватеррариум </span></span><span style=\"background-image:url(&#39;https://akvaok.ru/wp-content/uploads/2019/01/MicrovueGeneric_RGB_800x-e1547468118734.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Нано-аквариум</span></span><span style=\"background-image:url(&#39;https://aquarium.at.ua/nowosti/185.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Японский «Амано» </span></span><span style=\"background-image:url(&#39;https://akvarium-moskva.ru/intdesign/bigfoto/common3.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Смешанный аквариум</span></span></div></div></div><div><h3>Специальные виды</h3><p>Специальные аквариумы предназначаются для особых задач жизнеобеспечения икры и подрастающей молоди. Обычно небольшой прямоугольной формы, где уровень воды составляет до 35 см. В свою очередь подразделяются на:</p><div class=\"aquarium-types\"><ul><li>нерестовые — служат для разведения рыб. Размеры нерестовика и все необходимые условия содержания подбираются индивидуально в зависимости от видов рыб. В таком аквариуме важна стерильность. Величина нерестовых аквариумов должна быть меньше основного для легкости вылавливания икринок или удаления погибших яиц;</li><li>инкубаторы — необходимы для поддержки и развития икры, личинок рыб. Основным условием этих аквариумов является оптимальный температурный и кислородный режимы, правильный гидрохимический состав и чистота воды;</li><li>карантинно-лечебные изоляторы или отсадочные — предназначаются для лечения или адаптации новых обитателей. Параметры и оформление зависят от размеров рыбок. К условиям относятся гигиеничность, простор и контроль качества воды;</li><li>выростные — такие емкости выглядят в форме корыта и служат для выращивания мальков, переведенных из нерестовика, в больших количествах. Оптимальный размер такого аквариума составляет 150/45/60см. Для равномерного и здорового роста малькам потребуется регулярная подмена и правильные параметры воды, разнообразная пища;</li><li>культиваторы или кормовые — предназначены для производства живого корма для рыб в виде рачков, коловраток, инфузорий, водорослей и других. Важен верный подбор питания и условий их выращивания;</li><li>селекционные — по назначению напоминают карантинно-лечебные аквариумы. В них проводят селекционные работы по выведению новых пород, где можно одновременно разводить и лечить рыб.</li></ul><div class=\"aquarium-type-images\"><span style=\"background-image:url(&#39;https://aqhome.ru/sites/default/files/13444584381.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Нерестовый аквариум</span></span><span style=\"background-image:url(&#39;https://ae01.alicdn.com/kf/H810e7c97b8ae4aa0a18e5c96f3cb5a4bw.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Аквариум инкубатор</span></span><span style=\"background-image:url(&#39;https://akvarium-moskva.ru/images/02d90f030f45e3bf9a2f7f057488ce88.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Карантинно-лечебный изолятор</span></span><span style=\"background-image:url(&#39;https://i.ytimg.com/vi/PryrWLTGU1s/maxresdefault.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Выростной аквариум</span></span><span style=\"background-image:url(&#39;https://korm-dlya-ryb-akvariumnyh.ru/wp-content/uploads/2021/01/kormushka-dlya-akvariumnyx-ryb3.jpeg&#39;);\"><span class=\"aquarium-type-images__title\">Аквариум культиватор</span></span><span style=\"background-image:url(&#39;https://img.joomcdn.net/720d8c0ae86897853fd3aeae53f1a76b441eda0b_original.jpeg&#39;);\"><span class=\"aquarium-type-images__title\">Селекционный аквариум</span></span></div></div></div></div><div id=\"aquarium-type-group-5\"><h2>По форме</h2><p> Виды аквариумов бывают разнообразных форм: панорамные, прямоугольные, квадратные, угловые, в виде башни или стола, многогранные, треугольные, шестиугольные, сферические и полусферические, в виде цилиндров. К ним предлагаются подходящие тумбы-подставки, рассчитанные на их нагрузку и размещающие предметы ухода и аквариумное оборудование. </p><div class=\"aquarium-types\"><ul><li>Панорамные — современные и стильные, позволяют использовать их в декоративных целях. Панорамное стекло увеличивает угол обзора, открывая возможности для наслаждения любоваться картиной подводного мира из всех точек помещения.</li><li>Угловые — подходят для маленьких помещений, одновременно становясь модным элементом декора дома. Бывают полусферической и трапециевидной формы.</li><li>Цилиндрические — привлекательны и декоративны, требуют грамотного размещения во избежание визуального искажения изображения.</li></ul><div class=\"aquarium-type-images\"><span style=\"background-image:url(&#39;https://upload.wikimedia.org/wikipedia/commons/3/3b/African_Cichlid_Fish_Tank.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Панорамный аквариум</span></span><span style=\"background-image:url(&#39;https://aqhome.ru/sites/default/files/styles/large/public/uglovoj_akvarium_5.jpg?itok=8PdrVLUD&#39;);\"><span class=\"aquarium-type-images__title\">Угловой аквариум</span></span><span style=\"background-image:url(&#39;https://omsk.doski.ru/i/40/34/14403435.jpg&#39;);\"><span class=\"aquarium-type-images__title\">Цилиндрический аквариум</span></span></div></div></div></div><p>При выборе типа аквариума для дома не стоит торопиться с его выбором, лучше заранее изучить информацию и проконсультироваться с опытными аквариумистами. Определившись со всеми преимуществами и личными потребностями, можно сделать удивительный акцент в интерьере присутствием аквариума с его прекрасными обитателями.</p></div>", 2);
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_4 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_4);
 }
 
 /***/ }),
@@ -19750,113 +20049,122 @@ var _hoisted_7 = [_hoisted_6];
 var _hoisted_8 = {
   "class": "registration"
 };
-
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-  action: "",
-  "class": "register-form"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_9 = {
   "class": "form-input"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "register-login"
-}, "Логин:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  name: "register-login",
-  id: "register-login"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "form-input"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "register-name"
-}, "Имя:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  name: "register-name",
-  id: "register-name"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "form-input"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "register-surname"
-}, "Фамилия:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  name: "register-surname",
-  id: "register-surname"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "form-input"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "register-BirthDate"
-}, "Дата рождения:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "date",
-  name: "register-BirthDate",
-  id: "register-BirthDate"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "form-input"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Пол:"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "radio-gender"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "register-gender-male"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Муж. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "radio",
-  name: "register-gender",
-  id: "register-gender-male",
-  checked: ""
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "register-gender-male"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Жен. "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "radio",
-  name: "register-gender",
-  id: "register-gender-female"
-})])])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "form-input"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "register-password"
-}, "Пароль"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "password",
-  name: "register-password",
-  id: "register-password"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "auth-btn"
-}, "Зарегистрироваться")], -1
-/* HOISTED */
-);
-
-var _hoisted_10 = [_hoisted_9];
-var _hoisted_11 = {
-  "class": "authorization"
 };
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-  action: "",
-  "class": "login-form"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "form-input"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "login"
-}, "Ваш логин"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "text",
-  name: "login",
-  id: "login"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "form-input"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "for": "password"
-}, "Ваш пароль"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-  type: "password",
-  name: "password",
-  id: "password"
-})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-  "class": "auth-btn"
-}, "Войти")], -1
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-login"
+}, "Логин:", -1
 /* HOISTED */
 );
 
-var _hoisted_13 = [_hoisted_12];
+var _hoisted_11 = {
+  "class": "form-input"
+};
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-name"
+}, "Имя:", -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "form-input"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-surname"
+}, "Фамилия:", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "form-input"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-BirthDate"
+}, "Дата рождения:", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
+  "class": "form-input"
+};
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", null, "Пол:", -1
+/* HOISTED */
+);
+
+var _hoisted_19 = {
+  "class": "radio-gender"
+};
+var _hoisted_20 = {
+  "for": "register-gender-male"
+};
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Муж. ");
+
+var _hoisted_22 = {
+  "for": "register-gender-male"
+};
+
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Жен. ");
+
+var _hoisted_24 = {
+  "class": "form-input"
+};
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "register-password"
+}, "Пароль", -1
+/* HOISTED */
+);
+
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "auth-btn"
+}, "Зарегистрироваться", -1
+/* HOISTED */
+);
+
+var _hoisted_27 = {
+  "class": "authorization"
+};
+var _hoisted_28 = {
+  "class": "form-input"
+};
+
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "login"
+}, "Ваш логин", -1
+/* HOISTED */
+);
+
+var _hoisted_30 = {
+  "class": "form-input"
+};
+
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "password"
+}, "Ваш пароль", -1
+/* HOISTED */
+);
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "auth-btn"
+}, "Войти", -1
+/* HOISTED */
+);
+
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "closeAuthBtn"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_15 = [_hoisted_14];
-var _hoisted_16 = {
+var _hoisted_34 = [_hoisted_33];
+var _hoisted_35 = {
   "class": "auth-wrapper"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19882,16 +20190,110 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, _hoisted_7, 2
       /* CLASS */
-      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, _hoisted_10, 512
+      )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+        action: "",
+        "class": "register-form",
+        onSubmit: _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+          return $options.sendRegister();
+        }, ["prevent"]))
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+          return $data.registerForm.login = $event;
+        }),
+        type: "text",
+        id: "register-login"
+      }, null, 512
       /* NEED_PATCH */
-      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.authBlock == 'registration']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, _hoisted_13, 512
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registerForm.login]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return $data.registerForm.name = $event;
+        }),
+        type: "text",
+        id: "register-name"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registerForm.name]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+          return $data.registerForm.surname = $event;
+        }),
+        type: "text",
+        id: "register-surname"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registerForm.surname]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+          return $data.registerForm.date = $event;
+        }),
+        type: "date",
+        id: "register-BirthDate"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registerForm.date]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
+          return $data.registerForm.gender = $event;
+        }),
+        type: "radio",
+        value: "male",
+        id: "register-gender-male",
+        checked: ""
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.registerForm.gender]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+          return $data.registerForm.gender = $event;
+        }),
+        type: "radio",
+        value: "female",
+        id: "register-gender-female"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelRadio, $data.registerForm.gender]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
+          return $data.registerForm.password = $event;
+        }),
+        type: "password",
+        name: "register-password",
+        id: "register-password"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.registerForm.password]])]), _hoisted_26], 32
+      /* HYDRATE_EVENTS */
+      )], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.authBlock == 'registration']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+        action: "",
+        "class": "login-form",
+        onSubmit: _cache[12] || (_cache[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+          return $options.auth();
+        }, ["prevent"]))
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+          return $data.loginForm.login = $event;
+        }),
+        type: "text",
+        name: "login",
+        id: "login"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.loginForm.login]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+          return $data.loginForm.password = $event;
+        }),
+        type: "password",
+        name: "password",
+        id: "password"
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.loginForm.password]])]), _hoisted_32], 32
+      /* HYDRATE_EVENTS */
+      )], 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.authBlock == 'authorization']]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
         "class": "closeAuth",
-        onClick: _cache[2] || (_cache[2] = function ($event) {
+        onClick: _cache[13] || (_cache[13] = function ($event) {
           return $options.closeAuth();
         })
-      }, _hoisted_15)], 512
+      }, _hoisted_34)], 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.getIsAuth]])];
     }),
@@ -19904,7 +20306,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "fade"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, null, 512
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, null, 512
       /* NEED_PATCH */
       ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.getIsAuth]])];
     }),
@@ -19916,10 +20318,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Fish.vue?vue&type=template&id=f836fd7a":
-/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Fish.vue?vue&type=template&id=f836fd7a ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/FishSpecies.vue?vue&type=template&id=50b3eeae":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/FishSpecies.vue?vue&type=template&id=50b3eeae ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -19952,26 +20354,65 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_6 = {
   "class": "fish-types"
 };
+var _hoisted_7 = {
+  "class": "fish-type"
+};
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://vorle.ru/media/imgs2019/5_Jup9hFJ.jpg&#39;);\"></span><h3>Хищники</h3><span class=\"fish-type-desc\"><p>Представители разных групп и семейств, которых объединяет хищнический образ жизни. Однако, не смотря на свою плотоядность, многих из них вполне возможно содержать вместе с другими относительно крупными рыбами.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2020/03/okras-sovremennyh-akvariumnyh-rybok-porazhaet-svoim-mnogoobraziem.jpg&#39;);\"></span><h3>Необычные рыбки</h3><span class=\"fish-type-desc\"><p>В эту категорию отнесены виды, обладающие одним или несколькими особенностями, не свойственными большинству других рыб. Например, удивительный внешний вид, непривычный способ питания, передвижения, оригинальный способ защиты и/или нападения и т. д</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://akvariumnyerybki.ru/wp-content/uploads/2016/01/viun-1-1-650x385.jpg&#39;);\"></span><h3>Вьюновые</h3><span class=\"fish-type-desc\"><p>В природе населяют реки с быстрым бурным течением, поэтому в аквариумах нуждаются в схожих турбулентных условиях. Подобные требования к содержанию вкупе с непростым нравом создают сложности с выбором совместимых видов.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2019/09/zolotye-rybki-neprihotlivy-k-parametram-vody.jpg&#39;);\"></span><h3>Золотые рыбы</h3><span class=\"fish-type-desc\"><p>Простые караси, которые за сотни лет искусственной селекции изменились до неузнаваемости (окраска, размер, форма тела и плавников). Селекция продолжается по сей день, поэтому количество новых форм постоянно увеличивается. Считаются самыми известными аквариумными рыбками</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://dreamaqua.ru/wp-content/uploads/2018/03/labeo-rybka-vidy_1-650x385.jpg&#39;);\"></span><h3>Карповые</h3><span class=\"fish-type-desc\"><p>В эту группу входят такие популярные рыбки как данио, барбусы, расборы. В большинстве своём сравнительно небольшие в размерах, просты в содержании и разведении, прекрасно уживаются с другими видами. Всё это обусловило их широкое распространение среди любителей аквариумистики.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://zooclub.ru/attach/33000/33446.jpg&#39;);\"></span><h3>Харациновые</h3><span class=\"fish-type-desc\"><p>Довольно разнообразная группа, объединяющая в себе и маленьких мирных тетр и хищных агрессивных пираний. Соответственно, условия и требования к содержанию к различным видам рыб будут сильно отличаться. Тем не менее, многие из них вполне подходят для начинающих аквариумистов.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2020/02/som-torakatum.jpg&#39;);\"></span><h3>Сомообразные</h3><span class=\"fish-type-desc\"><p>Принадлежат к различным семействам и живут в самых разнообразных природных условиях. Не смотря на это, все сомы похожи друг на друга: обладают схожей формой тела и совершенно непритязательны к рациону. За небольшим исключением, сомы вырастают до внушительных размеров.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2018/10/koridoras-shterba.jpg&#39;);\"></span><h3>Сомики Коридорас</h3><span class=\"fish-type-desc\"><p>Отдельная категория сомообразных, отличающаяся скромными размерами и миролюбивым нравом. Совершенно безопасны для других аквариумных рыбок и, так же как другие сомы, не вызовут больших трудностей при содержании.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://rybkivbanke.ru/wp-content/uploads/2020/04/a9d0f.jpg&#39;);\"></span><h3>Живородящие</h3><span class=\"fish-type-desc\"><p>Обладают нехарактерным для большинства других рыб способом размножения. Они не мечут икру, а приносят полностью сформировавшихся мальков. Как правило, это небольшие неприхотливые рыбки, пользующиеся большой популярностью в любительской аквариумистике.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2020/03/petushki-samye-rasprostranennye-labirintovye-rybki.jpg&#39;);\"></span><h3>Лабиринтовые</h3><span class=\"fish-type-desc\"><p>Главным образом эта группа состоит из бойцовых рыбок — петушков и гурами. Их объединяет наличие особого дыхательного органа, насыщающего кровь кислородом. Его строение напоминает лабиринт из кровеносных сосудов, благодаря которому рыбки и получили своё название.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://akvarium-moskva.ru/images/dbc432071adb02c456a9c5ae1f6896af.jpg&#39;);\"></span><h3>Радужницы</h3><span class=\"fish-type-desc\"><p>Экзотические рыбки с берегов Австралии и близлежащих островов. Название полностью соответствует их облику с яркой переливающейся окраской. Сравнительно неприхотливы, тем не менее требуют определённого опыта для содержания.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"></span><h3>Рыбки Килли</h3><span class=\"fish-type-desc\"><p>Удивительные представители карпозубых. Обладают ярким радужным окрасом, мирным нравом, уживчивы и очень просты в содержании. Единственный недостаток — очень низкая продолжительность жизни, всего пару лет.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2018/11/geofagus-brazilskij-cihlida-iz-yuzhnoj-ameriki.jpg&#39;);\"></span><h3>Цихлиды</h3><span class=\"fish-type-desc\"><p>Рыбки этой группы относятся к одному семейству цихловых, которые населяют реки и озёра Южной и Центральной Америк, Африки и Юго-Восточной Азии. Не смотря на общее происхождение, представители того или иного региона будут значительно отличаться по условиям содержания и поведением.</p><a class=\"fish-type-btn\">Представители</a></span></div>", 13);
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "fish-type-image",
+  style: {
+    "background-image": "url('https://vorle.ru/media/imgs2019/5_Jup9hFJ.jpg')"
+  }
+}, null, -1
+/* HOISTED */
+);
 
-var _hoisted_20 = {
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Хищники", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "fish-type-desc"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Представители разных групп и семейств, которых объединяет хищнический образ жизни. Однако, не смотря на свою плотоядность, многих из них вполне возможно содержать вместе с другими относительно крупными рыбами.", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "fish-type-btn"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Представители");
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2020/03/okras-sovremennyh-akvariumnyh-rybok-porazhaet-svoim-mnogoobraziem.jpg&#39;);\"></span><h3>Необычные рыбки</h3><span class=\"fish-type-desc\"><p>В эту категорию отнесены виды, обладающие одним или несколькими особенностями, не свойственными большинству других рыб. Например, удивительный внешний вид, непривычный способ питания, передвижения, оригинальный способ защиты и/или нападения и т. д</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://akvariumnyerybki.ru/wp-content/uploads/2016/01/viun-1-1-650x385.jpg&#39;);\"></span><h3>Вьюновые</h3><span class=\"fish-type-desc\"><p>В природе населяют реки с быстрым бурным течением, поэтому в аквариумах нуждаются в схожих турбулентных условиях. Подобные требования к содержанию вкупе с непростым нравом создают сложности с выбором совместимых видов.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2019/09/zolotye-rybki-neprihotlivy-k-parametram-vody.jpg&#39;);\"></span><h3>Золотые рыбы</h3><span class=\"fish-type-desc\"><p>Простые караси, которые за сотни лет искусственной селекции изменились до неузнаваемости (окраска, размер, форма тела и плавников). Селекция продолжается по сей день, поэтому количество новых форм постоянно увеличивается. Считаются самыми известными аквариумными рыбками</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://dreamaqua.ru/wp-content/uploads/2018/03/labeo-rybka-vidy_1-650x385.jpg&#39;);\"></span><h3>Карповые</h3><span class=\"fish-type-desc\"><p>В эту группу входят такие популярные рыбки как данио, барбусы, расборы. В большинстве своём сравнительно небольшие в размерах, просты в содержании и разведении, прекрасно уживаются с другими видами. Всё это обусловило их широкое распространение среди любителей аквариумистики.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://zooclub.ru/attach/33000/33446.jpg&#39;);\"></span><h3>Харациновые</h3><span class=\"fish-type-desc\"><p>Довольно разнообразная группа, объединяющая в себе и маленьких мирных тетр и хищных агрессивных пираний. Соответственно, условия и требования к содержанию к различным видам рыб будут сильно отличаться. Тем не менее, многие из них вполне подходят для начинающих аквариумистов.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2020/02/som-torakatum.jpg&#39;);\"></span><h3>Сомообразные</h3><span class=\"fish-type-desc\"><p>Принадлежат к различным семействам и живут в самых разнообразных природных условиях. Не смотря на это, все сомы похожи друг на друга: обладают схожей формой тела и совершенно непритязательны к рациону. За небольшим исключением, сомы вырастают до внушительных размеров.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2018/10/koridoras-shterba.jpg&#39;);\"></span><h3>Сомики Коридорас</h3><span class=\"fish-type-desc\"><p>Отдельная категория сомообразных, отличающаяся скромными размерами и миролюбивым нравом. Совершенно безопасны для других аквариумных рыбок и, так же как другие сомы, не вызовут больших трудностей при содержании.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://rybkivbanke.ru/wp-content/uploads/2020/04/a9d0f.jpg&#39;);\"></span><h3>Живородящие</h3><span class=\"fish-type-desc\"><p>Обладают нехарактерным для большинства других рыб способом размножения. Они не мечут икру, а приносят полностью сформировавшихся мальков. Как правило, это небольшие неприхотливые рыбки, пользующиеся большой популярностью в любительской аквариумистике.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2020/03/petushki-samye-rasprostranennye-labirintovye-rybki.jpg&#39;);\"></span><h3>Лабиринтовые</h3><span class=\"fish-type-desc\"><p>Главным образом эта группа состоит из бойцовых рыбок — петушков и гурами. Их объединяет наличие особого дыхательного органа, насыщающего кровь кислородом. Его строение напоминает лабиринт из кровеносных сосудов, благодаря которому рыбки и получили своё название.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://akvarium-moskva.ru/images/dbc432071adb02c456a9c5ae1f6896af.jpg&#39;);\"></span><h3>Радужницы</h3><span class=\"fish-type-desc\"><p>Экзотические рыбки с берегов Австралии и близлежащих островов. Название полностью соответствует их облику с яркой переливающейся окраской. Сравнительно неприхотливы, тем не менее требуют определённого опыта для содержания.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"></span><h3>Рыбки Килли</h3><span class=\"fish-type-desc\"><p>Удивительные представители карпозубых. Обладают ярким радужным окрасом, мирным нравом, уживчивы и очень просты в содержании. Единственный недостаток — очень низкая продолжительность жизни, всего пару лет.</p><a class=\"fish-type-btn\">Представители</a></span></div><div class=\"fish-type\"><span class=\"fish-type-image\" style=\"background-image:url(&#39;https://blog.tetra.net/ru/ru/wp-content/uploads/2018/11/geofagus-brazilskij-cihlida-iz-yuzhnoj-ameriki.jpg&#39;);\"></span><h3>Цихлиды</h3><span class=\"fish-type-desc\"><p>Рыбки этой группы относятся к одному семейству цихловых, которые населяют реки и озёра Южной и Центральной Америк, Африки и Юго-Восточной Азии. Не смотря на общее происхождение, представители того или иного региона будут значительно отличаться по условиям содержания и поведением.</p><a class=\"fish-type-btn\">Представители</a></span></div>", 12);
+
+var _hoisted_26 = {
   "class": "fish-type-another"
 };
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Другие виды", -1
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Другие виды", -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, _hoisted_3, _hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, _hoisted_3, _hoisted_4, _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/petMembers"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_13];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])]), _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "/another",
     style: {
       "background-image": "url('//pic.onlinewebfonts.com/svg/img_282882.svg')"
     }
-  }), _hoisted_21])])]);
+  }), _hoisted_27])])]);
 }
 
 /***/ }),
@@ -19993,13 +20434,47 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Страница с мастерклассами", -1
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Все пользовательские статьи", -1
 /* HOISTED */
 );
 
-var _hoisted_3 = [_hoisted_2];
+var _hoisted_3 = {
+  "class": "helpful"
+};
+var _hoisted_4 = {
+  "class": "helpful-left"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Добавить статью", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = [_hoisted_5];
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"helpful-items\"><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"helpful-item\"><div class=\"helpful-item__image\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"helpful-date\">26.09.02</span></div><div class=\"helpful-item__content\"><h3 class=\"helpful-title\">Пользовательская статья</h3><p class=\"helpful-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div></div><div class=\"helpful-items-load\"><span>Загрузить еще</span></div>", 2);
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "helpful-arrow"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "background-image": "url('https://icomoon.io/iconsabf18a1/12/52.svg')"
+  }
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "helpful-right"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_3);
+  var _component_UserArticle = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("UserArticle");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "addForm",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.toogleVisible();
+    })
+  }, _hoisted_6), _hoisted_7]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_UserArticle)])])]);
 }
 
 /***/ }),
@@ -20073,16 +20548,204 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   "class": "container"
 };
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Все новости", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = {
+  "class": "news"
+};
+var _hoisted_4 = {
+  "class": "news-left"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Добавить новость", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = [_hoisted_5];
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"news-items\"><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div><div class=\"news-item\"><div class=\"news-item__image\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><div><span class=\"views-quantity\">0</span><span class=\"likes-quantity\">0</span><span class=\"comments-quantity\">0</span></div></span><span class=\"news-date\">26.09.02</span></div><div class=\"news-item__content\"><h3 class=\"news-title\">Какое то название новости</h3><p class=\"news-short-description\"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p></div></div></div><div class=\"news-items-load\"><span>Загрузить еще</span></div>", 2);
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "news-arrow"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "background-image": "url('https://icomoon.io/iconsabf18a1/12/52.svg')"
+  }
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "news-right"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1);
+  var _component_NewsItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("NewsItem");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "addForm",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.toogleVisible();
+    })
+  }, _hoisted_6), _hoisted_7]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_NewsItem)])])]);
 }
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plants.vue?vue&type=template&id=69a3a4da":
-/*!****************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plants.vue?vue&type=template&id=69a3a4da ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsForm.vue?vue&type=template&id=6fb68c22":
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsForm.vue?vue&type=template&id=6fb68c22 ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "addNew"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "https://www.ipng.ru/upload/no-image.png",
+  alt: "Превью"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddNewsImage"
+}, "Выберите постер новости"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "file",
+  name: "NewsImage",
+  id: "formAddNewsImage"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddNewsName"
+}, "Введите название новости"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "NewsName",
+  id: "formAddNewsName",
+  placeholder: "Название новости"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddNewsSdesk"
+}, "Введите краткое описание"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  name: "NewsSdesk",
+  id: "formAddNewsSdesk",
+  placeholder: "Краткое описание",
+  rows: "5"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddNewsContent"
+}, "Введите содержание новости (Поддерживает BBCode)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  name: "NewsContent",
+  id: "formAddNewsContent",
+  rows: "15",
+  placeholder: "Содержание"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Отправить")], -1
+/* HOISTED */
+);
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "addNew-close-inner"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+    name: "fade"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        "class": "addNew-close",
+        onClick: _cache[0] || (_cache[0] = function ($event) {
+          return $options.closeNewsAdd();
+        })
+      }, _hoisted_4)], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.getIsNews]])];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsItem.vue?vue&type=template&id=ccab8a1e":
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsItem.vue?vue&type=template&id=ccab8a1e ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "news-full"
+};
+var _hoisted_2 = {
+  key: 0,
+  "class": "news-full-preload"
+};
+var _hoisted_3 = {
+  key: 1,
+  "class": "news-full-content"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"news-full-content__banner\"><span style=\"background-image:url(&#39;data:image/jpeg;base64,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&#39;);\"><span> Пример новости </span></span></div><div class=\"news-full-content__self\"><div class=\"news-full-content__date\"> Дата создания: 26.09.02 </div> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div><div class=\"news-full-content-comments\"><h3>Комментарии</h3><form><textarea name=\"comment\" id=\"comment\"></textarea><button type=\"submit\">Написать</button></form><p>Всего комментариев (4)</p><div class=\"news-full-content-comments__items\"><div class=\"news-full-content-comments__item\"><div class=\"news-full-content-comments__user\"><div class=\"news-full-content-comments__avatar\"><span style=\"background-image:url(&#39;https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png&#39;);\"></span></div><div class=\"news-full-content-comments__userdata\"><span class=\"news-full-content-comments__nickname\">Zarvad</span><span class=\"news-full-content-comments__date\">26.09.02 12:22</span></div></div><div class=\"news-full-content-comments__comment\"> Какой то комментарии бла бла бла </div></div><div class=\"news-full-content-comments__item\"><div class=\"news-full-content-comments__user\"><div class=\"news-full-content-comments__avatar\"><span style=\"background-image:url(&#39;https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png&#39;);\"></span></div><div class=\"news-full-content-comments__userdata\"><span class=\"news-full-content-comments__nickname\">Zarvad</span><span class=\"news-full-content-comments__date\">26.09.02 12:22</span></div></div><div class=\"news-full-content-comments__comment\"> Какой то комментарии бла бла бла </div></div><div class=\"news-full-content-comments__item\"><div class=\"news-full-content-comments__user\"><div class=\"news-full-content-comments__avatar\"><span style=\"background-image:url(&#39;https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png&#39;);\"></span></div><div class=\"news-full-content-comments__userdata\"><span class=\"news-full-content-comments__nickname\">Zarvad</span><span class=\"news-full-content-comments__date\">26.09.02 12:22</span></div></div><div class=\"news-full-content-comments__comment\"> Какой то комментарии бла бла бла </div></div><div class=\"news-full-content-comments__item\"><div class=\"news-full-content-comments__user\"><div class=\"news-full-content-comments__avatar\"><span style=\"background-image:url(&#39;https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png&#39;);\"></span></div><div class=\"news-full-content-comments__userdata\"><span class=\"news-full-content-comments__nickname\">Zarvad</span><span class=\"news-full-content-comments__date\">26.09.02 12:22</span></div></div><div class=\"news-full-content-comments__comment\"> Какой то комментарии бла бла бла </div></div></div></div>", 3);
+
+var _hoisted_7 = [_hoisted_4];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [ false ? (0) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),  true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, _hoisted_7)) : 0]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Pet.vue?vue&type=template&id=254ebcf8":
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Pet.vue?vue&type=template&id=254ebcf8 ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "pet"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h2 class=\"pet-title\">Сетчатый скат<br><span>Potamotrygon orbignyi</span></h2><div class=\"pet-top\"><div class=\"pet-top__characteristics\"><div class=\"pet-characteristic\"><p class=\"characteristic-title\">Тип питомца:</p><span class=\"characteristic-content\">Рыбы</span></div><div class=\"pet-characteristic\"><p class=\"characteristic-title\">Вид:</p><span class=\"characteristic-content\">Хищники</span></div><div class=\"pet-characteristic\"><p class=\"characteristic-title\">Тип жилища</p><span class=\"characteristic-content\">Аквариум</span></div><div class=\"pet-characteristic\"><p class=\"characteristic-title\">Продолжительность жизни:</p><span class=\"characteristic-content\">10 лет</span></div><div class=\"pet-characteristic\"><p class=\"characteristic-title\">Питание:</p><span class=\"characteristic-content\">живой корм</span></div><div class=\"pet-characteristic\"><p class=\"characteristic-title\">Размер:</p><span class=\"characteristic-content\">до 35 см.</span></div></div><div class=\"pet-top__poster\"><span style=\"background-image:url(&#39;https://aquafamily.ru/assets/images/petushok1.jpg&#39;);\"></span></div></div><div class=\"pet-description\"><h3>Описание</h3> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>", 3);
+
+var _hoisted_5 = [_hoisted_2];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_5);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PetMembers.vue?vue&type=template&id=ac62c2b6":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PetMembers.vue?vue&type=template&id=ac62c2b6 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -20096,11 +20759,680 @@ var _hoisted_1 = {
   "class": "container"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h2>Аквариумная флора</h2><div class=\"table-of-contents\"><ol><li><a href=\"#plants-type-1\">Почвопокровные растения переднего плана</a></li><li><a href=\"#plants-type-2\">Розеточные и короткокорневищные растения среднего плана</a></li><li><a href=\"#plants-type-3\">Длиннолистные розеточные растения заднего плана</a></li><li><a href=\"#plants-type-4\">Длинностебельные растения заднего плана</a></li><li><a href=\"#plants-type-5\">Прикрепляющиеся или ландшафтно-декорные растения</a></li><li><a href=\"#plants-type-6\">Растения, плавающие в толще воды</a></li><li><a href=\"#plants-type-7\">Полуводные прибрежные растения</a></li><li><a href=\"#plants-type-8\">Аквариумные мхи и печеночники</a></li></ol></div><div class=\"plants\"><div class=\"introduction\"><p>Подавляющее большинство водных растений, с которыми мы привыкли иметь дело в аквариуме, являются «вторичноводными», то есть в процессе эволюции вернулись обратно в воду из воздушной среды. В этом отношении они подобны водным млекопитающим (китам и тюленям): если водоросли (как и рыбы) из воды никогда не выходили, то высшие водные растения (как и китообразные) вернулись в комфорт и уют «колыбели жизни», совершив своеобразную «эволюционную экскурсию» за её пределы. Возвращение большинства высших водных растений в водную среду произошло с точки зрения палеонтологии совсем недавно, уже после разделения континентов и образования большинства современных биогеографических изолятов. Этим объясняются многочисленные примеры аналогического (в отличие от гомологического) развития, приведшего к образованию внешне удивительно похожих видов, относящихся ботанически к совершенно различным семействам и даже порядкам. Классические примеры – это плохо отличимые кабомба (пор. Кувшинкоцветные) и амбулия (пор. Ясноткоцветные), или саггитарии, один вид которых удивительно похож на валлиснерию, а другой – на карликовый эхинодорус теннелюс, причём все эти растения относятся к разным семействам.</p><img class=\"introduction-picture\" src=\"https://www.aqualogo.ru/img/images/infoportal_fresh_aqua_articles/rasteniya_perednego_plana.jpg\" alt=\"introduction-picture\"><p>Всё это делает совершенно бессмысленным с точки зрения практической и декоративной аквариумистики классифицировать водные растения в соответствии с их ботанической систематикой. В самом деле, зачастую аквариумисту при оформлении комнатного водоёма и не нужно знать точно, кто перед ним – карликовая саггитария или эхинодорус нежненький, печёночник моносолениум или папоротник ломариопсис, Людвигия «Куба» или Эустералис, если эти растения выглядят одинаково, растут одинаково и требуют для содержания одних и тех же условий. Эти соображения привели к тому, что в аквариумистике принято (за редким исключением) не обращать внимания на систематическое положение растений, а делить их на группы в соответствии с внешним видом, особенностями произрастания и занимаемой в биотопе экологической нишей. Разумеется, и из этого правила есть исключения: например, аквариумные мхи принято рассматривать как совершенно отдельную группу.</p></div><h3>Все водные растения подразделяются на следующие группы:</h3><div class=\"plants-types\"><ul><li class=\"plants-type\" id=\"plants-type-1\"><h4>Почвопокровные растения переднего плана</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Эта группа объединяет в себя все мелкие, низкорослые водные растения, разрастающиеся вдоль поверхности грунта, и при достаточном питании и освещении не стремящиеся «выскочить» к поверхности воды. Большинство растений этой группы – полностью водные, сколь угодно долго растущие в полностью погруженном состоянии, а часть из них вообще не имеет эмерсной (воздушной) формы. При хороших условиях содержания они образуют красивые коврики и полянки, со временем полностью закрывающие поверхность грунта на переднем плане аквариума, не занятом другими растениями.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://co2-aqua.ru/image/cache/78bb87b9d52829943537081a9af588cb.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-2\"><h4>Розеточные и короткокорневищные растения среднего плана</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Это наиболее распространённая и популярная группа водных растений. К ней можно отнести практически все криптокорины, эхинодорусы, нимфеи, большинство анубиасов, апоногетоны, кринумы, ряд буцефаландр, и др. Растения с крупными многолистными розетками прекрасно смотрятся в центральной части аквариума, привлекая к себе внимание и структурируя дизайнерскую композицию вокруг себя. Мелкоразеточные растения, как правило, прекрасно размножаются прикорневыми отростками, столонами или корневищными почками, со временем образовывая в среднем плане аквариума симпатичные привлекательные группы.</p><p>Отдельно в группе розеточных растений следует выделить нимфейные, кубышковые и похожие на них растения, которые в молодом возрасте образуют красивую розетку широких волнистых подводных листьев, однако при малейшей возможности тут же выпускают плавающие листья на длинных черешках, затеняющие аквариум, особенно многочисленные перед и во время цветения. Некоторые из них по своему «поведению» скорее могут быть отнесены к 8-й группе – «Полуводные и прибрежные растения», например, лотосы, которые вслед за плавающими выпускают и воздушные, надводные листья, и лишь затем приступают к цветению.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;http://www.aquaplants.biz/pics/eleocharis-acicularis.jpg&#39;);\"></span><span style=\"background-image:url(&#39;https://akvariumnyerybki.ru/wp-content/uploads/2016/01/anubias-vidy_1-650x385.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-3\"><h4>Длиннолистные розеточные растения заднего плана</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>К этой группе относится всего несколько видов, однако приходится выделять их отдельно в силу особенностей биологии. Это розеточные растения с очень длинными лентовидными листьями, быстро достигающими поверхности воды. Легко размножаясь ползучими стеблями-столонами, на которых образуются новые растения, эти виды в короткое время способны создать на заднем плане аквариума красивую плотную стену, а при отсутствии должного ухода – и заполонить собой половину объёма. В первую очередь это – все виды валлиснерий (обыкновенная, спиральная, крученолистная, гигантская, и др), длиннолистные виды саггитарий, некоторые виды криптокорин и апоногетонов.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://www.aqualogo.ru/img/images/infoportal_images/dlinnostebelnye_1.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-4\"><h4>Длинностебельные растения заднего плана</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Это – пожалуй, самая обширная и распространенная группа водных растений, культивируемых в аквариумах. Объединяет их внешний вид – вертикальные стебли, устремлённые к поверхности, на которых поочередно или супротивно расположены листья. Форма этих листьев может быть практически любой – от нежных перистых, как у амбулий и кабомб, до широких «лопухов», как у гигрофилы «номафилы», от круглых, как у бакопы, до тоненьких и лентовидных, как у погестемона «октопус», от жестких и почти колючих – до нежных и полупрозрачных. Цвет листьев длинностебелек тоже отличается высоким разнообразием – от бледно-салатового до тёмно-бордового. Стоит ли удивляться, что именно многочисленные и разнообразные виды длинностебельных растений являются основой самого старого и до недавнего времени самого популярного стиля оформления растительных аквариумов – «голландского». Удивительное разнообразие этой группы растений позволяет создавать практически бесконечное разнообразие композиций и сюжетов подводного мира.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://akvariumnyerybki.ru/wp-content/uploads/2016/05/rasteniya-dlya-nachinayushhih_1-650x385.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-5\"><h4>Прикрепляющиеся или ландшафтно-декорные растения</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Общим свойством этой очень полезной для создания декоративных композиций группы растений является их способность относительно быстро и прочно прикрепляться с помощью корней или ризоидов к сложному рельефному субстрату – корягам, камням, декоративной керамике – и красиво обрастать его вдоль поверхности. Помимо аквариумных мхов, почти все из которых обладают таким свойством, к корягам и камням прекрасно прирастают некрупные виды анубиасов, таиландский папоротник, почти все виды буцефаландр, и др. Такие растения весьма распространены в современной аквариумистике, и в силу своей высокой декоративности пользуются большой популярностью.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://sc04.alicdn.com/kf/Hf1c6d665a01c4f93985653d7e718686eb/251083068/Hf1c6d665a01c4f93985653d7e718686eb.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-6\"><h4>Растения, плавающие в толще воды</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Таких видов, не имеющих или почти не имеющих корней и постоянно находящихся в свободно плавающем состоянии, довольно мало. Это прежде всего все три вида распространенных в культуре роголистников, гваделупский наяс (или наяс микродон), некоторые виды пузырчаток и печёночников, а также трёхдольная ряска. Обычно свободно плавающие растения обладают высокой скоростью роста и отличной приспособляемостью к изменяющимся и неблагоприятным условиям, а потому многие из них (например, роголистник и наяс) используются в качестве стартовых растений при запуске нового аквариума, а также как «лечебные» растения при вспышках зелёных водорослей: обладая быстрым ростом и активным питанием, они замечательно способны составить зелёным водорослям конкуренцию по растворённым в воде пищевым ресурсам. Что же касается декоративного применения таких растений, то оно довольно ограничено.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://kapelka.com/upload/iblock/b8e/5b08477dd22d5252d88ca95368ad8fb1.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-7\"><h4>Полуводные прибрежные растения</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Строго говоря, в эту группу можно было бы отнести большинство растений, традиционно выращиваемых в аквариуме. Мало какие из них являются по-настоящему полностью водными растениями, т.е. не могут выходить «на сушу» (подниматься над поверхностью воды) и не имеют эмерсной (воздушной) формы (которая, к слову, у большинства растений радикально отличается от субмерсной, подводной). Переход вторично-водных растений к подводному образу жизни являлся, как правило, формой приспособления к периодическому затоплению при смене сезонов. Ряд прибрежных биотопов пресных водоёмов регулярно на несколько недель (а то и на несколько месяцев) оказывается под водой, а на остальное время пересыхает. Прибрежные растения (такие, как анубиасы, криптокорины, эхинодорусы, и др.) выработали особые приспособления, позволяющие им продолжать жить и расти как под водой, так и в полупогруженном и в полностью наземном положении, причём затопленными они могут оставаться безо всякого вреда для себя многие месяцы, и даже многие годы.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://houseaqua.ru/uploads/posts/2015-08/1439408319_lilaeopsis-novae-zelandiae.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-8\"><h4>Аквариумные мхи и печеночники</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Традиционно водные мхи выделяют в отдельную группу аквариумных растений в силу особенностей их биологии. Практически все они с помощью ризоидов прикрепляются к субстрату (камням, корягам, грунту, некоторые даже к стеклу!) и образуют красивые плотные коврики и подушки. Некоторые мхи (группа фонтиналисовых) крепятся к камню лишь нижним концом стебля (таллома), в то время как всё растение находится в толще воды. Но большинство мхов стелятся по субстрату, обращивая его. К той же группе относят печёночники (моносолениум, риккардию, донные формы риччии, и др.), а также практически неотличимый от печёночников папоротник ломариопсис. Печёночники, в отличие от мхов, либо не имеют ризоидов, либо образуют очень слабенькие ризоиды, плохо удерживающиеся за субстрат, однако этот недостаток компенсируется значительным удельным весом таллома моносолениума, ломариопсиса и др., так что даже без прикрепления они образуют замечательную подушку на дне. Особенно эффектно смотрятся такие куртины, когда сквозь них прорастают водные растения – саггитарии и криптокорины.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://kwitri.ru/wp-content/uploads/2017/06/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B9.png&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li></ul><div class=\"plants-type-slider\"><form><input type=\"radio\" name=\"slider\" id=\"slide-1\" checked><input type=\"radio\" name=\"slider\" id=\"slide-2\"><input type=\"radio\" name=\"slider\" id=\"slide-3\"><input type=\"radio\" name=\"slider\" id=\"slide-4\"><input type=\"radio\" name=\"slider\" id=\"slide-5\"><input type=\"radio\" name=\"slider\" id=\"slide-6\"><input type=\"radio\" name=\"slider\" id=\"slide-7\"><div class=\"slider-overflow\"><div class=\"slider-slides\"><div class=\"slide\"><div class=\"slide-item slide-item-1\"><span style=\"background-image:url(&#39;https://co2-aqua.ru/image/cache/5f75536b765f927ce591fb008c87802d.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-2\"><span style=\"background-image:url(&#39;https://aquass.ru/wp-content/uploads/Akvariumnye-rasteniya/Anubiasy/Anubias-Gabon/Anubias-sp-Gabon-1.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-3\"><span style=\"background-image:url(&#39;https://toplost.ru/images/images/goods/D2u05.jpg&#39;);\"></span></div></div><div class=\"slide\"><div class=\"slide-item slide-item-1\"><span style=\"background-image:url(&#39;https://www.aqualogo.ru/img/images/info_catalog/Hygrophila_corymbosa.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-2\"><span style=\"background-image:url(&#39;https://www.aqualogo.ru/img/images/infoportal_images/dlinnostebelnye_6.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-3\"><span style=\"background-image:url(&#39;https://www.aqualogo.ru/img/images/infoportal_fresh_aqua_articles/microsorum.jpg&#39;);\"></span></div></div><div class=\"slide\"><div class=\"slide-item slide-item-1\"><span style=\"background-image:url(&#39;https://innvrn.ru/images/akva/rastenia/3/%D0%AF%D0%B2%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%BE%D1%85_Taxiphyllum_barbieri.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-2\"><span style=\"background-image:url(&#39;https://www.akvabluz.ru/media/catalog/2018/06/19/20061028214502.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-3\"><span style=\"background-image:url(&#39;https://ribnydom.ru/wp-content/uploads/2018/11/0c4c725bd005dd33d782f21abd8abcdb.jpg&#39;);\"></span></div></div></div></div><div class=\"slider-btns-right\"><label for=\"slide-1\"></label><label for=\"slide-2\"></label><label for=\"slide-3\"></label><label for=\"slide-4\"></label><label for=\"slide-5\"></label><label for=\"slide-6\"></label><label for=\"slide-7\"></label></div><div class=\"slider-btns-left\"><label for=\"slide-1\"></label><label for=\"slide-2\"></label><label for=\"slide-3\"></label><label for=\"slide-4\"></label><label for=\"slide-5\"></label><label for=\"slide-6\"></label><label for=\"slide-7\"></label></div></form></div></div></div>", 3);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Вид аквариумных рыб \"Хищники\"", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = {
+  "class": "petMembers"
+};
+var _hoisted_4 = {
+  "class": "petMembers-left"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Добавить", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = [_hoisted_5];
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"petMembers-left-content\"><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div><div class=\"petMember\"><div class=\"petMember-image\"><span style=\"background-image:url(&#39;https://www.aqvium.ru/templates/yootheme/cache/46-3-Potamotrygon-orbignyi-93b49263.webp&#39;);\"></span></div><div class=\"petMember-title\"><h3>Сетчатый скат (<span class=\"petMember-title__another\">Potamotrygon orbignyi</span>)</h3></div></div></div><div class=\"petMembers-items-load\"><span>Загрузить еще</span></div>", 2);
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "petMembers-arrow"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "background-image": "url('https://icomoon.io/iconsabf18a1/12/52.svg')"
+  }
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "petMembers-right"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Pet = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Pet");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "addForm",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.toogleVisible();
+    })
+  }, _hoisted_6), _hoisted_7]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pet)])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plant.vue?vue&type=template&id=50c22590":
+/*!***************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plant.vue?vue&type=template&id=50c22590 ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "plant-full"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"plant-full-title\"><h2>Водный лютик</h2><p>Ранункулукс инундатус</p></div><div class=\"plant-full-main\"><div class=\"plant-full-characteristics\"><p>Основные параметры для выращивания</p><ul class=\"plant-full-characteristic-content\"><li class=\"plant-full-characteristic\"><p>Значение водородного показателя (PH)</p><p>5,3-7,5</p></li><li class=\"plant-full-characteristic\"><p>Температура (°С)</p><p>20 - 29 °С</p></li><li class=\"plant-full-characteristic\"><p>Карбонатная жесткость (DKH)</p><p>2 - 24° DKH</p></li><li class=\"plant-full-characteristic\"><p>Уровень кислорода (мг/л)</p><p>10 - 20 мг/л</p></li></ul></div><span class=\"plant-full-banner\" style=\"background-image:url(&#39;https://aqhome.ru/sites/default/files/ranunculus_inundatus_2.jpg&#39;);\"></span></div><div class=\"plant-full-about\"><h3>Описание</h3> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div>", 3);
 
 var _hoisted_5 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, _hoisted_5);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsMembers.vue?vue&type=template&id=85d59894":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsMembers.vue?vue&type=template&id=85d59894 ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "container"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", null, "Почвопокровные растения переднего плана", -1
+/* HOISTED */
+);
+
+var _hoisted_3 = {
+  "class": "plantMembers"
+};
+var _hoisted_4 = {
+  "class": "plantMembers-left"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Добавить", -1
+/* HOISTED */
+);
+
+var _hoisted_6 = [_hoisted_5];
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"plantMembers-left-content\"><div class=\"plantMember\"><div class=\"plantMember-image\"><span style=\"background-image:url(&#39;https://fanfishka.ru/uploads/posts/2016-07/1469790947_02.jpg&#39;);\"></span></div><div class=\"plantMember-title\"><h3>Водный лютик (<span class=\"plantMember-title__another\">ранукулус инундатус</span>)</h3></div></div><div class=\"plantMember\"><div class=\"plantMember-image\"><span style=\"background-image:url(&#39;https://fanfishka.ru/uploads/posts/2016-07/1469790947_02.jpg&#39;);\"></span></div><div class=\"plantMember-title\"><h3>Водный лютик (<span class=\"plantMember-title__another\">ранукулус инундатус</span>)</h3></div></div><div class=\"plantMember\"><div class=\"plantMember-image\"><span style=\"background-image:url(&#39;https://fanfishka.ru/uploads/posts/2016-07/1469790947_02.jpg&#39;);\"></span></div><div class=\"plantMember-title\"><h3>Водный лютик (<span class=\"plantMember-title__another\">ранукулус инундатус</span>)</h3></div></div></div><div class=\"plantMembers-items-load\"><span>Загрузить еще</span></div>", 2);
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "plantMembers-arrow"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "background-image": "url('https://icomoon.io/iconsabf18a1/12/52.svg')"
+  }
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "plantMembers-right"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_plant = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("plant");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": "addForm",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return $options.toogleVisible();
+    })
+  }, _hoisted_6), _hoisted_7]), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_plant)])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsSpecies.vue?vue&type=template&id=3cc0e259":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsSpecies.vue?vue&type=template&id=3cc0e259 ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "container"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h2>Аквариумная флора</h2><div class=\"table-of-contents\"><ol><li><a href=\"#plants-type-1\">Почвопокровные растения переднего плана</a></li><li><a href=\"#plants-type-2\">Розеточные и короткокорневищные растения среднего плана</a></li><li><a href=\"#plants-type-3\">Длиннолистные розеточные растения заднего плана</a></li><li><a href=\"#plants-type-4\">Длинностебельные растения заднего плана</a></li><li><a href=\"#plants-type-5\">Прикрепляющиеся или ландшафтно-декорные растения</a></li><li><a href=\"#plants-type-6\">Растения, плавающие в толще воды</a></li><li><a href=\"#plants-type-7\">Полуводные прибрежные растения</a></li><li><a href=\"#plants-type-8\">Аквариумные мхи и печеночники</a></li></ol></div>", 2);
+
+var _hoisted_4 = {
+  "class": "plants"
+};
+
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "introduction"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Подавляющее большинство водных растений, с которыми мы привыкли иметь дело в аквариуме, являются «вторичноводными», то есть в процессе эволюции вернулись обратно в воду из воздушной среды. В этом отношении они подобны водным млекопитающим (китам и тюленям): если водоросли (как и рыбы) из воды никогда не выходили, то высшие водные растения (как и китообразные) вернулись в комфорт и уют «колыбели жизни», совершив своеобразную «эволюционную экскурсию» за её пределы. Возвращение большинства высших водных растений в водную среду произошло с точки зрения палеонтологии совсем недавно, уже после разделения континентов и образования большинства современных биогеографических изолятов. Этим объясняются многочисленные примеры аналогического (в отличие от гомологического) развития, приведшего к образованию внешне удивительно похожих видов, относящихся ботанически к совершенно различным семействам и даже порядкам. Классические примеры – это плохо отличимые кабомба (пор. Кувшинкоцветные) и амбулия (пор. Ясноткоцветные), или саггитарии, один вид которых удивительно похож на валлиснерию, а другой – на карликовый эхинодорус теннелюс, причём все эти растения относятся к разным семействам."), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  "class": "introduction-picture",
+  src: "https://www.aqualogo.ru/img/images/infoportal_fresh_aqua_articles/rasteniya_perednego_plana.jpg",
+  alt: "introduction-picture"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Всё это делает совершенно бессмысленным с точки зрения практической и декоративной аквариумистики классифицировать водные растения в соответствии с их ботанической систематикой. В самом деле, зачастую аквариумисту при оформлении комнатного водоёма и не нужно знать точно, кто перед ним – карликовая саггитария или эхинодорус нежненький, печёночник моносолениум или папоротник ломариопсис, Людвигия «Куба» или Эустералис, если эти растения выглядят одинаково, растут одинаково и требуют для содержания одних и тех же условий. Эти соображения привели к тому, что в аквариумистике принято (за редким исключением) не обращать внимания на систематическое положение растений, а делить их на группы в соответствии с внешним видом, особенностями произрастания и занимаемой в биотопе экологической нишей. Разумеется, и из этого правила есть исключения: например, аквариумные мхи принято рассматривать как совершенно отдельную группу.")], -1
+/* HOISTED */
+);
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Все водные растения подразделяются на следующие группы:", -1
+/* HOISTED */
+);
+
+var _hoisted_7 = {
+  "class": "plants-types"
+};
+var _hoisted_8 = {
+  "class": "plants-type",
+  id: "plants-type-1"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Почвопокровные растения переднего плана", -1
+/* HOISTED */
+);
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "plants-type-content"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "plants-type-desc"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Эта группа объединяет в себя все мелкие, низкорослые водные растения, разрастающиеся вдоль поверхности грунта, и при достаточном питании и освещении не стремящиеся «выскочить» к поверхности воды. Большинство растений этой группы – полностью водные, сколь угодно долго растущие в полностью погруженном состоянии, а часть из них вообще не имеет эмерсной (воздушной) формы. При хороших условиях содержания они образуют красивые коврики и полянки, со временем полностью закрывающие поверхность грунта на переднем плане аквариума, не занятом другими растениями.")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "plants-type-image"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  style: {
+    "background-image": "url('https://co2-aqua.ru/image/cache/78bb87b9d52829943537081a9af588cb.jpg')"
+  }
+})])], -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
+  "class": "plants-type-btn"
+};
+var _hoisted_12 = {
+  href: ""
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Все представители");
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li class=\"plants-type\" id=\"plants-type-2\"><h4>Розеточные и короткокорневищные растения среднего плана</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Это наиболее распространённая и популярная группа водных растений. К ней можно отнести практически все криптокорины, эхинодорусы, нимфеи, большинство анубиасов, апоногетоны, кринумы, ряд буцефаландр, и др. Растения с крупными многолистными розетками прекрасно смотрятся в центральной части аквариума, привлекая к себе внимание и структурируя дизайнерскую композицию вокруг себя. Мелкоразеточные растения, как правило, прекрасно размножаются прикорневыми отростками, столонами или корневищными почками, со временем образовывая в среднем плане аквариума симпатичные привлекательные группы.</p><p>Отдельно в группе розеточных растений следует выделить нимфейные, кубышковые и похожие на них растения, которые в молодом возрасте образуют красивую розетку широких волнистых подводных листьев, однако при малейшей возможности тут же выпускают плавающие листья на длинных черешках, затеняющие аквариум, особенно многочисленные перед и во время цветения. Некоторые из них по своему «поведению» скорее могут быть отнесены к 8-й группе – «Полуводные и прибрежные растения», например, лотосы, которые вслед за плавающими выпускают и воздушные, надводные листья, и лишь затем приступают к цветению.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;http://www.aquaplants.biz/pics/eleocharis-acicularis.jpg&#39;);\"></span><span style=\"background-image:url(&#39;https://akvariumnyerybki.ru/wp-content/uploads/2016/01/anubias-vidy_1-650x385.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-3\"><h4>Длиннолистные розеточные растения заднего плана</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>К этой группе относится всего несколько видов, однако приходится выделять их отдельно в силу особенностей биологии. Это розеточные растения с очень длинными лентовидными листьями, быстро достигающими поверхности воды. Легко размножаясь ползучими стеблями-столонами, на которых образуются новые растения, эти виды в короткое время способны создать на заднем плане аквариума красивую плотную стену, а при отсутствии должного ухода – и заполонить собой половину объёма. В первую очередь это – все виды валлиснерий (обыкновенная, спиральная, крученолистная, гигантская, и др), длиннолистные виды саггитарий, некоторые виды криптокорин и апоногетонов.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://www.aqualogo.ru/img/images/infoportal_images/dlinnostebelnye_1.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-4\"><h4>Длинностебельные растения заднего плана</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Это – пожалуй, самая обширная и распространенная группа водных растений, культивируемых в аквариумах. Объединяет их внешний вид – вертикальные стебли, устремлённые к поверхности, на которых поочередно или супротивно расположены листья. Форма этих листьев может быть практически любой – от нежных перистых, как у амбулий и кабомб, до широких «лопухов», как у гигрофилы «номафилы», от круглых, как у бакопы, до тоненьких и лентовидных, как у погестемона «октопус», от жестких и почти колючих – до нежных и полупрозрачных. Цвет листьев длинностебелек тоже отличается высоким разнообразием – от бледно-салатового до тёмно-бордового. Стоит ли удивляться, что именно многочисленные и разнообразные виды длинностебельных растений являются основой самого старого и до недавнего времени самого популярного стиля оформления растительных аквариумов – «голландского». Удивительное разнообразие этой группы растений позволяет создавать практически бесконечное разнообразие композиций и сюжетов подводного мира.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://akvariumnyerybki.ru/wp-content/uploads/2016/05/rasteniya-dlya-nachinayushhih_1-650x385.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-5\"><h4>Прикрепляющиеся или ландшафтно-декорные растения</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Общим свойством этой очень полезной для создания декоративных композиций группы растений является их способность относительно быстро и прочно прикрепляться с помощью корней или ризоидов к сложному рельефному субстрату – корягам, камням, декоративной керамике – и красиво обрастать его вдоль поверхности. Помимо аквариумных мхов, почти все из которых обладают таким свойством, к корягам и камням прекрасно прирастают некрупные виды анубиасов, таиландский папоротник, почти все виды буцефаландр, и др. Такие растения весьма распространены в современной аквариумистике, и в силу своей высокой декоративности пользуются большой популярностью.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://sc04.alicdn.com/kf/Hf1c6d665a01c4f93985653d7e718686eb/251083068/Hf1c6d665a01c4f93985653d7e718686eb.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-6\"><h4>Растения, плавающие в толще воды</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Таких видов, не имеющих или почти не имеющих корней и постоянно находящихся в свободно плавающем состоянии, довольно мало. Это прежде всего все три вида распространенных в культуре роголистников, гваделупский наяс (или наяс микродон), некоторые виды пузырчаток и печёночников, а также трёхдольная ряска. Обычно свободно плавающие растения обладают высокой скоростью роста и отличной приспособляемостью к изменяющимся и неблагоприятным условиям, а потому многие из них (например, роголистник и наяс) используются в качестве стартовых растений при запуске нового аквариума, а также как «лечебные» растения при вспышках зелёных водорослей: обладая быстрым ростом и активным питанием, они замечательно способны составить зелёным водорослям конкуренцию по растворённым в воде пищевым ресурсам. Что же касается декоративного применения таких растений, то оно довольно ограничено.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://kapelka.com/upload/iblock/b8e/5b08477dd22d5252d88ca95368ad8fb1.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-7\"><h4>Полуводные прибрежные растения</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Строго говоря, в эту группу можно было бы отнести большинство растений, традиционно выращиваемых в аквариуме. Мало какие из них являются по-настоящему полностью водными растениями, т.е. не могут выходить «на сушу» (подниматься над поверхностью воды) и не имеют эмерсной (воздушной) формы (которая, к слову, у большинства растений радикально отличается от субмерсной, подводной). Переход вторично-водных растений к подводному образу жизни являлся, как правило, формой приспособления к периодическому затоплению при смене сезонов. Ряд прибрежных биотопов пресных водоёмов регулярно на несколько недель (а то и на несколько месяцев) оказывается под водой, а на остальное время пересыхает. Прибрежные растения (такие, как анубиасы, криптокорины, эхинодорусы, и др.) выработали особые приспособления, позволяющие им продолжать жить и расти как под водой, так и в полупогруженном и в полностью наземном положении, причём затопленными они могут оставаться безо всякого вреда для себя многие месяцы, и даже многие годы.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://houseaqua.ru/uploads/posts/2015-08/1439408319_lilaeopsis-novae-zelandiae.jpg&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li><li class=\"plants-type\" id=\"plants-type-8\"><h4>Аквариумные мхи и печеночники</h4><div class=\"plants-type-content\"><div class=\"plants-type-desc\"><p>Традиционно водные мхи выделяют в отдельную группу аквариумных растений в силу особенностей их биологии. Практически все они с помощью ризоидов прикрепляются к субстрату (камням, корягам, грунту, некоторые даже к стеклу!) и образуют красивые плотные коврики и подушки. Некоторые мхи (группа фонтиналисовых) крепятся к камню лишь нижним концом стебля (таллома), в то время как всё растение находится в толще воды. Но большинство мхов стелятся по субстрату, обращивая его. К той же группе относят печёночники (моносолениум, риккардию, донные формы риччии, и др.), а также практически неотличимый от печёночников папоротник ломариопсис. Печёночники, в отличие от мхов, либо не имеют ризоидов, либо образуют очень слабенькие ризоиды, плохо удерживающиеся за субстрат, однако этот недостаток компенсируется значительным удельным весом таллома моносолениума, ломариопсиса и др., так что даже без прикрепления они образуют замечательную подушку на дне. Особенно эффектно смотрятся такие куртины, когда сквозь них прорастают водные растения – саггитарии и криптокорины.</p></div><div class=\"plants-type-image\"><span style=\"background-image:url(&#39;https://kwitri.ru/wp-content/uploads/2017/06/%D0%91%D0%B5%D0%B7%D1%8B%D0%BC%D1%8F%D0%BD%D0%BD%D1%8B%D0%B9.png&#39;);\"></span></div></div><div class=\"plants-type-btn\"><a href=\"\">Все представители</a></div></li>", 7);
+
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"plants-type-slider\"><form><input type=\"radio\" name=\"slider\" id=\"slide-1\" checked><input type=\"radio\" name=\"slider\" id=\"slide-2\"><input type=\"radio\" name=\"slider\" id=\"slide-3\"><input type=\"radio\" name=\"slider\" id=\"slide-4\"><input type=\"radio\" name=\"slider\" id=\"slide-5\"><input type=\"radio\" name=\"slider\" id=\"slide-6\"><input type=\"radio\" name=\"slider\" id=\"slide-7\"><div class=\"slider-overflow\"><div class=\"slider-slides\"><div class=\"slide\"><div class=\"slide-item slide-item-1\"><span style=\"background-image:url(&#39;https://co2-aqua.ru/image/cache/5f75536b765f927ce591fb008c87802d.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-2\"><span style=\"background-image:url(&#39;https://aquass.ru/wp-content/uploads/Akvariumnye-rasteniya/Anubiasy/Anubias-Gabon/Anubias-sp-Gabon-1.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-3\"><span style=\"background-image:url(&#39;https://toplost.ru/images/images/goods/D2u05.jpg&#39;);\"></span></div></div><div class=\"slide\"><div class=\"slide-item slide-item-1\"><span style=\"background-image:url(&#39;https://www.aqualogo.ru/img/images/info_catalog/Hygrophila_corymbosa.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-2\"><span style=\"background-image:url(&#39;https://www.aqualogo.ru/img/images/infoportal_images/dlinnostebelnye_6.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-3\"><span style=\"background-image:url(&#39;https://www.aqualogo.ru/img/images/infoportal_fresh_aqua_articles/microsorum.jpg&#39;);\"></span></div></div><div class=\"slide\"><div class=\"slide-item slide-item-1\"><span style=\"background-image:url(&#39;https://innvrn.ru/images/akva/rastenia/3/%D0%AF%D0%B2%D0%B0%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BC%D0%BE%D1%85_Taxiphyllum_barbieri.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-2\"><span style=\"background-image:url(&#39;https://www.akvabluz.ru/media/catalog/2018/06/19/20061028214502.jpg&#39;);\"></span></div><div class=\"slide-item slide-item-3\"><span style=\"background-image:url(&#39;https://ribnydom.ru/wp-content/uploads/2018/11/0c4c725bd005dd33d782f21abd8abcdb.jpg&#39;);\"></span></div></div></div></div><div class=\"slider-btns-right\"><label for=\"slide-1\"></label><label for=\"slide-2\"></label><label for=\"slide-3\"></label><label for=\"slide-4\"></label><label for=\"slide-5\"></label><label for=\"slide-6\"></label><label for=\"slide-7\"></label></div><div class=\"slider-btns-left\"><label for=\"slide-1\"></label><label for=\"slide-2\"></label><label for=\"slide-3\"></label><label for=\"slide-4\"></label><label for=\"slide-5\"></label><label for=\"slide-6\"></label><label for=\"slide-7\"></label></div></form></div>", 1);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_8, [_hoisted_9, _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: "/plantsMembers"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_13];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])]), _hoisted_14]), _hoisted_21])])]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/UserArticle.vue?vue&type=template&id=e4ff47e0":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/UserArticle.vue?vue&type=template&id=e4ff47e0 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "helpful-full"
+};
+var _hoisted_2 = {
+  key: 0,
+  "class": "helpful-full-preload"
+};
+var _hoisted_3 = {
+  key: 1,
+  "class": "helpful-full-content"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"helpful-full-content__banner\"><span style=\"background-image:url(&#39;https://www.kadrof.ru/sites/default/files/illustrations/prodazha_statey.jpg&#39;);\"><span> Пример новости </span></span></div><div class=\"helpful-full-content__self\"><div class=\"helpful-full-content__inf\"><div class=\"helpful-full-content__date\"> Дата создания: 26.09.02 </div><div class=\"helpful-full-content__author\"> Автор: <b>Zarvad</b></div></div> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </div><div class=\"helpful-full-content-comments\"><h3>Комментарии</h3><form><textarea name=\"comment\" id=\"comment\"></textarea><button type=\"submit\">Написать</button></form><p>Всего комментариев (4)</p><div class=\"helpful-full-content-comments__items\"><div class=\"helpful-full-content-comments__item\"><div class=\"helpful-full-content-comments__user\"><div class=\"helpful-full-content-comments__avatar\"><span style=\"background-image:url(&#39;https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png&#39;);\"></span></div><div class=\"helpful-full-content-comments__userdata\"><span class=\"helpful-full-content-comments__nickname\">Zarvad</span><span class=\"helpful-full-content-comments__date\">26.09.02 12:22</span></div></div><div class=\"helpful-full-content-comments__comment\"> Какой то комментарии бла бла бла </div></div><div class=\"helpful-full-content-comments__item\"><div class=\"helpful-full-content-comments__user\"><div class=\"helpful-full-content-comments__avatar\"><span style=\"background-image:url(&#39;https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png&#39;);\"></span></div><div class=\"helpful-full-content-comments__userdata\"><span class=\"helpful-full-content-comments__nickname\">Zarvad</span><span class=\"helpful-full-content-comments__date\">26.09.02 12:22</span></div></div><div class=\"helpful-full-content-comments__comment\"> Какой то комментарии бла бла бла </div></div><div class=\"helpful-full-content-comments__item\"><div class=\"helpful-full-content-comments__user\"><div class=\"helpful-full-content-comments__avatar\"><span style=\"background-image:url(&#39;https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png&#39;);\"></span></div><div class=\"helpful-full-content-comments__userdata\"><span class=\"helpful-full-content-comments__nickname\">Zarvad</span><span class=\"helpful-full-content-comments__date\">26.09.02 12:22</span></div></div><div class=\"helpful-full-content-comments__comment\"> Какой то комментарии бла бла бла </div></div><div class=\"helpful-full-content-comments__item\"><div class=\"helpful-full-content-comments__user\"><div class=\"helpful-full-content-comments__avatar\"><span style=\"background-image:url(&#39;https://vdostavka.ru/wp-content/uploads/2019/05/no-avatar.png&#39;);\"></span></div><div class=\"helpful-full-content-comments__userdata\"><span class=\"helpful-full-content-comments__nickname\">Zarvad</span><span class=\"helpful-full-content-comments__date\">26.09.02 12:22</span></div></div><div class=\"helpful-full-content-comments__comment\"> Какой то комментарии бла бла бла </div></div></div></div>", 3);
+
+var _hoisted_7 = [_hoisted_4];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [ false ? (0) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true),  true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, _hoisted_7)) : 0]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/helpfulForm.vue?vue&type=template&id=66504085":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/helpfulForm.vue?vue&type=template&id=66504085 ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "addNew"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "https://www.ipng.ru/upload/no-image.png",
+  alt: "Превью"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddHelpfulImage"
+}, "Выберите постер новости"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "file",
+  name: "HelpfulImage",
+  id: "formAddHelpfulImage"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddHelpfulName"
+}, "Введите название новости"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "HelpfulName",
+  id: "formAddHelpfulName",
+  placeholder: "Название новости"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddHelpfulSdesk"
+}, "Введите краткое описание"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  name: "HelpfulSdesk",
+  id: "formAddHelpfulSdesk",
+  placeholder: "Краткое описание",
+  rows: "5"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddHelpfulContent"
+}, "Введите содержание новости (Поддерживает BBCode)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  name: "HelpfulContent",
+  id: "formAddHelpfulContent",
+  rows: "15",
+  placeholder: "Содержание"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Отправить")], -1
+/* HOISTED */
+);
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "addNew-close-inner"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+    name: "fade"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        "class": "addNew-close",
+        onClick: _cache[0] || (_cache[0] = function ($event) {
+          return $options.closeHelpfulAdd();
+        })
+      }, _hoisted_4)], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.getIsHelpful]])];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/petsForm.vue?vue&type=template&id=cf1ba13a":
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/petsForm.vue?vue&type=template&id=cf1ba13a ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "addNew"
+};
+var _hoisted_2 = {
+  "class": "PetsForm"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "https://www.ipng.ru/upload/no-image.png",
+  alt: "Превью"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddImage"
+}, "Выберите постер новости"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "file",
+  name: "image",
+  id: "formAddImage"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  "class": "PetsFormChar"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsName"
+}, "Название"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PetsName",
+  id: "formAddPetsName"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsTerm"
+}, "Научное название"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PetsTerm",
+  id: "formAddPetsTerm"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsType"
+}, "Тип питомца "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  name: "formAddPetsType",
+  id: "formAddPetsType"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "Рыба"
+}, "Рыба"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "Ракаообразное"
+}, "Улитки и ракообразные"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "Земноводное"
+}, "Рептилии и амфибии")])], -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  "class": "formAddItem"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsSpecie"
+}, "Вид Питомца ", -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
+  name: "PetsSpecie",
+  id: "formAddPetsSpecie"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Тип жилища"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsHomeOne"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "radio",
+  name: "formAddPetsHome",
+  id: "formAddPetsHomeOne",
+  checked: ""
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Аквариум")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsHomeTwo"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "radio",
+  name: "formAddPetsHome",
+  id: "formAddPetsHomeTwo"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Акватеррариум")])])], -1
+/* HOISTED */
+);
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsLife"
+}, "Продолжительность жизни(Лет)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "number",
+  name: "PetsLife",
+  id: "formAddPetsLife",
+  placeholder: "10"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsFeed"
+}, "Корм"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PetsFeed",
+  id: "formAddPetsFeed"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsSize"
+}, "Размер"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PetsSize",
+  id: "formAddPetsSize"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPetsDesc"
+}, "Описание (поддерживает BBCode)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  name: "PetsDesc",
+  id: "formAddPetsDesc",
+  placeholder: "Описание",
+  rows: "15"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Отправить", -1
+/* HOISTED */
+);
+
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "addNew-close-inner"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_19 = [_hoisted_18];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+    name: "fade"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", _hoisted_2, [_hoisted_3, _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, _hoisted_7, _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("output", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.getPetSpecie), 1
+      /* TEXT */
+      )]), _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15]), _hoisted_16, _hoisted_17]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        "class": "addNew-close",
+        onClick: _cache[0] || (_cache[0] = function ($event) {
+          return $options.closePetsAdd();
+        })
+      }, _hoisted_19)], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.getIsPets]])];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]);
+}
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/plantsForm.vue?vue&type=template&id=ef4c4a52":
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/plantsForm.vue?vue&type=template&id=ef4c4a52 ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "addNew"
+};
+
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "https://www.ipng.ru/upload/no-image.png",
+  alt: "Превью"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPlantImage"
+}, "Выберите постер растения"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "file",
+  name: "PlantImage",
+  id: "formAddPlantImage"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "PlantFormChar"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPlantName"
+}, "Название"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PlantName",
+  id: "formAddPlantName",
+  placeholder: "Название"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPlantTerm"
+}, "Научное название"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PlantTerm",
+  id: "formAddPlantTerm",
+  placeholder: "Научное название"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Введите параметры выращивания растения")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPlantHydro"
+}, "Водородный показатель"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PlantHydro",
+  id: "formAddPlantHydro",
+  placeholder: "Показатель"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPlantTemp"
+}, "Температура"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PlantTemp",
+  id: "formAddPlantTemp",
+  placeholder: "Температура"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPlantCarbo"
+}, "Карбонатная жесткость"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PlantCarbo",
+  id: "formAddPlantCarbo",
+  placeholder: "Жесткость"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPlantOxygen"
+}, "Уровень кислорода"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  type: "text",
+  name: "PlantOxygen",
+  id: "formAddPlantOxygen",
+  placeholder: "Кислород"
+})])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "formAddItem"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "formAddPlantContent"
+}, "Описание (Поддерживает BBCode)"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  name: "PlantContent",
+  id: "formAddPlantContent",
+  rows: "15"
+})]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", null, "Отправить")], -1
+/* HOISTED */
+);
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "addNew-close-inner"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_4 = [_hoisted_3];
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+    name: "fade"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+        "class": "addNew-close",
+        onClick: _cache[0] || (_cache[0] = function ($event) {
+          return $options.closePlantsAdd();
+        })
+      }, _hoisted_4)], 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.getIsPlants]])];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]);
 }
 
 /***/ }),
@@ -20116,28 +21448,107 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 
-var store = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+var store = (0,vuex__WEBPACK_IMPORTED_MODULE_1__.createStore)({
   state: function state() {
     return {
-      isAuth: false
+      isAuth: false,
+      isNews: false,
+      isPets: false,
+      isPlants: false,
+      isHelpful: false,
+      PetSpecie: 'Хищники',
+      news: {},
+      authorize: true
     };
   },
   getters: {
     getIsAuth: function getIsAuth(state) {
       return state.isAuth;
+    },
+    getIsNews: function getIsNews(state) {
+      return state.isNews;
+    },
+    getIsPets: function getIsPets(state) {
+      return state.isPets;
+    },
+    getIsPlants: function getIsPlants(state) {
+      return state.isPlants;
+    },
+    getIsHelpful: function getIsHelpful(state) {
+      return state.isHelpful;
+    },
+    getPetSpecie: function getPetSpecie(state) {
+      return state.PetSpecie;
     }
   },
   mutations: {
-    CHANGE_AUTH: function CHANGE_AUTH(state, isAuth) {
-      state.isAuth = isAuth;
+    CHANGE_VISIBLE: function CHANGE_VISIBLE(state, isVisible) {
+      if (isVisible[1] === 'Auth') {
+        state.isAuth = isVisible[0];
+      }
+
+      if (isVisible[1] === 'News') {
+        state.isNews = isVisible[0];
+      }
+
+      if (isVisible[1] === 'Pets') {
+        state.isPets = isVisible[0];
+      }
+
+      if (isVisible[1] === 'Plants') {
+        state.isPlants = isVisible[0];
+      }
+
+      if (isVisible[1] === 'Helpful') {
+        state.isHelpful = isVisible[0];
+      }
+    },
+    GET_NEWS: function GET_NEWS(state, data) {
+      state.news = data;
     }
   },
   actions: {
-    CHANGE_AUTH: function CHANGE_AUTH(_ref, isAuth) {
+    CHANGE_VISIBLE: function CHANGE_VISIBLE(_ref, isVisible) {
       var commit = _ref.commit;
-      commit("CHANGE_AUTH", isAuth);
+      commit("CHANGE_VISIBLE", isVisible);
+    },
+    GET_NEWS: function GET_NEWS(_ref2) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var commit, res, data;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref2.commit;
+                _context.next = 3;
+                return fetch('http://localhost:8000/api/news');
+
+              case 3:
+                res = _context.sent;
+                _context.next = 6;
+                return res.json();
+
+              case 6:
+                data = _context.sent;
+                commit("GET_NEWS", data);
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
     }
   }
 });
@@ -20153,11 +21564,15 @@ var store = (0,vuex__WEBPACK_IMPORTED_MODULE_0__.createStore)({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm-bundler.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /* harmony import */ var _Vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Vuex */ "./resources/js/Vuex.js");
 /* harmony import */ var _components_Auth__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Auth */ "./resources/js/components/Auth.vue");
+/* harmony import */ var _js_components_NewsForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../js/components/NewsForm */ "./resources/js/components/NewsForm.vue");
+/* harmony import */ var _components_petsForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/petsForm */ "./resources/js/components/petsForm.vue");
+/* harmony import */ var _components_plantsForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/plantsForm */ "./resources/js/components/plantsForm.vue");
+/* harmony import */ var _components_helpfulForm__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/helpfulForm */ "./resources/js/components/helpfulForm.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -20165,18 +21580,30 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createRouter)({
-  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_4__.createWebHistory)(),
+
+
+
+
+var router = (0,vue_router__WEBPACK_IMPORTED_MODULE_8__.createRouter)({
+  history: (0,vue_router__WEBPACK_IMPORTED_MODULE_8__.createWebHistory)(),
   routes: _routes__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
+  data: function data() {
+    return {};
+  },
+  computed: {},
   methods: {
     showAuth: function showAuth() {
-      this.$store.dispatch('CHANGE_AUTH', true);
+      this.$store.dispatch('CHANGE_VISIBLE', [true, 'Auth']);
     }
   },
   components: {
-    Auth: _components_Auth__WEBPACK_IMPORTED_MODULE_3__["default"]
+    Auth: _components_Auth__WEBPACK_IMPORTED_MODULE_3__["default"],
+    NewsForm: _js_components_NewsForm__WEBPACK_IMPORTED_MODULE_4__["default"],
+    petsForm: _components_petsForm__WEBPACK_IMPORTED_MODULE_5__["default"],
+    plantsForm: _components_plantsForm__WEBPACK_IMPORTED_MODULE_6__["default"],
+    helpfulForm: _components_helpfulForm__WEBPACK_IMPORTED_MODULE_7__["default"]
   }
 }).use(router).use(_Vuex__WEBPACK_IMPORTED_MODULE_2__["default"]).mount('#app');
 
@@ -20207,12 +21634,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_Home__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/Home */ "./resources/js/components/Home.vue");
 /* harmony import */ var _components_News__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/News */ "./resources/js/components/News.vue");
-/* harmony import */ var _components_Fish__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Fish */ "./resources/js/components/Fish.vue");
-/* harmony import */ var _components_Plants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Plants */ "./resources/js/components/Plants.vue");
-/* harmony import */ var _components_Another__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Another */ "./resources/js/components/Another.vue");
+/* harmony import */ var _components_FishSpecies__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/FishSpecies */ "./resources/js/components/FishSpecies.vue");
+/* harmony import */ var _components_PlantsSpecies__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/PlantsSpecies */ "./resources/js/components/PlantsSpecies.vue");
+/* harmony import */ var _components_AnotherSpecies__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/AnotherSpecies */ "./resources/js/components/AnotherSpecies.vue");
 /* harmony import */ var _components_Aquariums__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Aquariums */ "./resources/js/components/Aquariums.vue");
 /* harmony import */ var _components_Helpful__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Helpful */ "./resources/js/components/Helpful.vue");
 /* harmony import */ var _components_About__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/About */ "./resources/js/components/About.vue");
+/* harmony import */ var _components_PetMembers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/PetMembers */ "./resources/js/components/PetMembers.vue");
+/* harmony import */ var _components_PlantsMembers__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/PlantsMembers */ "./resources/js/components/PlantsMembers.vue");
+
+
 
 
 
@@ -20232,15 +21663,15 @@ var routes = [{
 }, {
   path: "/fish",
   name: "Fish",
-  component: _components_Fish__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _components_FishSpecies__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: "/plants",
   name: "Plants",
-  component: _components_Plants__WEBPACK_IMPORTED_MODULE_3__["default"]
+  component: _components_PlantsSpecies__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
   path: "/another",
   name: "Another",
-  component: _components_Another__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _components_AnotherSpecies__WEBPACK_IMPORTED_MODULE_4__["default"]
 }, {
   path: "/aquariums",
   name: "Aquariums",
@@ -20253,6 +21684,14 @@ var routes = [{
   path: "/about",
   name: "About",
   component: _components_About__WEBPACK_IMPORTED_MODULE_7__["default"]
+}, {
+  path: "/petMembers",
+  name: "PetMember",
+  component: _components_PetMembers__WEBPACK_IMPORTED_MODULE_8__["default"]
+}, {
+  path: '/plantsMembers',
+  name: "PlantsMember",
+  component: _components_PlantsMembers__WEBPACK_IMPORTED_MODULE_9__["default"]
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 
@@ -37677,6 +39116,770 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/***/ ((module) => {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var runtime = (function (exports) {
+  "use strict";
+
+  var Op = Object.prototype;
+  var hasOwn = Op.hasOwnProperty;
+  var undefined; // More compressible than void 0.
+  var $Symbol = typeof Symbol === "function" ? Symbol : {};
+  var iteratorSymbol = $Symbol.iterator || "@@iterator";
+  var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+  var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  function define(obj, key, value) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+    return obj[key];
+  }
+  try {
+    // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+    define({}, "");
+  } catch (err) {
+    define = function(obj, key, value) {
+      return obj[key] = value;
+    };
+  }
+
+  function wrap(innerFn, outerFn, self, tryLocsList) {
+    // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+    var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+    var generator = Object.create(protoGenerator.prototype);
+    var context = new Context(tryLocsList || []);
+
+    // The ._invoke method unifies the implementations of the .next,
+    // .throw, and .return methods.
+    generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+    return generator;
+  }
+  exports.wrap = wrap;
+
+  // Try/catch helper to minimize deoptimizations. Returns a completion
+  // record like context.tryEntries[i].completion. This interface could
+  // have been (and was previously) designed to take a closure to be
+  // invoked without arguments, but in all the cases we care about we
+  // already have an existing method we want to call, so there's no need
+  // to create a new function object. We can even get away with assuming
+  // the method takes exactly one argument, since that happens to be true
+  // in every case, so we don't have to touch the arguments object. The
+  // only additional allocation required is the completion record, which
+  // has a stable shape and so hopefully should be cheap to allocate.
+  function tryCatch(fn, obj, arg) {
+    try {
+      return { type: "normal", arg: fn.call(obj, arg) };
+    } catch (err) {
+      return { type: "throw", arg: err };
+    }
+  }
+
+  var GenStateSuspendedStart = "suspendedStart";
+  var GenStateSuspendedYield = "suspendedYield";
+  var GenStateExecuting = "executing";
+  var GenStateCompleted = "completed";
+
+  // Returning this object from the innerFn has the same effect as
+  // breaking out of the dispatch switch statement.
+  var ContinueSentinel = {};
+
+  // Dummy constructor functions that we use as the .constructor and
+  // .constructor.prototype properties for functions that return Generator
+  // objects. For full spec compliance, you may wish to configure your
+  // minifier not to mangle the names of these two functions.
+  function Generator() {}
+  function GeneratorFunction() {}
+  function GeneratorFunctionPrototype() {}
+
+  // This is a polyfill for %IteratorPrototype% for environments that
+  // don't natively support it.
+  var IteratorPrototype = {};
+  define(IteratorPrototype, iteratorSymbol, function () {
+    return this;
+  });
+
+  var getProto = Object.getPrototypeOf;
+  var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+  if (NativeIteratorPrototype &&
+      NativeIteratorPrototype !== Op &&
+      hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+    // This environment has a native %IteratorPrototype%; use it instead
+    // of the polyfill.
+    IteratorPrototype = NativeIteratorPrototype;
+  }
+
+  var Gp = GeneratorFunctionPrototype.prototype =
+    Generator.prototype = Object.create(IteratorPrototype);
+  GeneratorFunction.prototype = GeneratorFunctionPrototype;
+  define(Gp, "constructor", GeneratorFunctionPrototype);
+  define(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
+  GeneratorFunction.displayName = define(
+    GeneratorFunctionPrototype,
+    toStringTagSymbol,
+    "GeneratorFunction"
+  );
+
+  // Helper for defining the .next, .throw, and .return methods of the
+  // Iterator interface in terms of a single ._invoke method.
+  function defineIteratorMethods(prototype) {
+    ["next", "throw", "return"].forEach(function(method) {
+      define(prototype, method, function(arg) {
+        return this._invoke(method, arg);
+      });
+    });
+  }
+
+  exports.isGeneratorFunction = function(genFun) {
+    var ctor = typeof genFun === "function" && genFun.constructor;
+    return ctor
+      ? ctor === GeneratorFunction ||
+        // For the native GeneratorFunction constructor, the best we can
+        // do is to check its .name property.
+        (ctor.displayName || ctor.name) === "GeneratorFunction"
+      : false;
+  };
+
+  exports.mark = function(genFun) {
+    if (Object.setPrototypeOf) {
+      Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+    } else {
+      genFun.__proto__ = GeneratorFunctionPrototype;
+      define(genFun, toStringTagSymbol, "GeneratorFunction");
+    }
+    genFun.prototype = Object.create(Gp);
+    return genFun;
+  };
+
+  // Within the body of any async function, `await x` is transformed to
+  // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+  // `hasOwn.call(value, "__await")` to determine if the yielded value is
+  // meant to be awaited.
+  exports.awrap = function(arg) {
+    return { __await: arg };
+  };
+
+  function AsyncIterator(generator, PromiseImpl) {
+    function invoke(method, arg, resolve, reject) {
+      var record = tryCatch(generator[method], generator, arg);
+      if (record.type === "throw") {
+        reject(record.arg);
+      } else {
+        var result = record.arg;
+        var value = result.value;
+        if (value &&
+            typeof value === "object" &&
+            hasOwn.call(value, "__await")) {
+          return PromiseImpl.resolve(value.__await).then(function(value) {
+            invoke("next", value, resolve, reject);
+          }, function(err) {
+            invoke("throw", err, resolve, reject);
+          });
+        }
+
+        return PromiseImpl.resolve(value).then(function(unwrapped) {
+          // When a yielded Promise is resolved, its final value becomes
+          // the .value of the Promise<{value,done}> result for the
+          // current iteration.
+          result.value = unwrapped;
+          resolve(result);
+        }, function(error) {
+          // If a rejected Promise was yielded, throw the rejection back
+          // into the async generator function so it can be handled there.
+          return invoke("throw", error, resolve, reject);
+        });
+      }
+    }
+
+    var previousPromise;
+
+    function enqueue(method, arg) {
+      function callInvokeWithMethodAndArg() {
+        return new PromiseImpl(function(resolve, reject) {
+          invoke(method, arg, resolve, reject);
+        });
+      }
+
+      return previousPromise =
+        // If enqueue has been called before, then we want to wait until
+        // all previous Promises have been resolved before calling invoke,
+        // so that results are always delivered in the correct order. If
+        // enqueue has not been called before, then it is important to
+        // call invoke immediately, without waiting on a callback to fire,
+        // so that the async generator function has the opportunity to do
+        // any necessary setup in a predictable way. This predictability
+        // is why the Promise constructor synchronously invokes its
+        // executor callback, and why async functions synchronously
+        // execute code before the first await. Since we implement simple
+        // async functions in terms of async generators, it is especially
+        // important to get this right, even though it requires care.
+        previousPromise ? previousPromise.then(
+          callInvokeWithMethodAndArg,
+          // Avoid propagating failures to Promises returned by later
+          // invocations of the iterator.
+          callInvokeWithMethodAndArg
+        ) : callInvokeWithMethodAndArg();
+    }
+
+    // Define the unified helper method that is used to implement .next,
+    // .throw, and .return (see defineIteratorMethods).
+    this._invoke = enqueue;
+  }
+
+  defineIteratorMethods(AsyncIterator.prototype);
+  define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+    return this;
+  });
+  exports.AsyncIterator = AsyncIterator;
+
+  // Note that simple async functions are implemented on top of
+  // AsyncIterator objects; they just return a Promise for the value of
+  // the final result produced by the iterator.
+  exports.async = function(innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+    if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+    var iter = new AsyncIterator(
+      wrap(innerFn, outerFn, self, tryLocsList),
+      PromiseImpl
+    );
+
+    return exports.isGeneratorFunction(outerFn)
+      ? iter // If outerFn is a generator, return the full iterator.
+      : iter.next().then(function(result) {
+          return result.done ? result.value : iter.next();
+        });
+  };
+
+  function makeInvokeMethod(innerFn, self, context) {
+    var state = GenStateSuspendedStart;
+
+    return function invoke(method, arg) {
+      if (state === GenStateExecuting) {
+        throw new Error("Generator is already running");
+      }
+
+      if (state === GenStateCompleted) {
+        if (method === "throw") {
+          throw arg;
+        }
+
+        // Be forgiving, per 25.3.3.3.3 of the spec:
+        // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+        return doneResult();
+      }
+
+      context.method = method;
+      context.arg = arg;
+
+      while (true) {
+        var delegate = context.delegate;
+        if (delegate) {
+          var delegateResult = maybeInvokeDelegate(delegate, context);
+          if (delegateResult) {
+            if (delegateResult === ContinueSentinel) continue;
+            return delegateResult;
+          }
+        }
+
+        if (context.method === "next") {
+          // Setting context._sent for legacy support of Babel's
+          // function.sent implementation.
+          context.sent = context._sent = context.arg;
+
+        } else if (context.method === "throw") {
+          if (state === GenStateSuspendedStart) {
+            state = GenStateCompleted;
+            throw context.arg;
+          }
+
+          context.dispatchException(context.arg);
+
+        } else if (context.method === "return") {
+          context.abrupt("return", context.arg);
+        }
+
+        state = GenStateExecuting;
+
+        var record = tryCatch(innerFn, self, context);
+        if (record.type === "normal") {
+          // If an exception is thrown from innerFn, we leave state ===
+          // GenStateExecuting and loop back for another invocation.
+          state = context.done
+            ? GenStateCompleted
+            : GenStateSuspendedYield;
+
+          if (record.arg === ContinueSentinel) {
+            continue;
+          }
+
+          return {
+            value: record.arg,
+            done: context.done
+          };
+
+        } else if (record.type === "throw") {
+          state = GenStateCompleted;
+          // Dispatch the exception by looping back around to the
+          // context.dispatchException(context.arg) call above.
+          context.method = "throw";
+          context.arg = record.arg;
+        }
+      }
+    };
+  }
+
+  // Call delegate.iterator[context.method](context.arg) and handle the
+  // result, either by returning a { value, done } result from the
+  // delegate iterator, or by modifying context.method and context.arg,
+  // setting context.delegate to null, and returning the ContinueSentinel.
+  function maybeInvokeDelegate(delegate, context) {
+    var method = delegate.iterator[context.method];
+    if (method === undefined) {
+      // A .throw or .return when the delegate iterator has no .throw
+      // method always terminates the yield* loop.
+      context.delegate = null;
+
+      if (context.method === "throw") {
+        // Note: ["return"] must be used for ES3 parsing compatibility.
+        if (delegate.iterator["return"]) {
+          // If the delegate iterator has a return method, give it a
+          // chance to clean up.
+          context.method = "return";
+          context.arg = undefined;
+          maybeInvokeDelegate(delegate, context);
+
+          if (context.method === "throw") {
+            // If maybeInvokeDelegate(context) changed context.method from
+            // "return" to "throw", let that override the TypeError below.
+            return ContinueSentinel;
+          }
+        }
+
+        context.method = "throw";
+        context.arg = new TypeError(
+          "The iterator does not provide a 'throw' method");
+      }
+
+      return ContinueSentinel;
+    }
+
+    var record = tryCatch(method, delegate.iterator, context.arg);
+
+    if (record.type === "throw") {
+      context.method = "throw";
+      context.arg = record.arg;
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    var info = record.arg;
+
+    if (! info) {
+      context.method = "throw";
+      context.arg = new TypeError("iterator result is not an object");
+      context.delegate = null;
+      return ContinueSentinel;
+    }
+
+    if (info.done) {
+      // Assign the result of the finished delegate to the temporary
+      // variable specified by delegate.resultName (see delegateYield).
+      context[delegate.resultName] = info.value;
+
+      // Resume execution at the desired location (see delegateYield).
+      context.next = delegate.nextLoc;
+
+      // If context.method was "throw" but the delegate handled the
+      // exception, let the outer generator proceed normally. If
+      // context.method was "next", forget context.arg since it has been
+      // "consumed" by the delegate iterator. If context.method was
+      // "return", allow the original .return call to continue in the
+      // outer generator.
+      if (context.method !== "return") {
+        context.method = "next";
+        context.arg = undefined;
+      }
+
+    } else {
+      // Re-yield the result returned by the delegate method.
+      return info;
+    }
+
+    // The delegate iterator is finished, so forget it and continue with
+    // the outer generator.
+    context.delegate = null;
+    return ContinueSentinel;
+  }
+
+  // Define Generator.prototype.{next,throw,return} in terms of the
+  // unified ._invoke helper method.
+  defineIteratorMethods(Gp);
+
+  define(Gp, toStringTagSymbol, "Generator");
+
+  // A Generator should always return itself as the iterator object when the
+  // @@iterator function is called on it. Some browsers' implementations of the
+  // iterator prototype chain incorrectly implement this, causing the Generator
+  // object to not be returned from this call. This ensures that doesn't happen.
+  // See https://github.com/facebook/regenerator/issues/274 for more details.
+  define(Gp, iteratorSymbol, function() {
+    return this;
+  });
+
+  define(Gp, "toString", function() {
+    return "[object Generator]";
+  });
+
+  function pushTryEntry(locs) {
+    var entry = { tryLoc: locs[0] };
+
+    if (1 in locs) {
+      entry.catchLoc = locs[1];
+    }
+
+    if (2 in locs) {
+      entry.finallyLoc = locs[2];
+      entry.afterLoc = locs[3];
+    }
+
+    this.tryEntries.push(entry);
+  }
+
+  function resetTryEntry(entry) {
+    var record = entry.completion || {};
+    record.type = "normal";
+    delete record.arg;
+    entry.completion = record;
+  }
+
+  function Context(tryLocsList) {
+    // The root entry object (effectively a try statement without a catch
+    // or a finally block) gives us a place to store values thrown from
+    // locations where there is no enclosing try statement.
+    this.tryEntries = [{ tryLoc: "root" }];
+    tryLocsList.forEach(pushTryEntry, this);
+    this.reset(true);
+  }
+
+  exports.keys = function(object) {
+    var keys = [];
+    for (var key in object) {
+      keys.push(key);
+    }
+    keys.reverse();
+
+    // Rather than returning an object with a next method, we keep
+    // things simple and return the next function itself.
+    return function next() {
+      while (keys.length) {
+        var key = keys.pop();
+        if (key in object) {
+          next.value = key;
+          next.done = false;
+          return next;
+        }
+      }
+
+      // To avoid creating an additional object, we just hang the .value
+      // and .done properties off the next function object itself. This
+      // also ensures that the minifier will not anonymize the function.
+      next.done = true;
+      return next;
+    };
+  };
+
+  function values(iterable) {
+    if (iterable) {
+      var iteratorMethod = iterable[iteratorSymbol];
+      if (iteratorMethod) {
+        return iteratorMethod.call(iterable);
+      }
+
+      if (typeof iterable.next === "function") {
+        return iterable;
+      }
+
+      if (!isNaN(iterable.length)) {
+        var i = -1, next = function next() {
+          while (++i < iterable.length) {
+            if (hasOwn.call(iterable, i)) {
+              next.value = iterable[i];
+              next.done = false;
+              return next;
+            }
+          }
+
+          next.value = undefined;
+          next.done = true;
+
+          return next;
+        };
+
+        return next.next = next;
+      }
+    }
+
+    // Return an iterator with no values.
+    return { next: doneResult };
+  }
+  exports.values = values;
+
+  function doneResult() {
+    return { value: undefined, done: true };
+  }
+
+  Context.prototype = {
+    constructor: Context,
+
+    reset: function(skipTempReset) {
+      this.prev = 0;
+      this.next = 0;
+      // Resetting context._sent for legacy support of Babel's
+      // function.sent implementation.
+      this.sent = this._sent = undefined;
+      this.done = false;
+      this.delegate = null;
+
+      this.method = "next";
+      this.arg = undefined;
+
+      this.tryEntries.forEach(resetTryEntry);
+
+      if (!skipTempReset) {
+        for (var name in this) {
+          // Not sure about the optimal order of these conditions:
+          if (name.charAt(0) === "t" &&
+              hasOwn.call(this, name) &&
+              !isNaN(+name.slice(1))) {
+            this[name] = undefined;
+          }
+        }
+      }
+    },
+
+    stop: function() {
+      this.done = true;
+
+      var rootEntry = this.tryEntries[0];
+      var rootRecord = rootEntry.completion;
+      if (rootRecord.type === "throw") {
+        throw rootRecord.arg;
+      }
+
+      return this.rval;
+    },
+
+    dispatchException: function(exception) {
+      if (this.done) {
+        throw exception;
+      }
+
+      var context = this;
+      function handle(loc, caught) {
+        record.type = "throw";
+        record.arg = exception;
+        context.next = loc;
+
+        if (caught) {
+          // If the dispatched exception was caught by a catch block,
+          // then let that catch block handle the exception normally.
+          context.method = "next";
+          context.arg = undefined;
+        }
+
+        return !! caught;
+      }
+
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        var record = entry.completion;
+
+        if (entry.tryLoc === "root") {
+          // Exception thrown outside of any try block that could handle
+          // it, so set the completion value of the entire function to
+          // throw the exception.
+          return handle("end");
+        }
+
+        if (entry.tryLoc <= this.prev) {
+          var hasCatch = hasOwn.call(entry, "catchLoc");
+          var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+          if (hasCatch && hasFinally) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            } else if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else if (hasCatch) {
+            if (this.prev < entry.catchLoc) {
+              return handle(entry.catchLoc, true);
+            }
+
+          } else if (hasFinally) {
+            if (this.prev < entry.finallyLoc) {
+              return handle(entry.finallyLoc);
+            }
+
+          } else {
+            throw new Error("try statement without catch or finally");
+          }
+        }
+      }
+    },
+
+    abrupt: function(type, arg) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc <= this.prev &&
+            hasOwn.call(entry, "finallyLoc") &&
+            this.prev < entry.finallyLoc) {
+          var finallyEntry = entry;
+          break;
+        }
+      }
+
+      if (finallyEntry &&
+          (type === "break" ||
+           type === "continue") &&
+          finallyEntry.tryLoc <= arg &&
+          arg <= finallyEntry.finallyLoc) {
+        // Ignore the finally entry if control is not jumping to a
+        // location outside the try/catch block.
+        finallyEntry = null;
+      }
+
+      var record = finallyEntry ? finallyEntry.completion : {};
+      record.type = type;
+      record.arg = arg;
+
+      if (finallyEntry) {
+        this.method = "next";
+        this.next = finallyEntry.finallyLoc;
+        return ContinueSentinel;
+      }
+
+      return this.complete(record);
+    },
+
+    complete: function(record, afterLoc) {
+      if (record.type === "throw") {
+        throw record.arg;
+      }
+
+      if (record.type === "break" ||
+          record.type === "continue") {
+        this.next = record.arg;
+      } else if (record.type === "return") {
+        this.rval = this.arg = record.arg;
+        this.method = "return";
+        this.next = "end";
+      } else if (record.type === "normal" && afterLoc) {
+        this.next = afterLoc;
+      }
+
+      return ContinueSentinel;
+    },
+
+    finish: function(finallyLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.finallyLoc === finallyLoc) {
+          this.complete(entry.completion, entry.afterLoc);
+          resetTryEntry(entry);
+          return ContinueSentinel;
+        }
+      }
+    },
+
+    "catch": function(tryLoc) {
+      for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+        var entry = this.tryEntries[i];
+        if (entry.tryLoc === tryLoc) {
+          var record = entry.completion;
+          if (record.type === "throw") {
+            var thrown = record.arg;
+            resetTryEntry(entry);
+          }
+          return thrown;
+        }
+      }
+
+      // The context.catch method must only be called with a location
+      // argument that corresponds to a known catch block.
+      throw new Error("illegal catch attempt");
+    },
+
+    delegateYield: function(iterable, resultName, nextLoc) {
+      this.delegate = {
+        iterator: values(iterable),
+        resultName: resultName,
+        nextLoc: nextLoc
+      };
+
+      if (this.method === "next") {
+        // Deliberately forget the last sent value so that we don't
+        // accidentally pass it on to the delegate.
+        this.arg = undefined;
+      }
+
+      return ContinueSentinel;
+    }
+  };
+
+  // Regardless of whether this script is executing as a CommonJS module
+  // or not, return the runtime object so that we can declare the variable
+  // regeneratorRuntime in the outer scope, which allows this module to be
+  // injected easily by `bin/regenerator --include-runtime script.js`.
+  return exports;
+
+}(
+  // If this script is executing as a CommonJS module, use module.exports
+  // as the regeneratorRuntime namespace. Otherwise create a new empty
+  // object. Either way, the resulting object will be used to initialize
+  // the regeneratorRuntime variable at the top of this file.
+   true ? module.exports : 0
+));
+
+try {
+  regeneratorRuntime = runtime;
+} catch (accidentalStrictMode) {
+  // This module should not be running in strict mode, so the above
+  // assignment should always work unless something is misconfigured. Just
+  // in case runtime.js accidentally runs in strict mode, in modern engines
+  // we can explicitly access globalThis. In older engines we can escape
+  // strict mode using a global Function call. This could conceivably fail
+  // if a Content Security Policy forbids using Function, but in that case
+  // the proper solution is to fix the accidental strict mode problem. If
+  // you've misconfigured your bundler to force strict mode and applied a
+  // CSP to forbid Function, and you're not willing to fix either of those
+  // problems, please detail your unique predicament in a GitHub issue.
+  if (typeof globalThis === "object") {
+    globalThis.regeneratorRuntime = runtime;
+  } else {
+    Function("r", "regeneratorRuntime = r")(runtime);
+  }
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/dist/exportHelper.js":
 /*!******************************************************!*\
   !*** ./node_modules/vue-loader/dist/exportHelper.js ***!
@@ -37727,10 +39930,10 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/components/Another.vue":
-/*!*********************************************!*\
-  !*** ./resources/js/components/Another.vue ***!
-  \*********************************************/
+/***/ "./resources/js/components/AnotherSpecies.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/AnotherSpecies.vue ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -37738,15 +39941,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Another_vue_vue_type_template_id_74901230__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Another.vue?vue&type=template&id=74901230 */ "./resources/js/components/Another.vue?vue&type=template&id=74901230");
-/* harmony import */ var _Another_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Another.vue?vue&type=script&lang=js */ "./resources/js/components/Another.vue?vue&type=script&lang=js");
+/* harmony import */ var _AnotherSpecies_vue_vue_type_template_id_5016df64__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AnotherSpecies.vue?vue&type=template&id=5016df64 */ "./resources/js/components/AnotherSpecies.vue?vue&type=template&id=5016df64");
+/* harmony import */ var _AnotherSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AnotherSpecies.vue?vue&type=script&lang=js */ "./resources/js/components/AnotherSpecies.vue?vue&type=script&lang=js");
 /* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Another_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Another_vue_vue_type_template_id_74901230__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Another.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_AnotherSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_AnotherSpecies_vue_vue_type_template_id_5016df64__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/AnotherSpecies.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37811,10 +40014,10 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/components/Fish.vue":
-/*!******************************************!*\
-  !*** ./resources/js/components/Fish.vue ***!
-  \******************************************/
+/***/ "./resources/js/components/FishSpecies.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/FishSpecies.vue ***!
+  \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -37822,15 +40025,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Fish_vue_vue_type_template_id_f836fd7a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Fish.vue?vue&type=template&id=f836fd7a */ "./resources/js/components/Fish.vue?vue&type=template&id=f836fd7a");
-/* harmony import */ var _Fish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Fish.vue?vue&type=script&lang=js */ "./resources/js/components/Fish.vue?vue&type=script&lang=js");
+/* harmony import */ var _FishSpecies_vue_vue_type_template_id_50b3eeae__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FishSpecies.vue?vue&type=template&id=50b3eeae */ "./resources/js/components/FishSpecies.vue?vue&type=template&id=50b3eeae");
+/* harmony import */ var _FishSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FishSpecies.vue?vue&type=script&lang=js */ "./resources/js/components/FishSpecies.vue?vue&type=script&lang=js");
 /* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Fish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Fish_vue_vue_type_template_id_f836fd7a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Fish.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_FishSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_FishSpecies_vue_vue_type_template_id_50b3eeae__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/FishSpecies.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37923,10 +40126,10 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/components/Plants.vue":
-/*!********************************************!*\
-  !*** ./resources/js/components/Plants.vue ***!
-  \********************************************/
+/***/ "./resources/js/components/NewsForm.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/NewsForm.vue ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -37934,15 +40137,295 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Plants_vue_vue_type_template_id_69a3a4da__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Plants.vue?vue&type=template&id=69a3a4da */ "./resources/js/components/Plants.vue?vue&type=template&id=69a3a4da");
-/* harmony import */ var _Plants_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Plants.vue?vue&type=script&lang=js */ "./resources/js/components/Plants.vue?vue&type=script&lang=js");
+/* harmony import */ var _NewsForm_vue_vue_type_template_id_6fb68c22__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewsForm.vue?vue&type=template&id=6fb68c22 */ "./resources/js/components/NewsForm.vue?vue&type=template&id=6fb68c22");
+/* harmony import */ var _NewsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewsForm.vue?vue&type=script&lang=js */ "./resources/js/components/NewsForm.vue?vue&type=script&lang=js");
 /* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Plants_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Plants_vue_vue_type_template_id_69a3a4da__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Plants.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_NewsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_NewsForm_vue_vue_type_template_id_6fb68c22__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/NewsForm.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/NewsItem.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/NewsItem.vue ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _NewsItem_vue_vue_type_template_id_ccab8a1e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewsItem.vue?vue&type=template&id=ccab8a1e */ "./resources/js/components/NewsItem.vue?vue&type=template&id=ccab8a1e");
+/* harmony import */ var _NewsItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewsItem.vue?vue&type=script&lang=js */ "./resources/js/components/NewsItem.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_NewsItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_NewsItem_vue_vue_type_template_id_ccab8a1e__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/NewsItem.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/Pet.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/components/Pet.vue ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Pet_vue_vue_type_template_id_254ebcf8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Pet.vue?vue&type=template&id=254ebcf8 */ "./resources/js/components/Pet.vue?vue&type=template&id=254ebcf8");
+/* harmony import */ var _Pet_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Pet.vue?vue&type=script&lang=js */ "./resources/js/components/Pet.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Pet_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Pet_vue_vue_type_template_id_254ebcf8__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Pet.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/PetMembers.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/PetMembers.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PetMembers_vue_vue_type_template_id_ac62c2b6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PetMembers.vue?vue&type=template&id=ac62c2b6 */ "./resources/js/components/PetMembers.vue?vue&type=template&id=ac62c2b6");
+/* harmony import */ var _PetMembers_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PetMembers.vue?vue&type=script&lang=js */ "./resources/js/components/PetMembers.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PetMembers_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PetMembers_vue_vue_type_template_id_ac62c2b6__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/PetMembers.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/Plant.vue":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Plant.vue ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _Plant_vue_vue_type_template_id_50c22590__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Plant.vue?vue&type=template&id=50c22590 */ "./resources/js/components/Plant.vue?vue&type=template&id=50c22590");
+/* harmony import */ var _Plant_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Plant.vue?vue&type=script&lang=js */ "./resources/js/components/Plant.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Plant_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Plant_vue_vue_type_template_id_50c22590__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Plant.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/PlantsMembers.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/PlantsMembers.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PlantsMembers_vue_vue_type_template_id_85d59894__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlantsMembers.vue?vue&type=template&id=85d59894 */ "./resources/js/components/PlantsMembers.vue?vue&type=template&id=85d59894");
+/* harmony import */ var _PlantsMembers_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlantsMembers.vue?vue&type=script&lang=js */ "./resources/js/components/PlantsMembers.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PlantsMembers_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PlantsMembers_vue_vue_type_template_id_85d59894__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/PlantsMembers.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/PlantsSpecies.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/PlantsSpecies.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PlantsSpecies_vue_vue_type_template_id_3cc0e259__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PlantsSpecies.vue?vue&type=template&id=3cc0e259 */ "./resources/js/components/PlantsSpecies.vue?vue&type=template&id=3cc0e259");
+/* harmony import */ var _PlantsSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PlantsSpecies.vue?vue&type=script&lang=js */ "./resources/js/components/PlantsSpecies.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PlantsSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PlantsSpecies_vue_vue_type_template_id_3cc0e259__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/PlantsSpecies.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/UserArticle.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/UserArticle.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _UserArticle_vue_vue_type_template_id_e4ff47e0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserArticle.vue?vue&type=template&id=e4ff47e0 */ "./resources/js/components/UserArticle.vue?vue&type=template&id=e4ff47e0");
+/* harmony import */ var _UserArticle_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserArticle.vue?vue&type=script&lang=js */ "./resources/js/components/UserArticle.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_UserArticle_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_UserArticle_vue_vue_type_template_id_e4ff47e0__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/UserArticle.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/helpfulForm.vue":
+/*!*************************************************!*\
+  !*** ./resources/js/components/helpfulForm.vue ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _helpfulForm_vue_vue_type_template_id_66504085__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpfulForm.vue?vue&type=template&id=66504085 */ "./resources/js/components/helpfulForm.vue?vue&type=template&id=66504085");
+/* harmony import */ var _helpfulForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpfulForm.vue?vue&type=script&lang=js */ "./resources/js/components/helpfulForm.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_helpfulForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_helpfulForm_vue_vue_type_template_id_66504085__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/helpfulForm.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/petsForm.vue":
+/*!**********************************************!*\
+  !*** ./resources/js/components/petsForm.vue ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _petsForm_vue_vue_type_template_id_cf1ba13a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./petsForm.vue?vue&type=template&id=cf1ba13a */ "./resources/js/components/petsForm.vue?vue&type=template&id=cf1ba13a");
+/* harmony import */ var _petsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./petsForm.vue?vue&type=script&lang=js */ "./resources/js/components/petsForm.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_petsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_petsForm_vue_vue_type_template_id_cf1ba13a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/petsForm.vue"]])
+/* hot reload */
+if (false) {}
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__exports__);
+
+/***/ }),
+
+/***/ "./resources/js/components/plantsForm.vue":
+/*!************************************************!*\
+  !*** ./resources/js/components/plantsForm.vue ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _plantsForm_vue_vue_type_template_id_ef4c4a52__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./plantsForm.vue?vue&type=template&id=ef4c4a52 */ "./resources/js/components/plantsForm.vue?vue&type=template&id=ef4c4a52");
+/* harmony import */ var _plantsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./plantsForm.vue?vue&type=script&lang=js */ "./resources/js/components/plantsForm.vue?vue&type=script&lang=js");
+/* harmony import */ var D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+
+
+
+
+;
+const __exports__ = /*#__PURE__*/(0,D_Documents_GitHub_AquaSite_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_plantsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_plantsForm_vue_vue_type_template_id_ef4c4a52__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/plantsForm.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -37967,18 +40450,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Another.vue?vue&type=script&lang=js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/components/Another.vue?vue&type=script&lang=js ***!
-  \*********************************************************************/
+/***/ "./resources/js/components/AnotherSpecies.vue?vue&type=script&lang=js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/AnotherSpecies.vue?vue&type=script&lang=js ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Another_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AnotherSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Another_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Another.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Another.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AnotherSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AnotherSpecies.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AnotherSpecies.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -38015,18 +40498,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Fish.vue?vue&type=script&lang=js":
-/*!******************************************************************!*\
-  !*** ./resources/js/components/Fish.vue?vue&type=script&lang=js ***!
-  \******************************************************************/
+/***/ "./resources/js/components/FishSpecies.vue?vue&type=script&lang=js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/FishSpecies.vue?vue&type=script&lang=js ***!
+  \*************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Fish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FishSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Fish_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Fish.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Fish.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FishSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./FishSpecies.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/FishSpecies.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -38079,18 +40562,178 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Plants.vue?vue&type=script&lang=js":
-/*!********************************************************************!*\
-  !*** ./resources/js/components/Plants.vue?vue&type=script&lang=js ***!
-  \********************************************************************/
+/***/ "./resources/js/components/NewsForm.vue?vue&type=script&lang=js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/NewsForm.vue?vue&type=script&lang=js ***!
+  \**********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Plants_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NewsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Plants_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Plants.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plants.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NewsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NewsForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/NewsItem.vue?vue&type=script&lang=js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/NewsItem.vue?vue&type=script&lang=js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NewsItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NewsItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NewsItem.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsItem.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/Pet.vue?vue&type=script&lang=js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/Pet.vue?vue&type=script&lang=js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Pet_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Pet_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Pet.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Pet.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/PetMembers.vue?vue&type=script&lang=js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/PetMembers.vue?vue&type=script&lang=js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PetMembers_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PetMembers_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PetMembers.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PetMembers.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/Plant.vue?vue&type=script&lang=js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/Plant.vue?vue&type=script&lang=js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Plant_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Plant_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Plant.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plant.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/PlantsMembers.vue?vue&type=script&lang=js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/PlantsMembers.vue?vue&type=script&lang=js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PlantsMembers_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PlantsMembers_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PlantsMembers.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsMembers.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/PlantsSpecies.vue?vue&type=script&lang=js":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/PlantsSpecies.vue?vue&type=script&lang=js ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PlantsSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PlantsSpecies_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PlantsSpecies.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsSpecies.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/UserArticle.vue?vue&type=script&lang=js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/UserArticle.vue?vue&type=script&lang=js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserArticle_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserArticle_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UserArticle.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/UserArticle.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/helpfulForm.vue?vue&type=script&lang=js":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/helpfulForm.vue?vue&type=script&lang=js ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_helpfulForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_helpfulForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./helpfulForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/helpfulForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/petsForm.vue?vue&type=script&lang=js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/petsForm.vue?vue&type=script&lang=js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_petsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_petsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./petsForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/petsForm.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
+/***/ "./resources/js/components/plantsForm.vue?vue&type=script&lang=js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/plantsForm.vue?vue&type=script&lang=js ***!
+  \************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_plantsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_plantsForm_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./plantsForm.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/plantsForm.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -38111,18 +40754,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Another.vue?vue&type=template&id=74901230":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/Another.vue?vue&type=template&id=74901230 ***!
-  \***************************************************************************/
+/***/ "./resources/js/components/AnotherSpecies.vue?vue&type=template&id=5016df64":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/AnotherSpecies.vue?vue&type=template&id=5016df64 ***!
+  \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Another_vue_vue_type_template_id_74901230__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AnotherSpecies_vue_vue_type_template_id_5016df64__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Another_vue_vue_type_template_id_74901230__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Another.vue?vue&type=template&id=74901230 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Another.vue?vue&type=template&id=74901230");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_AnotherSpecies_vue_vue_type_template_id_5016df64__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./AnotherSpecies.vue?vue&type=template&id=5016df64 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/AnotherSpecies.vue?vue&type=template&id=5016df64");
 
 
 /***/ }),
@@ -38159,18 +40802,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Fish.vue?vue&type=template&id=f836fd7a":
-/*!************************************************************************!*\
-  !*** ./resources/js/components/Fish.vue?vue&type=template&id=f836fd7a ***!
-  \************************************************************************/
+/***/ "./resources/js/components/FishSpecies.vue?vue&type=template&id=50b3eeae":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/FishSpecies.vue?vue&type=template&id=50b3eeae ***!
+  \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Fish_vue_vue_type_template_id_f836fd7a__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FishSpecies_vue_vue_type_template_id_50b3eeae__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Fish_vue_vue_type_template_id_f836fd7a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Fish.vue?vue&type=template&id=f836fd7a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Fish.vue?vue&type=template&id=f836fd7a");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_FishSpecies_vue_vue_type_template_id_50b3eeae__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./FishSpecies.vue?vue&type=template&id=50b3eeae */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/FishSpecies.vue?vue&type=template&id=50b3eeae");
 
 
 /***/ }),
@@ -38223,18 +40866,178 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Plants.vue?vue&type=template&id=69a3a4da":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/Plants.vue?vue&type=template&id=69a3a4da ***!
-  \**************************************************************************/
+/***/ "./resources/js/components/NewsForm.vue?vue&type=template&id=6fb68c22":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/NewsForm.vue?vue&type=template&id=6fb68c22 ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Plants_vue_vue_type_template_id_69a3a4da__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NewsForm_vue_vue_type_template_id_6fb68c22__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Plants_vue_vue_type_template_id_69a3a4da__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Plants.vue?vue&type=template&id=69a3a4da */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plants.vue?vue&type=template&id=69a3a4da");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NewsForm_vue_vue_type_template_id_6fb68c22__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NewsForm.vue?vue&type=template&id=6fb68c22 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsForm.vue?vue&type=template&id=6fb68c22");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/NewsItem.vue?vue&type=template&id=ccab8a1e":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/NewsItem.vue?vue&type=template&id=ccab8a1e ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NewsItem_vue_vue_type_template_id_ccab8a1e__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_NewsItem_vue_vue_type_template_id_ccab8a1e__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./NewsItem.vue?vue&type=template&id=ccab8a1e */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/NewsItem.vue?vue&type=template&id=ccab8a1e");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Pet.vue?vue&type=template&id=254ebcf8":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Pet.vue?vue&type=template&id=254ebcf8 ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Pet_vue_vue_type_template_id_254ebcf8__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Pet_vue_vue_type_template_id_254ebcf8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Pet.vue?vue&type=template&id=254ebcf8 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Pet.vue?vue&type=template&id=254ebcf8");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PetMembers.vue?vue&type=template&id=ac62c2b6":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/PetMembers.vue?vue&type=template&id=ac62c2b6 ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PetMembers_vue_vue_type_template_id_ac62c2b6__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PetMembers_vue_vue_type_template_id_ac62c2b6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PetMembers.vue?vue&type=template&id=ac62c2b6 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PetMembers.vue?vue&type=template&id=ac62c2b6");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Plant.vue?vue&type=template&id=50c22590":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/Plant.vue?vue&type=template&id=50c22590 ***!
+  \*************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Plant_vue_vue_type_template_id_50c22590__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Plant_vue_vue_type_template_id_50c22590__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Plant.vue?vue&type=template&id=50c22590 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Plant.vue?vue&type=template&id=50c22590");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PlantsMembers.vue?vue&type=template&id=85d59894":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/PlantsMembers.vue?vue&type=template&id=85d59894 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PlantsMembers_vue_vue_type_template_id_85d59894__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PlantsMembers_vue_vue_type_template_id_85d59894__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PlantsMembers.vue?vue&type=template&id=85d59894 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsMembers.vue?vue&type=template&id=85d59894");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PlantsSpecies.vue?vue&type=template&id=3cc0e259":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/PlantsSpecies.vue?vue&type=template&id=3cc0e259 ***!
+  \*********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PlantsSpecies_vue_vue_type_template_id_3cc0e259__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_PlantsSpecies_vue_vue_type_template_id_3cc0e259__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./PlantsSpecies.vue?vue&type=template&id=3cc0e259 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/PlantsSpecies.vue?vue&type=template&id=3cc0e259");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/UserArticle.vue?vue&type=template&id=e4ff47e0":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/UserArticle.vue?vue&type=template&id=e4ff47e0 ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserArticle_vue_vue_type_template_id_e4ff47e0__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_UserArticle_vue_vue_type_template_id_e4ff47e0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./UserArticle.vue?vue&type=template&id=e4ff47e0 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/UserArticle.vue?vue&type=template&id=e4ff47e0");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/helpfulForm.vue?vue&type=template&id=66504085":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/helpfulForm.vue?vue&type=template&id=66504085 ***!
+  \*******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_helpfulForm_vue_vue_type_template_id_66504085__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_helpfulForm_vue_vue_type_template_id_66504085__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./helpfulForm.vue?vue&type=template&id=66504085 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/helpfulForm.vue?vue&type=template&id=66504085");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/petsForm.vue?vue&type=template&id=cf1ba13a":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/petsForm.vue?vue&type=template&id=cf1ba13a ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_petsForm_vue_vue_type_template_id_cf1ba13a__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_petsForm_vue_vue_type_template_id_cf1ba13a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./petsForm.vue?vue&type=template&id=cf1ba13a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/petsForm.vue?vue&type=template&id=cf1ba13a");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/plantsForm.vue?vue&type=template&id=ef4c4a52":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/plantsForm.vue?vue&type=template&id=ef4c4a52 ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_plantsForm_vue_vue_type_template_id_ef4c4a52__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_plantsForm_vue_vue_type_template_id_ef4c4a52__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./plantsForm.vue?vue&type=template&id=ef4c4a52 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/plantsForm.vue?vue&type=template&id=ef4c4a52");
 
 
 /***/ }),
@@ -43519,6 +46322,18 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

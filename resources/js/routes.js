@@ -1,11 +1,13 @@
 import Home from './components/Home';
 import News from './components/News';
-import Fish from './components/Fish';
-import Plants from './components/Plants';
-import Another from './components/Another';
+import FishSpecies from './components/FishSpecies';
+import PlantsSpecies from './components/PlantsSpecies';
+import AnotherSpecies from './components/AnotherSpecies';
 import Aquariums from './components/Aquariums';
 import Helpful from './components/Helpful';
 import About from './components/About';
+import PetMembers from "./components/PetMembers";
+import plantsMembers from "./components/PlantsMembers";
 
 
 const routes = [
@@ -22,17 +24,17 @@ const routes = [
     {
         path: "/fish",
         name: "Fish",
-        component: Fish,
+        component: FishSpecies,
     },
     {
         path: "/plants",
         name: "Plants",
-        component: Plants,
+        component: PlantsSpecies,
     },
     {
         path: "/another",
         name: "Another",
-        component: Another,
+        component: AnotherSpecies,
     },
     {
         path: "/aquariums",
@@ -49,6 +51,16 @@ const routes = [
         name: "About",
         component: About,
     },
+    {
+        path: "/petMembers",
+        name: "PetMember",
+        component: PetMembers,
+    },
+    {
+        path: '/plantsMembers',
+        name: "PlantsMember",
+        component: plantsMembers
+    }
 ];
 
 export default routes

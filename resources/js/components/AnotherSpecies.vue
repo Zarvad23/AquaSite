@@ -83,7 +83,7 @@
 
 <script>
 export default {
-    name: "Another"
+    name: "AnotherSpecies"
 }
 </script>
 

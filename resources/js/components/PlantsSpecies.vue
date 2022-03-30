@@ -33,7 +33,7 @@
                             </div>
                         </div>
                         <div class="plants-type-btn">
-                            <a href="">Все представители</a>
+                            <a href=""><router-link to="/plantsMembers">Все представители</router-link></a>
                         </div>
                     </li>
                     <li class="plants-type" id="plants-type-2">
@@ -210,7 +210,7 @@
 
 <script>
 export default {
-    name: "Plants"
+    name: "PlantsSpecies"
 }
 </script>
 

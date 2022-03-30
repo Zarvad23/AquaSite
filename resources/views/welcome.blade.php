@@ -16,7 +16,7 @@
         </style>
     </head>
     <body>
-         <div id="app">
+         <div id="app"">
                 <div class="header">
                     <div class="menu">
                         <div class="navigation-container">
@@ -37,7 +37,8 @@
                             </nav>
                         </div>
                         <div class="AuthContainer">
-                            <a v-on:click="showAuth()">Вход</a>
+                            <a v-show="!isToken" v-on:click="showAuth()">Вход</a>
+                            <a v-show="isToken" v-on:click="logout()">Выйти</a>
                         </div>
                     </div>
                     <transition mode="out-in" name="fade">
@@ -82,6 +83,7 @@
                                 <li><router-link to="/about">О сайте</router-link></li>
                             </ul>
                         </nav>
+
                     </div>
                     <div class="footer-bottom">
                         <div class="copy">
@@ -89,7 +91,21 @@
                         </div>
                     </div>
                 </div>
-                <Auth  />
+             <div>
+                 <Auth/>
+             </div>
+             <div>
+                 <news-form/>
+             </div>
+             <div>
+                 <pets-form/>
+             </div>
+             <div>
+                 <plants-form/>
+             </div>
+             <div>
+                 <helpful-form/>
+             </div>
          </div>
          <script src="{{ mix('js/app.js') }}"></script>
     </body>
