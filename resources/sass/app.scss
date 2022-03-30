@@ -24,6 +24,11 @@ p{
     text-align: justify;
 }
 
+.helpful-item:hover,.another-type:hover,
+.fish-type:hover,.news-item:hover,.plantMember:hover{
+    outline: 3px solid red;
+}
+
 .container {
     width: 80%;
     margin: 0 auto;
@@ -46,6 +51,7 @@ p{
     background-color: $море-2-hex;
     color: white;
 }
+
 
 .menu{
     display: flex;
