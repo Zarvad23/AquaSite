@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition name="fade">
-            <div class="addNew" v-show="getIsNews">
+            <div class="addNew" v-show="getIsNews === 'News'">
                 <form>
                     <img src="https://www.ipng.ru/upload/no-image.png" alt="Превью">
                     <div class="formAddItem">
@@ -22,7 +22,7 @@
                     </div>
                     <button>Отправить</button>
                 </form>
-                <div class="addNew-close" @click="closeNewsAdd()">
+                <div class="addNew-close" @click="closeForm()">
                     <div class="addNew-close-inner"></div>
                 </div>
             </div>
@@ -35,12 +35,12 @@ export default {
     name: "NewsForm",
     computed: {
         getIsNews () {
-            return this.$store.getters.getIsNews
+            return this.$store.getters.GET_VISIBLE;
         }
     },
     methods: {
-        closeNewsAdd() {
-            this.$store.dispatch('CHANGE_VISIBLE', [false, 'News'])
+        closeForm() {
+            this.$store.dispatch('CHANGE_VISIBLE', '')
         }
     }
 }

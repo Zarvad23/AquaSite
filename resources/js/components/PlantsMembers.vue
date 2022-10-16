@@ -3,7 +3,7 @@
         <h2>Почвопокровные растения переднего плана</h2>
         <div class="plantMembers">
             <div class="plantMembers-left">
-                <div class="addForm" @click="toogleVisible()">
+                <div class="addForm" @click="showPlants()">
                     <p>Добавить</p>
                 </div>
                 <div class="plantMembers-left-content">
@@ -54,8 +54,8 @@ export default {
         plant
     },
     methods: {
-        toogleVisible() {
-            this.$store.dispatch('CHANGE_VISIBLE', [true, 'Plants']);
+        showPlants() {
+            this.$store.dispatch('CHANGE_VISIBLE', 'Plants');
         }
     }
 }

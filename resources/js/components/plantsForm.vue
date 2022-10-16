@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition name="fade">
-            <div class="addNew" v-show="getIsPlants">
+            <div class="addNew" v-show="getIsPlants === 'Plants'">
                 <form>
                     <img src="https://www.ipng.ru/upload/no-image.png" alt="Превью">
                     <div class="formAddItem">
@@ -41,7 +41,7 @@
                     </div>
                     <button>Отправить</button>
                 </form>
-                <div class="addNew-close" @click="closePlantsAdd()">
+                <div class="addNew-close" @click="closeForm()">
                     <div class="addNew-close-inner"></div>
                 </div>
             </div>
@@ -54,12 +54,12 @@ export default {
     name: "plantsForm",
     computed: {
         getIsPlants () {
-            return this.$store.getters.getIsPlants
+            return this.$store.getters.GET_VISIBLE;
         }
     },
     methods: {
-        closePlantsAdd() {
-            this.$store.dispatch('CHANGE_VISIBLE', [false, 'Plants'])
+        closeForm() {
+            this.$store.dispatch('CHANGE_VISIBLE', '')
         }
     }
 }

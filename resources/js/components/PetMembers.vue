@@ -3,7 +3,7 @@
         <h2>Вид аквариумных рыб "Хищники"</h2>
         <div class="petMembers">
             <div class="petMembers-left">
-                <div class="addForm" @click="toogleVisible()">
+                <div class="addForm" @click="showPets()">
                     <p>Добавить</p>
                 </div>
                 <div class="petMembers-left-content">
@@ -142,8 +142,8 @@ export default {
         Pet
     },
     methods: {
-        toogleVisible() {
-            this.$store.dispatch('CHANGE_VISIBLE', [true, 'Pets']);
+        showPets() {
+            this.$store.dispatch('CHANGE_VISIBLE', 'Pets');
         }
     }
 }

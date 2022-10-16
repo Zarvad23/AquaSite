@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition name="fade">
-            <div class="addNew" v-show="getIsPets">
+            <div class="addNew" v-show="getIsPets === 'Pets'">
                 <form class="PetsForm">
                     <img src="https://www.ipng.ru/upload/no-image.png" alt="Превью">
                     <div class="formAddItem">
@@ -27,7 +27,7 @@
                         </div>
                         <div class="formAddItem">
                             <label for="formAddPetsSpecie">Вид Питомца </label>
-                            <output name="PetsSpecie" id="formAddPetsSpecie">{{ getPetSpecie }}</output>
+                            <output name="PetsSpecie" id="formAddPetsSpecie"></output>
                         </div>
                         <div class="formAddItem">
                             <p>Тип жилища</p>
@@ -55,7 +55,7 @@
                     </div>
                     <button>Отправить</button>
                 </form>
-                <div class="addNew-close" @click="closePetsAdd()">
+                <div class="addNew-close" @click="closeForm()">
                     <div class="addNew-close-inner"></div>
                 </div>
             </div>
@@ -68,15 +68,12 @@ export default {
     name: "petsForm",
     computed: {
         getIsPets () {
-            return this.$store.getters.getIsPets
+            return this.$store.getters.GET_VISIBLE;
         },
-        getPetSpecie() {
-            return this.$store.getters.getPetSpecie
-        }
     },
     methods: {
-        closePetsAdd() {
-            this.$store.dispatch('CHANGE_VISIBLE', [false, 'Pets'])
+        closeForm() {
+            this.$store.dispatch('CHANGE_VISIBLE', '')
         }
     }
 }

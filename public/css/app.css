@@ -1743,6 +1743,50 @@
   background-color: #BBDDF2;
 }
 
+/* Color Theme Swatches in Hex */
+.popupMessages {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+.popupMessages .popupMessage {
+  font-size: 23px;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  border-width: 1px;
+  border-radius: 10px;
+}
+.popupMessages .popupMessage:last-child {
+  margin-bottom: 0;
+}
+
+.popupMessage-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+}
+
+.popupMessage-succesful {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.popup-enter-active,
+.popup-leave-active {
+  transition: all 0.5s ease;
+}
+
+.popup-enter-from {
+  opacity: 0;
+  transform: translateX(-50%);
+}
+
+.popup-leave-to {
+  opacity: 0;
+  transform: translateX(50%);
+}
+
 body {
   font-family: "Nunito", sans-serif;
   background: #f8fafc;

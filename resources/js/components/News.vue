@@ -3,7 +3,7 @@
         <h2>Все новости</h2>
         <div class="news">
             <div class="news-left">
-                <div class="addForm" @click="toogleVisible()">
+                <div class="addForm" @click="showNewsForm()">
                     <p>Добавить новость</p>
                 </div>
                 <div class="news-items">
@@ -210,13 +210,10 @@ export default {
     components: {
         NewsItem
     },
-    mounted() {
-        return this.$store.dispatch('GET_NEWS', [true, 'Auth']);
-    },
     methods: {
-        toogleVisible() {
-            this.$store.dispatch('CHANGE_VISIBLE', [true, 'News']);
-        }
+        showNewsForm() {
+            this.$store.dispatch('CHANGE_VISIBLE', 'News');
+        },
     }
 }
 </script>

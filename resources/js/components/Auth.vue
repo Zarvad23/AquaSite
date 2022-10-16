@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="auth" v-show="getIsAuth">
+        <div class="auth" v-show="getIsAuth === 'Auth'">
             <transition name="auth">
                 <div class="auth-container" v-show="getIsAuth">
                     <div class="auth-switchers">
@@ -71,14 +71,14 @@ export default {
     name: "auth",
     data() {
         return {
-            authBlock: 'registration',
+            authBlock: 'registration', //Свойство для смены отображаемой формы (авторизация <-> регистрация)
             registerForm: {
-                login: 'test',
-                name: 'test',
-                surname: 'test',
-                date:'test',
-                gender: 'male',
-                password: 'test',
+                login: '',
+                name: '',
+                surname: '',
+                date:'',
+                gender: '',
+                password: '',
             },
             loginForm: {
                 login: '',
@@ -88,24 +88,15 @@ export default {
     },
     computed: {
         getIsAuth () {
-            return this.$store.getters.getIsAuth
+            return this.$store.getters.GET_VISIBLE;
         }
     },
     methods: {
         closeAuth() {
-            this.$store.dispatch('CHANGE_VISIBLE', [false, 'Auth'])
+            this.$store.dispatch('CHANGE_VISIBLE', '');
         },
-        sendRegister: function () {
-            fetch('http://127.0.0.1:8000/api/registration', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(this.registerForm)
-            })
-        },
-        auth() {
-            fetch('http://127.0.0.1:8000/api/authent', {
+        sendRegister() {
+            fetch('/api/registration', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -114,7 +105,37 @@ export default {
             })
                 .then(res => res.json())
                 .then(data => {
-                    localStorage.setItem('token', data.token)
+                    if (data.success) {
+                        this.$store.dispatch('ADD_POPUP', {
+                            message: `Пользователь ${data.username} успешно зарегистрирован`,
+                            type: 'popupMessage-succesful'
+                        })
+                    } else {
+                        this.$store.dispatch('ADD_POPUP', {
+                            message: data.message,
+                            type: 'popupMessage-danger'
+                        })
+                    }
+                })
+        },
+        auth() {
+            fetch('/api/authent', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(this.loginForm)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.success) {
+                        this.$store.dispatch('ADD_POPUP', {message: `Вы успешно авторизированы`, type: 'popupMessage-succesful'});
+                        localStorage.setItem('token', data.token)
+                        this.$store.dispatch('ADD_POPUP', {message: `Ваш персональный токен: ${data.token} успешно сохранен`, type: 'popupMessage-succesful'});
+                        this.$store.dispatch('CHANGE_AUTHORIZED', true);
+                    }else{
+                        this.$store.dispatch('ADD_POPUP', {message: data.errors.login, type: 'popupMessage-danger'})
+                    }
                 })
         }
     }

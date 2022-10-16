@@ -27,7 +27,7 @@
                             </div>
                             <div class="news-card-bottom">
                                 <p>Дата: 09.09.2022</p>
-                                <a href="#" class="news-card-button">Читать дальше</a>
+                                <a href="#" class="news-card-button" @click.prevent="addPopup()">Читать дальше</a>
                             </div>
                         </div>
                         <div class="news-card">
@@ -199,5 +199,9 @@
     </div>
 </template>
 <script>
-export default {}
+export default {
+    name: "Home",
+    methods: {
+    }
+}
 </script>

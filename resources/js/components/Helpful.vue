@@ -3,7 +3,7 @@
         <h2>Все пользовательские статьи</h2>
         <div class="helpful">
             <div class="helpful-left">
-                <div class="addForm" @click="toogleVisible()">
+                <div class="addForm" @click="showHelpfulForm()">
                     <p>Добавить статью</p>
                 </div>
                 <div class="helpful-items">
@@ -210,8 +210,8 @@ export default {
         UserArticle
     },
     methods: {
-        toogleVisible() {
-            this.$store.dispatch('CHANGE_VISIBLE', [true, 'Helpful']);
+        showHelpfulForm() {
+            this.$store.dispatch('CHANGE_VISIBLE', 'Helpful');
         }
     }
 }

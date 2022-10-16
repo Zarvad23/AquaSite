@@ -37,8 +37,8 @@
                             </nav>
                         </div>
                         <div class="AuthContainer">
-                            <a v-show="!isToken" v-on:click="showAuth()">Вход</a>
-                            <a v-show="isToken" v-on:click="logout()">Выйти</a>
+                            <a v-if="isAuthorized == false" v-on:click="showAuth()">Вход</a>
+                            <a v-if="isAuthorized" v-on:click="logout()">Выход</a>
                         </div>
                     </div>
                     <transition mode="out-in" name="fade">
@@ -105,6 +105,9 @@
              </div>
              <div>
                  <helpful-form/>
+             </div>
+             <div>
+                <popup-messages>
              </div>
          </div>
          <script src="{{ mix('js/app.js') }}"></script>
